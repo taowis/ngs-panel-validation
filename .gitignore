@@ -1,0 +1,30 @@
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# workflow runtime
+work/
+.nextflow/
+.nextflow.log*
+.snakemake/
+tmp/
+
+# large inputs, see data/README.md
+data/raw/
+data/reference/
+data/truth/
+*.fastq.gz
+*.bam
+*.bai
+*.cram
+*.crai
+
+# per-run outputs; summary tables are copied into docs/reports/
+results/
+
+# personal
+CLAUDE.md
+.claude/
+private_notes/
