@@ -1,0 +1,1376 @@
+{
+    "child_panel_ids": [],
+    "description": "This panel contains genes associated with colorectal cancer and polyposis. \r\n\r\nFurther information on the testing criteria for colorectal cancer and polyposis can be found at eviQ: \r\nhttps://www.eviq.org.au/cancer-genetics/adult/genetic-testing-using-cancer-gene-panels/4116-gastrointestinal-polyposis-and-colorectal-can\r\n\r\nOnly \u2018Green\u2019 genes should be tested and analysed for clinical testing, as they have sufficient peer-reviewed published evidence of association with colorectal cancer and polyposis and are clinically actionable for diagnostic and/or predictive genetic testing.\r\n\r\nEnsure testing includes copy number variant (CNV) analysis, as CNVs contribute to a clinically significant proportion of pathogenic variants associated with familial risk of cancer.\r\n\r\nThis panel has been compared against the Genomics England PanelApp and aligned with any assessments by ClinGen.\r\n\r\nThis panel has been developed under the guidance of experts in cancer genetics (Dr Helen Mar Fan and Dr Nicola Poplawski).",
+    "disease_group": "Cancer Predisposition",
+    "disease_sub_group": "",
+    "genes": [
+        {
+            "confidence_level": "3",
+            "entity_name": "APC",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Green",
+                "Expert Review",
+                "Expert list"
+            ],
+            "gene_data": {
+                "alias": [
+                    "DP2",
+                    "DP3",
+                    "DP2.5",
+                    "PPP1R46"
+                ],
+                "alias_name": [
+                    "protein phosphatase 1, regulatory subunit 46"
+                ],
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000134982",
+                            "location": "5:112043195-112181936"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000134982",
+                            "location": "5:112707498-112846239"
+                        }
+                    }
+                },
+                "gene_name": "APC regulator of Wnt signaling pathway",
+                "gene_symbol": "APC",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:583",
+                "hgnc_release": "2025-06-27",
+                "hgnc_symbol": "APC",
+                "omim_gene": [
+                    "611731"
+                ]
+            },
+            "mode_of_inheritance": "MONOALLELIC, autosomal or pseudoautosomal, NOT imprinted",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "APC-related attenuated familial adenomatous polyposis, MONDO:0016613",
+                "Classic familial adenomatous polyposis, MONDO:0021055",
+                "Familial adenomatous polyposis 1, MONDO:0021056",
+                "Adenomatous polyposis coli, MIM#175100"
+            ],
+            "publications": [],
+            "tags": [],
+            "transcript": null
+        },
+        {
+            "confidence_level": "3",
+            "entity_name": "AXIN2",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Green",
+                "Expert Review",
+                "Expert list"
+            ],
+            "gene_data": {
+                "alias": [
+                    "MGC126582",
+                    "DKFZp781B0869"
+                ],
+                "alias_name": [
+                    "conductin",
+                    "axil"
+                ],
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000168646",
+                            "location": "17:63524681-63557765"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000168646",
+                            "location": "17:65528561-65562067"
+                        }
+                    }
+                },
+                "gene_name": "axin 2",
+                "gene_symbol": "AXIN2",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:904",
+                "hgnc_release": "2023-01-20",
+                "hgnc_symbol": "AXIN2",
+                "omim_gene": [
+                    "604025"
+                ]
+            },
+            "mode_of_inheritance": "MONOALLELIC, autosomal or pseudoautosomal, NOT imprinted",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "AXIN2-related attenuated familial adenomatous polyposis, MONDO:0018426",
+                "Oligodontia-cancer predisposition syndrome, MONDO:0012075",
+                "Oligodontia-colorectal cancer syndrome, MIM#608615"
+            ],
+            "publications": [],
+            "tags": [],
+            "transcript": null
+        },
+        {
+            "confidence_level": "3",
+            "entity_name": "BMPR1A",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Green",
+                "Expert Review",
+                "Expert list"
+            ],
+            "gene_data": {
+                "alias": [
+                    "ALK3",
+                    "CD292",
+                    "ACVRLK3"
+                ],
+                "alias_name": null,
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000107779",
+                            "location": "10:88516407-88692595"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000107779",
+                            "location": "10:86755763-86932825"
+                        }
+                    }
+                },
+                "gene_name": "bone morphogenetic protein receptor type 1A",
+                "gene_symbol": "BMPR1A",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:1076",
+                "hgnc_release": "2023-01-20",
+                "hgnc_symbol": "BMPR1A",
+                "omim_gene": [
+                    "601299"
+                ]
+            },
+            "mode_of_inheritance": "MONOALLELIC, autosomal or pseudoautosomal, NOT imprinted",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Polyposis syndrome, hereditary mixed, 2, MONDO:0012405",
+                "Polyposis, juvenile intestinal, MIM#174900"
+            ],
+            "publications": [],
+            "tags": [],
+            "transcript": null
+        },
+        {
+            "confidence_level": "3",
+            "entity_name": "EPCAM",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Green",
+                "Expert Review",
+                "Expert list"
+            ],
+            "gene_data": {
+                "alias": [
+                    "Ly74",
+                    "TROP1",
+                    "GA733-2",
+                    "EGP34",
+                    "EGP40",
+                    "EGP-2",
+                    "KSA",
+                    "CD326",
+                    "Ep-CAM",
+                    "HEA125",
+                    "KS1/4",
+                    "MK-1",
+                    "MH99",
+                    "MOC31",
+                    "MOC-31",
+                    "323/A3",
+                    "17-1A",
+                    "TACST-1",
+                    "CO-17A",
+                    "ESA",
+                    "BerEp4",
+                    "Ber-Ep4",
+                    "M4S1",
+                    "MIC18",
+                    "TACSTD1"
+                ],
+                "alias_name": [
+                    "trophoblast cell surface antigen 1"
+                ],
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000119888",
+                            "location": "2:47572297-47614740"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000119888",
+                            "location": "2:47345158-47387601"
+                        }
+                    }
+                },
+                "gene_name": "epithelial cell adhesion molecule",
+                "gene_symbol": "EPCAM",
+                "hgnc_date_symbol_changed": "2008-12-16",
+                "hgnc_id": "HGNC:11529",
+                "hgnc_release": "2023-01-20",
+                "hgnc_symbol": "EPCAM",
+                "omim_gene": [
+                    "185535"
+                ]
+            },
+            "mode_of_inheritance": "MONOALLELIC, autosomal or pseudoautosomal, NOT imprinted",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Lynch syndrome 8, MONDO:0013196",
+                "Lynch syndrome 8, MIM#613244"
+            ],
+            "publications": [],
+            "tags": [],
+            "transcript": null
+        },
+        {
+            "confidence_level": "3",
+            "entity_name": "GREM1",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Green",
+                "Literature",
+                "Expert Review",
+                "Expert list"
+            ],
+            "gene_data": {
+                "alias": [
+                    "DRM",
+                    "gremlin",
+                    "DAND2",
+                    "HMPS",
+                    "CKTSF1B1",
+                    "CRAC1"
+                ],
+                "alias_name": [
+                    "hereditary mixed polyposis syndrome",
+                    "down-regulated in mos-transformed cells"
+                ],
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000166923",
+                            "location": "15:33010175-33026870"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000166923",
+                            "location": "15:32716998-32745106"
+                        }
+                    }
+                },
+                "gene_name": "gremlin 1, DAN family BMP antagonist",
+                "gene_symbol": "GREM1",
+                "hgnc_date_symbol_changed": "2004-05-07",
+                "hgnc_id": "HGNC:2001",
+                "hgnc_release": "2023-01-20",
+                "hgnc_symbol": "GREM1",
+                "omim_gene": [
+                    "603054"
+                ]
+            },
+            "mode_of_inheritance": "MONOALLELIC, autosomal or pseudoautosomal, NOT imprinted",
+            "mode_of_pathogenicity": "Loss-of-function variants (as defined in pop up message) DO NOT cause this phenotype - please provide details in the comments",
+            "penetrance": null,
+            "phenotypes": [
+                "Colorectal cancer, MONDO:0005575",
+                "Polyposis, MONDO:0000147",
+                "Hereditary mixed polyposis syndrome, MONDO:0011023",
+                "GREM1-associated polyposis, no MIM#"
+            ],
+            "publications": [
+                "PMID: 22561515, 25419707"
+            ],
+            "tags": [],
+            "transcript": null
+        },
+        {
+            "confidence_level": "3",
+            "entity_name": "MBD4",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Green",
+                "Expert Review",
+                "Expert List"
+            ],
+            "gene_data": {
+                "alias": [
+                    "MED1"
+                ],
+                "alias_name": null,
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000129071",
+                            "location": "3:129149787-129158878"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000129071",
+                            "location": "3:129430947-129440543"
+                        }
+                    }
+                },
+                "gene_name": "methyl-CpG binding domain 4, DNA glycosylase",
+                "gene_symbol": "MBD4",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:6919",
+                "hgnc_release": "2023-01-20",
+                "hgnc_symbol": "MBD4",
+                "omim_gene": [
+                    "603574"
+                ]
+            },
+            "mode_of_inheritance": "BIALLELIC, autosomal or pseudoautosomal",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Tumor predisposition syndrome 2, MIM#619975"
+            ],
+            "publications": [],
+            "tags": [],
+            "transcript": null
+        },
+        {
+            "confidence_level": "3",
+            "entity_name": "MLH1",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Green",
+                "Expert Review",
+                "Expert list"
+            ],
+            "gene_data": {
+                "alias": [
+                    "HNPCC",
+                    "FCC2",
+                    "HNPCC2",
+                    "MLH-1",
+                    "COCA2"
+                ],
+                "alias_name": null,
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000076242",
+                            "location": "3:37034823-37107380"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000076242",
+                            "location": "3:36993226-37050896"
+                        }
+                    }
+                },
+                "gene_name": "mutL homolog 1",
+                "gene_symbol": "MLH1",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:7127",
+                "hgnc_release": "2023-01-20",
+                "hgnc_symbol": "MLH1",
+                "omim_gene": [
+                    "120436"
+                ]
+            },
+            "mode_of_inheritance": "BOTH monoallelic and biallelic (but BIALLELIC mutations cause a more SEVERE disease form), autosomal or pseudoautosomal",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Colorectal cancer, MONDO:0005575",
+                "Polyposis, MONDO:0000147",
+                "Lynch syndrome 2, MONDO:0012249",
+                "Mismatch repair cancer syndrome 1, MONDO:0010159",
+                "Lynch syndrome 2, MIM#609310",
+                "Mismatch repair cancer syndrome 1, MIM#276300"
+            ],
+            "publications": [],
+            "tags": [],
+            "transcript": null
+        },
+        {
+            "confidence_level": "3",
+            "entity_name": "MSH2",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Green",
+                "Expert Review",
+                "Expert list"
+            ],
+            "gene_data": {
+                "alias": [
+                    "HNPCC",
+                    "HNPCC1",
+                    "MSH-2",
+                    "COCA1"
+                ],
+                "alias_name": [
+                    "DNA mismatch repair protein Msh2"
+                ],
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000095002",
+                            "location": "2:47630108-47789450"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000095002",
+                            "location": "2:47403067-47663146"
+                        }
+                    }
+                },
+                "gene_name": "mutS homolog 2",
+                "gene_symbol": "MSH2",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:7325",
+                "hgnc_release": "2023-01-20",
+                "hgnc_symbol": "MSH2",
+                "omim_gene": [
+                    "609309"
+                ]
+            },
+            "mode_of_inheritance": "BOTH monoallelic and biallelic (but BIALLELIC mutations cause a more SEVERE disease form), autosomal or pseudoautosomal",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Colorectal cancer, MONDO:0005575",
+                "Polyposis, MONDO:0000147",
+                "Lynch syndrome 1, MONDO:0007356",
+                "Mismatch repair cancer syndrome 2, MONDO:0030840",
+                "Lynch syndrome 1, MIM#120435",
+                "Mismatch repair cancer syndrome 2, MIM#619096"
+            ],
+            "publications": [],
+            "tags": [],
+            "transcript": null
+        },
+        {
+            "confidence_level": "3",
+            "entity_name": "MSH3",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Green",
+                "Expert Review",
+                "Expert list"
+            ],
+            "gene_data": {
+                "alias": [
+                    "DUP",
+                    "MRP1"
+                ],
+                "alias_name": [
+                    "Divergent upstream protein",
+                    "Mismatch repair protein 1"
+                ],
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000113318",
+                            "location": "5:79950467-80172279"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000113318",
+                            "location": "5:80654650-80877147"
+                        }
+                    }
+                },
+                "gene_name": "mutS homolog 3",
+                "gene_symbol": "MSH3",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:7326",
+                "hgnc_release": "2023-01-20",
+                "hgnc_symbol": "MSH3",
+                "omim_gene": [
+                    "600887"
+                ]
+            },
+            "mode_of_inheritance": "BIALLELIC, autosomal or pseudoautosomal",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Colorectal cancer, MONDO:0005575",
+                "Polyposis, MONDO:0000147",
+                "Familial adenomatous polyposis 4, MONDO:0044300",
+                "Familial adenomatous polyposis 4, MIM#617100"
+            ],
+            "publications": [],
+            "tags": [],
+            "transcript": null
+        },
+        {
+            "confidence_level": "3",
+            "entity_name": "MSH6",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Green",
+                "Expert Review",
+                "Expert list"
+            ],
+            "gene_data": {
+                "alias": [
+                    "MSH-6",
+                    "GTBP"
+                ],
+                "alias_name": null,
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000116062",
+                            "location": "2:47922669-48037240"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000116062",
+                            "location": "2:47695530-47810109"
+                        }
+                    }
+                },
+                "gene_name": "mutS homolog 6",
+                "gene_symbol": "MSH6",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:7329",
+                "hgnc_release": "2023-03-15",
+                "hgnc_symbol": "MSH6",
+                "omim_gene": [
+                    "600678"
+                ]
+            },
+            "mode_of_inheritance": "BOTH monoallelic and biallelic (but BIALLELIC mutations cause a more SEVERE disease form), autosomal or pseudoautosomal",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Colorectal cancer, MONDO:0005575",
+                "Polyposis, MONDO:0000147",
+                "Lynch syndrome 5, MONDO:0013710",
+                "Mismatch repair cancer syndrome 3, MONDO:0030841",
+                "Lynch syndrome 5, MIM#614350",
+                "Mismatch repair cancer syndrome 3, MIM#619097"
+            ],
+            "publications": [],
+            "tags": [],
+            "transcript": null
+        },
+        {
+            "confidence_level": "3",
+            "entity_name": "MUTYH",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Green",
+                "Expert Review",
+                "Expert list"
+            ],
+            "gene_data": {
+                "alias": [
+                    "MYH"
+                ],
+                "alias_name": null,
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000132781",
+                            "location": "1:45794835-45806142"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000132781",
+                            "location": "1:45329163-45340893"
+                        }
+                    }
+                },
+                "gene_name": "mutY DNA glycosylase",
+                "gene_symbol": "MUTYH",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:7527",
+                "hgnc_release": "2023-03-15",
+                "hgnc_symbol": "MUTYH",
+                "omim_gene": [
+                    "604933"
+                ]
+            },
+            "mode_of_inheritance": "BIALLELIC, autosomal or pseudoautosomal",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Colorectal cancer, MONDO:0005575",
+                "Polyposis, MONDO:0000147",
+                "Familial adenomatous polyposis 2, MONDO:0012041",
+                "Adenomas, multiple colorectal, MIM#608456"
+            ],
+            "publications": [],
+            "tags": [],
+            "transcript": null
+        },
+        {
+            "confidence_level": "3",
+            "entity_name": "NTHL1",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Green",
+                "Expert Review",
+                "Expert list"
+            ],
+            "gene_data": {
+                "alias": [
+                    "NTH1",
+                    "OCTS3"
+                ],
+                "alias_name": null,
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000065057",
+                            "location": "16:2089816-2097867"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000065057",
+                            "location": "16:2039814-2047866"
+                        }
+                    }
+                },
+                "gene_name": "nth like DNA glycosylase 1",
+                "gene_symbol": "NTHL1",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:8028",
+                "hgnc_release": "2023-01-20",
+                "hgnc_symbol": "NTHL1",
+                "omim_gene": [
+                    "602656"
+                ]
+            },
+            "mode_of_inheritance": "BIALLELIC, autosomal or pseudoautosomal",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Colorectal cancer, MONDO:0005575",
+                "Polyposis, MONDO:0000147",
+                "NTHL1-deficiency tumor predisposition syndrome, MONDO:0100502",
+                "Familial adenomatous polyposis 3, MIM#616415"
+            ],
+            "publications": [],
+            "tags": [],
+            "transcript": null
+        },
+        {
+            "confidence_level": "3",
+            "entity_name": "PMS2",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Green",
+                "Expert Review",
+                "Expert list"
+            ],
+            "gene_data": {
+                "alias": [
+                    "H_DJ0042M02.9",
+                    "HNPCC4",
+                    "MLH4",
+                    "PMS-2",
+                    "PMSL2"
+                ],
+                "alias_name": null,
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000122512",
+                            "location": "7:6012870-6048756"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000122512",
+                            "location": "7:5970925-6009130"
+                        }
+                    }
+                },
+                "gene_name": "PMS1 homolog 2, mismatch repair system component",
+                "gene_symbol": "PMS2",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:9122",
+                "hgnc_release": "2023-01-20",
+                "hgnc_symbol": "PMS2",
+                "omim_gene": [
+                    "600259"
+                ]
+            },
+            "mode_of_inheritance": "BOTH monoallelic and biallelic (but BIALLELIC mutations cause a more SEVERE disease form), autosomal or pseudoautosomal",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Colorectal cancer, MONDO:0005575",
+                "Polyposis, MONDO:0000147",
+                "Lynch syndrome 4, MONDO:0013699",
+                "Mismatch repair cancer syndrome 4, MONDO:0030843",
+                "Lynch syndrome 4, MIM#614337",
+                "Mismatch repair cancer syndrome 4, MIM#619101"
+            ],
+            "publications": [],
+            "tags": [],
+            "transcript": null
+        },
+        {
+            "confidence_level": "3",
+            "entity_name": "POLD1",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Green",
+                "Expert Review",
+                "Expert list"
+            ],
+            "gene_data": {
+                "alias": [
+                    "CDC2",
+                    "POLD"
+                ],
+                "alias_name": [
+                    "CDC2 homolog (S. cerevisiae)"
+                ],
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000062822",
+                            "location": "19:50887461-50921273"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000062822",
+                            "location": "19:50384204-50418018"
+                        }
+                    }
+                },
+                "gene_name": "DNA polymerase delta 1, catalytic subunit",
+                "gene_symbol": "POLD1",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:9175",
+                "hgnc_release": "2023-01-20",
+                "hgnc_symbol": "POLD1",
+                "omim_gene": [
+                    "174761"
+                ]
+            },
+            "mode_of_inheritance": "MONOALLELIC, autosomal or pseudoautosomal, NOT imprinted",
+            "mode_of_pathogenicity": "Loss-of-function variants (as defined in pop up message) DO NOT cause this phenotype - please provide details in the comments",
+            "penetrance": null,
+            "phenotypes": [
+                "POLD1-related polyposis and colorectal cancer syndrome, MONDO:0100351",
+                "POLD1-associated polyposis, MIM#612591"
+            ],
+            "publications": [],
+            "tags": [],
+            "transcript": null
+        },
+        {
+            "confidence_level": "3",
+            "entity_name": "POLE",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Green",
+                "Expert Review",
+                "Expert list"
+            ],
+            "gene_data": {
+                "alias": [
+                    "POLE1"
+                ],
+                "alias_name": [
+                    "DNA polymerase epsilon catalytic subunit A"
+                ],
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000177084",
+                            "location": "12:133200348-133263951"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000177084",
+                            "location": "12:132623753-132687376"
+                        }
+                    }
+                },
+                "gene_name": "DNA polymerase epsilon, catalytic subunit",
+                "gene_symbol": "POLE",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:9177",
+                "hgnc_release": "2023-01-20",
+                "hgnc_symbol": "POLE",
+                "omim_gene": [
+                    "174762"
+                ]
+            },
+            "mode_of_inheritance": "MONOALLELIC, autosomal or pseudoautosomal, NOT imprinted",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "POLE-related polyposis and colorectal cancer syndrome, MONDO:0100287",
+                "POLE-associated polyposis, MIM#615083"
+            ],
+            "publications": [],
+            "tags": [],
+            "transcript": null
+        },
+        {
+            "confidence_level": "3",
+            "entity_name": "PTEN",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Green",
+                "Expert Review",
+                "Expert list"
+            ],
+            "gene_data": {
+                "alias": [
+                    "MMAC1",
+                    "TEP1",
+                    "PTEN1",
+                    "BZS",
+                    "MHAM"
+                ],
+                "alias_name": [
+                    "mutated in multiple advanced cancers 1",
+                    "Phosphatidylinositol 3,4,5-trisphosphate 3-phosphatase and dual-specificity protein phosphatase PTEN"
+                ],
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000171862",
+                            "location": "10:89622870-89731687"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000171862",
+                            "location": "10:87862638-87971930"
+                        }
+                    }
+                },
+                "gene_name": "phosphatase and tensin homolog",
+                "gene_symbol": "PTEN",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:9588",
+                "hgnc_release": "2023-11-09",
+                "hgnc_symbol": "PTEN",
+                "omim_gene": [
+                    "601728"
+                ]
+            },
+            "mode_of_inheritance": "MONOALLELIC, autosomal or pseudoautosomal, NOT imprinted",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "PTEN hamartoma tumor syndrome, MONDO:0017623",
+                "PTEN hamartoma tumour syndromes, MIM#158350"
+            ],
+            "publications": [],
+            "tags": [],
+            "transcript": null
+        },
+        {
+            "confidence_level": "3",
+            "entity_name": "RNF43",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Green",
+                "Literature",
+                "Expert Review",
+                "Expert list"
+            ],
+            "gene_data": {
+                "alias": [
+                    "FLJ20315",
+                    "RNF124",
+                    "DKFZp781H0392",
+                    "URCC"
+                ],
+                "alias_name": null,
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000108375",
+                            "location": "17:56429861-56494956"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000108375",
+                            "location": "17:58353676-58417735"
+                        }
+                    }
+                },
+                "gene_name": "ring finger protein 43",
+                "gene_symbol": "RNF43",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:18505",
+                "hgnc_release": "2024-02-22",
+                "hgnc_symbol": "RNF43",
+                "omim_gene": [
+                    "612482"
+                ]
+            },
+            "mode_of_inheritance": "MONOALLELIC, autosomal or pseudoautosomal, NOT imprinted",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Colorectal cancer, MONDO:0005575",
+                "Polyposis, MONDO:0000147",
+                "Sessile serrated polyposis cancer syndrome, MONDO:0014919",
+                "Sessile serrated polyposis cancer syndrome, MIM#617108"
+            ],
+            "publications": [
+                "PMID: 24512911, 34541672, 27329244, 27081527, 29330307"
+            ],
+            "tags": [],
+            "transcript": null
+        },
+        {
+            "confidence_level": "3",
+            "entity_name": "SMAD4",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Green",
+                "Expert Review",
+                "Expert list"
+            ],
+            "gene_data": {
+                "alias": [
+                    "DPC4",
+                    "MADH4"
+                ],
+                "alias_name": null,
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000141646",
+                            "location": "18:48494410-48611415"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000141646",
+                            "location": "18:51028528-51085045"
+                        }
+                    }
+                },
+                "gene_name": "SMAD family member 4",
+                "gene_symbol": "SMAD4",
+                "hgnc_date_symbol_changed": "2004-05-26",
+                "hgnc_id": "HGNC:6770",
+                "hgnc_release": "2023-01-20",
+                "hgnc_symbol": "SMAD4",
+                "omim_gene": [
+                    "600993"
+                ]
+            },
+            "mode_of_inheritance": "MONOALLELIC, autosomal or pseudoautosomal, NOT imprinted",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Juvenile polyposis/hereditary hemorrhagic telangiectasia syndrome, MONDO:0008278",
+                "Polyposis, juvenile intestinal, MIM#174900",
+                "Juvenile polyposis/hereditary hemorrhagic telangiectasia syndrome, MIM#175050"
+            ],
+            "publications": [],
+            "tags": [],
+            "transcript": null
+        },
+        {
+            "confidence_level": "3",
+            "entity_name": "STK11",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Green",
+                "Expert Review",
+                "Expert list"
+            ],
+            "gene_data": {
+                "alias": [
+                    "PJS",
+                    "LKB1"
+                ],
+                "alias_name": [
+                    "polarization-related protein LKB1"
+                ],
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000118046",
+                            "location": "19:1189406-1228428"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000118046",
+                            "location": "19:1177558-1228431"
+                        }
+                    }
+                },
+                "gene_name": "serine/threonine kinase 11",
+                "gene_symbol": "STK11",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:11389",
+                "hgnc_release": "2025-01-30",
+                "hgnc_symbol": "STK11",
+                "omim_gene": [
+                    "602216"
+                ]
+            },
+            "mode_of_inheritance": "MONOALLELIC, autosomal or pseudoautosomal, NOT imprinted",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Peutz-Jeghers syndrome, MONDO:0008280",
+                "Peutz-Jeghers syndrome, MIM#175200"
+            ],
+            "publications": [],
+            "tags": [],
+            "transcript": null
+        },
+        {
+            "confidence_level": "3",
+            "entity_name": "TP53",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Green",
+                "Expert Review",
+                "Expert list"
+            ],
+            "gene_data": {
+                "alias": [
+                    "p53",
+                    "LFS1"
+                ],
+                "alias_name": [
+                    "Li-Fraumeni syndrome"
+                ],
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000141510",
+                            "location": "17:7565097-7590856"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000141510",
+                            "location": "17:7661779-7687546"
+                        }
+                    }
+                },
+                "gene_name": "tumor protein p53",
+                "gene_symbol": "TP53",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:11998",
+                "hgnc_release": "2023-01-20",
+                "hgnc_symbol": "TP53",
+                "omim_gene": [
+                    "191170"
+                ]
+            },
+            "mode_of_inheritance": "MONOALLELIC, autosomal or pseudoautosomal, NOT imprinted",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Colorectal cancer, MONDO:0005575",
+                "Polyposis, MONDO:0000147",
+                "Li-Fraumeni syndrome, MONDO:0018875",
+                "Li-Fraumeni syndrome, MIM#151623"
+            ],
+            "publications": [],
+            "tags": [],
+            "transcript": null
+        },
+        {
+            "confidence_level": "2",
+            "entity_name": "HIC1",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Amber",
+                "Literature",
+                "Literature"
+            ],
+            "gene_data": {
+                "alias": [
+                    "ZBTB29",
+                    "ZNF901"
+                ],
+                "alias_name": null,
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000177374",
+                            "location": "17:1957448-1962981"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000177374",
+                            "location": "17:2054154-2063241"
+                        }
+                    }
+                },
+                "gene_name": "HIC ZBTB transcriptional repressor 1",
+                "gene_symbol": "HIC1",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:4909",
+                "hgnc_release": "2023-01-20",
+                "hgnc_symbol": "HIC1",
+                "omim_gene": [
+                    "603825"
+                ]
+            },
+            "mode_of_inheritance": "MONOALLELIC, autosomal or pseudoautosomal, NOT imprinted",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Sessile serrated polyposis cancer syndrome, MONDO:0014919"
+            ],
+            "publications": [
+                "40444741",
+                "33672345"
+            ],
+            "tags": [],
+            "transcript": []
+        },
+        {
+            "confidence_level": "1",
+            "entity_name": "EXO1",
+            "entity_type": "gene",
+            "evidence": [
+                "ClinGen"
+            ],
+            "gene_data": {
+                "alias": [
+                    "HEX1",
+                    "hExoI"
+                ],
+                "alias_name": [
+                    "rad2 nuclease family member, homolog of S. cerevisiae exonuclease 1"
+                ],
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000174371",
+                            "location": "1:242011269-242058450"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000174371",
+                            "location": "1:241847967-241895148"
+                        }
+                    }
+                },
+                "gene_name": "exonuclease 1",
+                "gene_symbol": "EXO1",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:3511",
+                "hgnc_release": "2023-01-20",
+                "hgnc_symbol": "EXO1",
+                "omim_gene": [
+                    "606063"
+                ]
+            },
+            "mode_of_inheritance": "MONOALLELIC, autosomal or pseudoautosomal, NOT imprinted",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Lynch syndrome, MONDO:0005835"
+            ],
+            "publications": [],
+            "tags": [
+                "refuted"
+            ],
+            "transcript": null
+        },
+        {
+            "confidence_level": "1",
+            "entity_name": "PMS1",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Red",
+                "ClinGen"
+            ],
+            "gene_data": {
+                "alias": [
+                    "MLH2",
+                    "PMSL1"
+                ],
+                "alias_name": null,
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000064933",
+                            "location": "2:190649107-190742355"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000064933",
+                            "location": "2:189784085-189878385"
+                        }
+                    }
+                },
+                "gene_name": "PMS1 homolog 1, mismatch repair system component",
+                "gene_symbol": "PMS1",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:9121",
+                "hgnc_release": "2023-01-20",
+                "hgnc_symbol": "PMS1",
+                "omim_gene": [
+                    "600258"
+                ]
+            },
+            "mode_of_inheritance": "MONOALLELIC, autosomal or pseudoautosomal, NOT imprinted",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Lynch syndrome, MONDO:0005835"
+            ],
+            "publications": [],
+            "tags": [
+                "refuted"
+            ],
+            "transcript": null
+        },
+        {
+            "confidence_level": "1",
+            "entity_name": "SEMA4A",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Red",
+                "ClinGen"
+            ],
+            "gene_data": {
+                "alias": [
+                    "SemB",
+                    "FLJ12287",
+                    "CORD10",
+                    "SEMAB"
+                ],
+                "alias_name": null,
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000196189",
+                            "location": "1:156117157-156147543"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000196189",
+                            "location": "1:156147366-156178869"
+                        }
+                    }
+                },
+                "gene_name": "semaphorin 4A",
+                "gene_symbol": "SEMA4A",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:10729",
+                "hgnc_release": "2023-01-20",
+                "hgnc_symbol": "SEMA4A",
+                "omim_gene": [
+                    "607292"
+                ]
+            },
+            "mode_of_inheritance": "MONOALLELIC, autosomal or pseudoautosomal, NOT imprinted",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Lynch syndrome, MONDO:0005835"
+            ],
+            "publications": [],
+            "tags": [
+                "disputed"
+            ],
+            "transcript": null
+        }
+    ],
+    "hash_id": null,
+    "id": 4371,
+    "name": "Colorectal Cancer and Polyposis",
+    "regions": [],
+    "relevant_disorders": [],
+    "stats": {
+        "number_of_genes": 24,
+        "number_of_regions": 0,
+        "number_of_strs": 0
+    },
+    "status": "public",
+    "strs": [],
+    "types": [
+        {
+            "description": "Panel used by VCGS.",
+            "name": "Victorian Clinical Genetics Services",
+            "slug": "victorian-clinical-genetics-services"
+        },
+        {
+            "description": "Panel used by GHQ.",
+            "name": "Genetic Health Queensland",
+            "slug": "genetic-health-queensland"
+        },
+        {
+            "description": "Germline cancer panel",
+            "name": "Cancer Germline",
+            "slug": "cancer-germline"
+        },
+        {
+            "description": "Adult Genetics Unit, Royal Adelaide Hospital",
+            "name": "Adult Genetics Unit, Royal Adelaide Hospital",
+            "slug": "adult-genetics-unit-royal-adelaide-hospital"
+        }
+    ],
+    "version": "2.1",
+    "version_created": "2026-07-30T09:34:23.468180+10:00"
+}

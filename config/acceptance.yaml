@@ -1,0 +1,47 @@
+# Acceptance criteria, fixed on 2026-10-23 before any pipeline results were
+# generated. Changing a value later needs a written reason in docs/reports/.
+#
+# These are laboratory-defined criteria for this exercise, set with reference to
+# AMP/CAP (Roy et al. 2018, PMID 29154853). They are not taken from any
+# accredited laboratory's procedures.
+
+reference: GRCh37 (hs37d5)
+truth_set: GIAB HG001 NIST v4.2.1
+regions:
+  primary: data/panels/panel_evaluable.bed     # panel targets & capture & high-confidence
+  supporting: capture & high-confidence         # exome-wide, more variants, tighter intervals
+
+accuracy:
+  # hap.py, PASS calls only. Point estimate must meet the threshold in the
+  # primary region; 95% Wilson intervals are reported alongside. The exome-wide
+  # figures are also required to pass.
+  # Added 2026-10-23, after building the panel and before any pipeline run: the
+  # primary region holds 53 truth SNVs and 0 truth indels for HG001
+  # (data/panels/panel_summary.tsv), so indel criteria can only be assessed
+  # exome-wide, and 53/53 still gives a Wilson lower bound of about 0.93.
+  snv:   {sensitivity: 0.99, precision: 0.99}
+  indel: {sensitivity: 0.95, precision: 0.95}
+  genotype_concordance: 0.99    # TP calls with matching genotype
+
+coverage:
+  # per sample, after duplicate removal, MAPQ >= 20, base quality >= 20
+  min_depth: 20
+  min_fraction_of_targets_at_min_depth: 0.98
+  # bases below min_depth are listed per gene; on a live test they would need
+  # orthogonal follow-up (e.g. Sanger) before a negative report
+
+reproducibility:
+  within_run:
+    # same FASTQ, same pipeline version, run twice
+    identical_vcf_records: true
+  between_library:
+    # NIST7035 vs NIST7086, positions with depth >= min_depth in both
+    genotype_concordance: 0.99
+
+change_control:
+  # a pipeline change is accepted only if, on the same data,
+  # 1. every accuracy and coverage criterion above still passes, and
+  # 2. no sensitivity or precision drops by more than this vs the current version
+  max_drop: 0.005
+  # 3. every call that differs inside the primary region is listed and reviewed
+  review_all_discordant_in_primary: true
