@@ -24,8 +24,8 @@ process PREP_REGIONS {
 
 process BWA_MEM {
     tag "${sample}.${lane}"
-    cpus 8
-    memory '10 GB'
+    cpus 6
+    memory '7 GB'
 
     input:
     tuple val(sample), val(library), val(lane), path(r1), path(r2)
@@ -35,19 +35,20 @@ process BWA_MEM {
     tuple val(sample), path("${sample}.${lane}.bam")
 
     script:
-    // -K fixes the batch size so output does not depend on thread count
+    // -K fixes the batch size so output does not depend on thread count.
+    // bwa holds about 5.5 GB of index; sort uses 2 x 768 MB on top of that.
     """
     bwa mem -t ${task.cpus} -K 100000000 -Y \\
         -R '@RG\\tID:${library}.${lane}\\tSM:HG001\\tLB:${library}\\tPL:ILLUMINA\\tPU:${library}.${lane}' \\
         hs37d5.fa ${r1} ${r2} \\
-      | samtools sort -@ 2 -m 1500M -o ${sample}.${lane}.bam -
+      | samtools sort -@ 1 -m 768M -o ${sample}.${lane}.bam -
     """
 }
 
 process MARKDUP {
     tag "${sample}"
     cpus 2
-    memory '8 GB'
+    memory '5 GB'
     publishDir "${params.outdir}/bam", mode: 'copy', pattern: '*.txt'
 
     input:
@@ -60,7 +61,7 @@ process MARKDUP {
     script:
     def inputs = bams.collect { "-I ${it}" }.join(' ')
     """
-    gatk --java-options "-Xmx6g" MarkDuplicates ${inputs} \\
+    gatk --java-options "-Xmx4g" MarkDuplicates ${inputs} \\
         -O ${sample}.md.bam -M ${sample}.markdup_metrics.txt
     samtools index ${sample}.md.bam
     """
@@ -70,6 +71,7 @@ process HAPLOTYPECALLER {
     tag "${sample}.${chrom}"
     cpus 1
     memory '3 GB'
+    maxForks 3
 
     input:
     tuple val(sample), path(bam), path(bai), val(chrom)
