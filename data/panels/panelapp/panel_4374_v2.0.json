@@ -1,0 +1,996 @@
+{
+    "child_panel_ids": [],
+    "description": "This panel contains genes associated with ovarian cancer. \r\n\r\nFurther information on the testing criteria for ovarian cancer can be found at eviQ: \r\nhttps://www.eviq.org.au/cancer-genetics/adult/genetic-testing-using-cancer-gene-panels/3783-ovarian-cancer-epithelial-panel-testing\r\n\r\nOnly \u2018Green\u2019 genes should be tested and analysed for clinical testing, as they have sufficient peer-reviewed published evidence of association with ovarian cancer and are clinically actionable for diagnostic and/or predictive genetic testing.\r\n\r\nEnsure testing includes copy number variant (CNV) analysis, as CNVs contribute to a clinically significant proportion of pathogenic variants associated with familial risk of cancer.\r\n\r\nThis panel has been compared against the Genomics England PanelApp and aligned with any assessments by ClinGen.\r\n\r\nThis panel has been developed under the guidance of experts in cancer genetics (Dr Helen Mar Fan and Dr Nicola Poplawski).",
+    "disease_group": "Cancer Predisposition",
+    "disease_sub_group": "",
+    "genes": [
+        {
+            "confidence_level": "3",
+            "entity_name": "BRCA1",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Green",
+                "Expert Review",
+                "Expert list"
+            ],
+            "gene_data": {
+                "alias": [
+                    "RNF53",
+                    "BRCC1",
+                    "PPP1R53",
+                    "FANCS"
+                ],
+                "alias_name": [
+                    "BRCA1/BRCA2-containing complex, subunit 1",
+                    "protein phosphatase 1, regulatory subunit 53",
+                    "Fanconi anemia, complementation group S"
+                ],
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000012048",
+                            "location": "17:41196312-41277500"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000012048",
+                            "location": "17:43044292-43170245"
+                        }
+                    }
+                },
+                "gene_name": "BRCA1 DNA repair associated",
+                "gene_symbol": "BRCA1",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:1100",
+                "hgnc_release": "2023-03-15",
+                "hgnc_symbol": "BRCA1",
+                "omim_gene": [
+                    "113705"
+                ]
+            },
+            "mode_of_inheritance": "MONOALLELIC, autosomal or pseudoautosomal, NOT imprinted",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Ovarian cancer, MONDO:0008170",
+                "BRCA1-related cancer predisposition, MONDO:0700268",
+                "Breast-ovarian cancer, familial, 1, MIM#604370"
+            ],
+            "publications": [],
+            "tags": [],
+            "transcript": null
+        },
+        {
+            "confidence_level": "3",
+            "entity_name": "BRCA2",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Green",
+                "Expert Review",
+                "Expert list"
+            ],
+            "gene_data": {
+                "alias": [
+                    "FAD",
+                    "FAD1",
+                    "BRCC2",
+                    "XRCC11",
+                    "FANCD1",
+                    "FACD",
+                    "FANCD"
+                ],
+                "alias_name": [
+                    "BRCA1/BRCA2-containing complex, subunit 2"
+                ],
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000139618",
+                            "location": "13:32889611-32973805"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000139618",
+                            "location": "13:32315086-32400268"
+                        }
+                    }
+                },
+                "gene_name": "BRCA2 DNA repair associated",
+                "gene_symbol": "BRCA2",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:1101",
+                "hgnc_release": "2023-01-20",
+                "hgnc_symbol": "BRCA2",
+                "omim_gene": [
+                    "600185"
+                ]
+            },
+            "mode_of_inheritance": "MONOALLELIC, autosomal or pseudoautosomal, NOT imprinted",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Ovarian cancer, MONDO:0008170",
+                "BRCA2-related cancer predisposition, MONDO:0700269",
+                "Breast-ovarian cancer, familial, 2, MIM#612555"
+            ],
+            "publications": [],
+            "tags": [],
+            "transcript": null
+        },
+        {
+            "confidence_level": "3",
+            "entity_name": "BRIP1",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Green",
+                "Expert Review",
+                "Expert list"
+            ],
+            "gene_data": {
+                "alias": [
+                    "OF",
+                    "BACH1",
+                    "FANCJ"
+                ],
+                "alias_name": [
+                    "BRCA1/BRCA2-associated helicase 1",
+                    "FANCJ helicase",
+                    "BRCA1-associated C-terminal helicase",
+                    "BRCA1 interacting protein 1"
+                ],
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000136492",
+                            "location": "17:59758627-59940882"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000136492",
+                            "location": "17:61679139-61863561"
+                        }
+                    }
+                },
+                "gene_name": "BRCA1 interacting DNA helicase 1",
+                "gene_symbol": "BRIP1",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:20473",
+                "hgnc_release": "2024-09-05",
+                "hgnc_symbol": "BRIP1",
+                "omim_gene": [
+                    "605882"
+                ]
+            },
+            "mode_of_inheritance": "MONOALLELIC, autosomal or pseudoautosomal, NOT imprinted",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Ovarian cancer, MONDO:0008170"
+            ],
+            "publications": [],
+            "tags": [],
+            "transcript": null
+        },
+        {
+            "confidence_level": "3",
+            "entity_name": "EPCAM",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Green",
+                "Expert Review",
+                "Expert list"
+            ],
+            "gene_data": {
+                "alias": [
+                    "Ly74",
+                    "TROP1",
+                    "GA733-2",
+                    "EGP34",
+                    "EGP40",
+                    "EGP-2",
+                    "KSA",
+                    "CD326",
+                    "Ep-CAM",
+                    "HEA125",
+                    "KS1/4",
+                    "MK-1",
+                    "MH99",
+                    "MOC31",
+                    "MOC-31",
+                    "323/A3",
+                    "17-1A",
+                    "TACST-1",
+                    "CO-17A",
+                    "ESA",
+                    "BerEp4",
+                    "Ber-Ep4",
+                    "M4S1",
+                    "MIC18",
+                    "TACSTD1"
+                ],
+                "alias_name": [
+                    "trophoblast cell surface antigen 1"
+                ],
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000119888",
+                            "location": "2:47572297-47614740"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000119888",
+                            "location": "2:47345158-47387601"
+                        }
+                    }
+                },
+                "gene_name": "epithelial cell adhesion molecule",
+                "gene_symbol": "EPCAM",
+                "hgnc_date_symbol_changed": "2008-12-16",
+                "hgnc_id": "HGNC:11529",
+                "hgnc_release": "2023-01-20",
+                "hgnc_symbol": "EPCAM",
+                "omim_gene": [
+                    "185535"
+                ]
+            },
+            "mode_of_inheritance": "MONOALLELIC, autosomal or pseudoautosomal, NOT imprinted",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Ovarian cancer, MONDO:0008170",
+                "Lynch syndrome 8, MONDO:0013196",
+                "Lynch syndrome 8, MIM#613244"
+            ],
+            "publications": [],
+            "tags": [],
+            "transcript": null
+        },
+        {
+            "confidence_level": "3",
+            "entity_name": "MLH1",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Green",
+                "Expert Review",
+                "Expert list"
+            ],
+            "gene_data": {
+                "alias": [
+                    "HNPCC",
+                    "FCC2",
+                    "HNPCC2",
+                    "MLH-1",
+                    "COCA2"
+                ],
+                "alias_name": null,
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000076242",
+                            "location": "3:37034823-37107380"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000076242",
+                            "location": "3:36993226-37050896"
+                        }
+                    }
+                },
+                "gene_name": "mutL homolog 1",
+                "gene_symbol": "MLH1",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:7127",
+                "hgnc_release": "2023-01-20",
+                "hgnc_symbol": "MLH1",
+                "omim_gene": [
+                    "120436"
+                ]
+            },
+            "mode_of_inheritance": "BOTH monoallelic and biallelic (but BIALLELIC mutations cause a more SEVERE disease form), autosomal or pseudoautosomal",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Ovarian cancer, MONDO:0008170",
+                "Lynch syndrome 2, MONDO:0012249",
+                "Mismatch repair cancer syndrome 1, MONDO:0010159",
+                "Lynch syndrome 2, MIM#609310",
+                "Mismatch repair cancer syndrome 1, MIM#276300"
+            ],
+            "publications": [],
+            "tags": [],
+            "transcript": null
+        },
+        {
+            "confidence_level": "3",
+            "entity_name": "MSH2",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Green",
+                "Expert Review",
+                "Expert list"
+            ],
+            "gene_data": {
+                "alias": [
+                    "HNPCC",
+                    "HNPCC1",
+                    "MSH-2",
+                    "COCA1"
+                ],
+                "alias_name": [
+                    "DNA mismatch repair protein Msh2"
+                ],
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000095002",
+                            "location": "2:47630108-47789450"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000095002",
+                            "location": "2:47403067-47663146"
+                        }
+                    }
+                },
+                "gene_name": "mutS homolog 2",
+                "gene_symbol": "MSH2",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:7325",
+                "hgnc_release": "2023-01-20",
+                "hgnc_symbol": "MSH2",
+                "omim_gene": [
+                    "609309"
+                ]
+            },
+            "mode_of_inheritance": "BOTH monoallelic and biallelic (but BIALLELIC mutations cause a more SEVERE disease form), autosomal or pseudoautosomal",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Ovarian cancer, MONDO:0008170",
+                "Lynch syndrome 1, MONDO:0007356",
+                "Mismatch repair cancer syndrome 2, MONDO:0030840",
+                "Lynch syndrome 1, MIM#120435",
+                "Mismatch repair cancer syndrome 2, MIM#619096"
+            ],
+            "publications": [],
+            "tags": [],
+            "transcript": null
+        },
+        {
+            "confidence_level": "3",
+            "entity_name": "MSH6",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Green",
+                "Expert Review",
+                "Expert list"
+            ],
+            "gene_data": {
+                "alias": [
+                    "MSH-6",
+                    "GTBP"
+                ],
+                "alias_name": null,
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000116062",
+                            "location": "2:47922669-48037240"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000116062",
+                            "location": "2:47695530-47810109"
+                        }
+                    }
+                },
+                "gene_name": "mutS homolog 6",
+                "gene_symbol": "MSH6",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:7329",
+                "hgnc_release": "2023-03-15",
+                "hgnc_symbol": "MSH6",
+                "omim_gene": [
+                    "600678"
+                ]
+            },
+            "mode_of_inheritance": "BOTH monoallelic and biallelic (but BIALLELIC mutations cause a more SEVERE disease form), autosomal or pseudoautosomal",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Ovarian cancer, MONDO:0008170",
+                "Lynch syndrome 5, MONDO:0013710",
+                "Mismatch repair cancer syndrome 3, MONDO:0030841",
+                "Lynch syndrome 5, MIM#614350",
+                "Mismatch repair cancer syndrome 3, MIM#619097"
+            ],
+            "publications": [],
+            "tags": [],
+            "transcript": null
+        },
+        {
+            "confidence_level": "3",
+            "entity_name": "PALB2",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Green",
+                "Expert Review",
+                "Expert list"
+            ],
+            "gene_data": {
+                "alias": [
+                    "FLJ21816",
+                    "FANCN"
+                ],
+                "alias_name": [
+                    "Fanconi anemia, complementation group N"
+                ],
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000083093",
+                            "location": "16:23614488-23652631"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000083093",
+                            "location": "16:23603160-23641321"
+                        }
+                    }
+                },
+                "gene_name": "partner and localizer of BRCA2",
+                "gene_symbol": "PALB2",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:26144",
+                "hgnc_release": "2023-01-20",
+                "hgnc_symbol": "PALB2",
+                "omim_gene": [
+                    "610355"
+                ]
+            },
+            "mode_of_inheritance": "MONOALLELIC, autosomal or pseudoautosomal, NOT imprinted",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Ovarian cancer, MONDO:0008170",
+                "PALB2-related cancer predisposition, MONDO:0700272",
+                "Breast-ovarian cancer, familial, susceptibility to, 5, MIM#620442",
+                "Pancreatic cancer, susceptibility to, 3, MIM#613348"
+            ],
+            "publications": [],
+            "tags": [],
+            "transcript": null
+        },
+        {
+            "confidence_level": "3",
+            "entity_name": "PMS2",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Green",
+                "Expert Review",
+                "Expert list"
+            ],
+            "gene_data": {
+                "alias": [
+                    "H_DJ0042M02.9",
+                    "HNPCC4",
+                    "MLH4",
+                    "PMS-2",
+                    "PMSL2"
+                ],
+                "alias_name": null,
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000122512",
+                            "location": "7:6012870-6048756"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000122512",
+                            "location": "7:5970925-6009130"
+                        }
+                    }
+                },
+                "gene_name": "PMS1 homolog 2, mismatch repair system component",
+                "gene_symbol": "PMS2",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:9122",
+                "hgnc_release": "2023-01-20",
+                "hgnc_symbol": "PMS2",
+                "omim_gene": [
+                    "600259"
+                ]
+            },
+            "mode_of_inheritance": "BOTH monoallelic and biallelic (but BIALLELIC mutations cause a more SEVERE disease form), autosomal or pseudoautosomal",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Ovarian cancer, MONDO:0008170",
+                "Lynch syndrome 4, MONDO:0013699",
+                "Mismatch repair cancer syndrome 4, MONDO:0030843",
+                "Lynch syndrome 4, MIM#614337",
+                "Mismatch repair cancer syndrome 4, MIM#619101"
+            ],
+            "publications": [],
+            "tags": [],
+            "transcript": null
+        },
+        {
+            "confidence_level": "3",
+            "entity_name": "RAD51C",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Green",
+                "Expert Review",
+                "Expert list"
+            ],
+            "gene_data": {
+                "alias": [
+                    "RAD51L2",
+                    "FANCO"
+                ],
+                "alias_name": null,
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000108384",
+                            "location": "17:56769934-56811703"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000108384",
+                            "location": "17:58692573-58735611"
+                        }
+                    }
+                },
+                "gene_name": "RAD51 paralog C",
+                "gene_symbol": "RAD51C",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:9820",
+                "hgnc_release": "2023-03-15",
+                "hgnc_symbol": "RAD51C",
+                "omim_gene": [
+                    "602774"
+                ]
+            },
+            "mode_of_inheritance": "MONOALLELIC, autosomal or pseudoautosomal, NOT imprinted",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Ovarian cancer, MONDO:0008170",
+                "RAD51C-related cancer predisposition, MONDO:0700273",
+                "Breast-ovarian cancer, familial, susceptibility to, 3, MONDO:0013253",
+                "Breast-ovarian cancer, familial, susceptibility to, 3, MIM#613399"
+            ],
+            "publications": [],
+            "tags": [],
+            "transcript": null
+        },
+        {
+            "confidence_level": "3",
+            "entity_name": "RAD51D",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Green",
+                "Expert Review",
+                "Expert list"
+            ],
+            "gene_data": {
+                "alias": [
+                    "R51H3",
+                    "Trad",
+                    "HsTRAD",
+                    "RAD51L3"
+                ],
+                "alias_name": [
+                    "recombination repair protein",
+                    "DNA repair protein RAD51 homolog 4"
+                ],
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000185379",
+                            "location": "17:33426811-33448541"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000185379",
+                            "location": "17:35092221-35121522"
+                        }
+                    }
+                },
+                "gene_name": "RAD51 paralog D",
+                "gene_symbol": "RAD51D",
+                "hgnc_date_symbol_changed": "2011-07-01",
+                "hgnc_id": "HGNC:9823",
+                "hgnc_release": "2023-03-15",
+                "hgnc_symbol": "RAD51D",
+                "omim_gene": [
+                    "602954"
+                ]
+            },
+            "mode_of_inheritance": "MONOALLELIC, autosomal or pseudoautosomal, NOT imprinted",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Ovarian cancer, MONDO:0008170",
+                "RAD51D-related cancer predisposition, MONDO:0700274",
+                "Breast-ovarian cancer, familial, susceptibility to, 4, MONDO:0013669",
+                "Breast-ovarian cancer, familial, susceptibility to, 4, MIM#614291"
+            ],
+            "publications": [],
+            "tags": [],
+            "transcript": null
+        },
+        {
+            "confidence_level": "3",
+            "entity_name": "TP53",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Green",
+                "Expert Review",
+                "Expert list"
+            ],
+            "gene_data": {
+                "alias": [
+                    "p53",
+                    "LFS1"
+                ],
+                "alias_name": [
+                    "Li-Fraumeni syndrome"
+                ],
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000141510",
+                            "location": "17:7565097-7590856"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000141510",
+                            "location": "17:7661779-7687546"
+                        }
+                    }
+                },
+                "gene_name": "tumor protein p53",
+                "gene_symbol": "TP53",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:11998",
+                "hgnc_release": "2023-01-20",
+                "hgnc_symbol": "TP53",
+                "omim_gene": [
+                    "191170"
+                ]
+            },
+            "mode_of_inheritance": "MONOALLELIC, autosomal or pseudoautosomal, NOT imprinted",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Ovarian cancer, MONDO:0008170",
+                "Li-Fraumeni syndrome, MONDO:0018875",
+                "Li-Fraumeni syndrome, MIM#151623"
+            ],
+            "publications": [],
+            "tags": [],
+            "transcript": null
+        },
+        {
+            "confidence_level": "1",
+            "entity_name": "BARD1",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Red",
+                "ClinGen"
+            ],
+            "gene_data": {
+                "alias": [],
+                "alias_name": null,
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000138376",
+                            "location": "2:215590370-215674428"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000138376",
+                            "location": "2:214725646-214809707"
+                        }
+                    }
+                },
+                "gene_name": "BRCA1 associated RING domain 1",
+                "gene_symbol": "BARD1",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:952",
+                "hgnc_release": "2023-01-20",
+                "hgnc_symbol": "BARD1",
+                "omim_gene": [
+                    "601593"
+                ]
+            },
+            "mode_of_inheritance": "MONOALLELIC, autosomal or pseudoautosomal, NOT imprinted",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Familial ovarian cancer, MONDO:0016248"
+            ],
+            "publications": [],
+            "tags": [
+                "disputed"
+            ],
+            "transcript": null
+        },
+        {
+            "confidence_level": "1",
+            "entity_name": "CHEK2",
+            "entity_type": "gene",
+            "evidence": [
+                "ClinGen"
+            ],
+            "gene_data": {
+                "alias": [
+                    "CDS1",
+                    "CHK2",
+                    "HuCds1",
+                    "PP1425",
+                    "bA444G7",
+                    "RAD53"
+                ],
+                "alias_name": null,
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000183765",
+                            "location": "22:29083731-29138410"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000183765",
+                            "location": "22:28687738-28742422"
+                        }
+                    }
+                },
+                "gene_name": "checkpoint kinase 2",
+                "gene_symbol": "CHEK2",
+                "hgnc_date_symbol_changed": "2001-09-27",
+                "hgnc_id": "HGNC:16627",
+                "hgnc_release": "2023-01-20",
+                "hgnc_symbol": "CHEK2",
+                "omim_gene": [
+                    "604373"
+                ]
+            },
+            "mode_of_inheritance": "MONOALLELIC, autosomal or pseudoautosomal, NOT imprinted",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Familial ovarian cancer, MONDO:0016248"
+            ],
+            "publications": [],
+            "tags": [
+                "refuted"
+            ],
+            "transcript": null
+        },
+        {
+            "confidence_level": "1",
+            "entity_name": "MRE11",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Red",
+                "ClinGen"
+            ],
+            "gene_data": {
+                "alias": [
+                    "ATLD",
+                    "MRE11A"
+                ],
+                "alias_name": [
+                    "AT-like disease"
+                ],
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000020922",
+                            "location": "11:94152895-94227074"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000020922",
+                            "location": "11:94415570-94493889"
+                        }
+                    }
+                },
+                "gene_name": "MRE11 double strand break repair nuclease",
+                "gene_symbol": "MRE11",
+                "hgnc_date_symbol_changed": "2016-09-30",
+                "hgnc_id": "HGNC:7230",
+                "hgnc_release": "2025-07-02",
+                "hgnc_symbol": "MRE11",
+                "omim_gene": [
+                    "600814"
+                ]
+            },
+            "mode_of_inheritance": "MONOALLELIC, autosomal or pseudoautosomal, NOT imprinted",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Familial ovarian cancer, MONDO:0016248"
+            ],
+            "publications": [],
+            "tags": [
+                "refuted"
+            ],
+            "transcript": null
+        },
+        {
+            "confidence_level": "1",
+            "entity_name": "MUTYH",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Red",
+                "ClinGen"
+            ],
+            "gene_data": {
+                "alias": [
+                    "MYH"
+                ],
+                "alias_name": null,
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000132781",
+                            "location": "1:45794835-45806142"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000132781",
+                            "location": "1:45329163-45340893"
+                        }
+                    }
+                },
+                "gene_name": "mutY DNA glycosylase",
+                "gene_symbol": "MUTYH",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:7527",
+                "hgnc_release": "2023-03-15",
+                "hgnc_symbol": "MUTYH",
+                "omim_gene": [
+                    "604933"
+                ]
+            },
+            "mode_of_inheritance": "BOTH monoallelic and biallelic, autosomal or pseudoautosomal",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Familial ovarian cancer, MONDO:0016248"
+            ],
+            "publications": [],
+            "tags": [
+                "disputed"
+            ],
+            "transcript": null
+        },
+        {
+            "confidence_level": "1",
+            "entity_name": "RAD50",
+            "entity_type": "gene",
+            "evidence": [
+                "Expert Review Red",
+                "ClinGen"
+            ],
+            "gene_data": {
+                "alias": [
+                    "hRad50",
+                    "RAD50-2"
+                ],
+                "alias_name": null,
+                "biotype": "protein_coding",
+                "ensembl_genes": {
+                    "GRch37": {
+                        "87": {
+                            "ensembl_id": "ENSG00000113522",
+                            "location": "5:131891711-131980313"
+                        }
+                    },
+                    "GRch38": {
+                        "115": {
+                            "ensembl_id": "ENSG00000113522",
+                            "location": "5:132556019-132646349"
+                        }
+                    }
+                },
+                "gene_name": "RAD50 double strand break repair protein",
+                "gene_symbol": "RAD50",
+                "hgnc_date_symbol_changed": null,
+                "hgnc_id": "HGNC:9816",
+                "hgnc_release": "2023-03-15",
+                "hgnc_symbol": "RAD50",
+                "omim_gene": [
+                    "604040"
+                ]
+            },
+            "mode_of_inheritance": "MONOALLELIC, autosomal or pseudoautosomal, NOT imprinted",
+            "mode_of_pathogenicity": null,
+            "penetrance": null,
+            "phenotypes": [
+                "Familial ovarian cancer, MONDO:0016248"
+            ],
+            "publications": [],
+            "tags": [
+                "refuted"
+            ],
+            "transcript": null
+        }
+    ],
+    "hash_id": null,
+    "id": 4374,
+    "name": "Ovarian Cancer",
+    "regions": [],
+    "relevant_disorders": [],
+    "stats": {
+        "number_of_genes": 17,
+        "number_of_regions": 0,
+        "number_of_strs": 0
+    },
+    "status": "public",
+    "strs": [],
+    "types": [
+        {
+            "description": "Panel used by VCGS.",
+            "name": "Victorian Clinical Genetics Services",
+            "slug": "victorian-clinical-genetics-services"
+        },
+        {
+            "description": "Panel used by GHQ.",
+            "name": "Genetic Health Queensland",
+            "slug": "genetic-health-queensland"
+        },
+        {
+            "description": "Germline cancer panel",
+            "name": "Cancer Germline",
+            "slug": "cancer-germline"
+        },
+        {
+            "description": "Adult Genetics Unit, Royal Adelaide Hospital",
+            "name": "Adult Genetics Unit, Royal Adelaide Hospital",
+            "slug": "adult-genetics-unit-royal-adelaide-hospital"
+        }
+    ],
+    "version": "2.0",
+    "version_created": "2026-06-07T08:52:54.342976+10:00"
+}

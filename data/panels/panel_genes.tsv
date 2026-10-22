@@ -1,0 +1,32 @@
+gene	ensembl_id_grch37	source_panels
+APC	ENSG00000134982	Colorectal Cancer and Polyposis v2.1
+ATM	ENSG00000149311	Breast Cancer v2.0
+AXIN2	ENSG00000168646	Colorectal Cancer and Polyposis v2.1
+BARD1	ENSG00000138376	Breast Cancer v2.0
+BMPR1A	ENSG00000107779	Colorectal Cancer and Polyposis v2.1
+BRCA1	ENSG00000012048	Ovarian Cancer v2.0; Breast Cancer v2.0
+BRCA2	ENSG00000139618	Ovarian Cancer v2.0; Breast Cancer v2.0
+BRIP1	ENSG00000136492	Ovarian Cancer v2.0
+CDH1	ENSG00000039068	Breast Cancer v2.0
+CHEK2	ENSG00000183765	Breast Cancer v2.0
+EPCAM	ENSG00000119888	Colorectal Cancer and Polyposis v2.1; Ovarian Cancer v2.0
+GREM1	ENSG00000166923	Colorectal Cancer and Polyposis v2.1
+MBD4	ENSG00000129071	Colorectal Cancer and Polyposis v2.1
+MLH1	ENSG00000076242	Colorectal Cancer and Polyposis v2.1; Ovarian Cancer v2.0
+MSH2	ENSG00000095002	Colorectal Cancer and Polyposis v2.1; Ovarian Cancer v2.0
+MSH3	ENSG00000113318	Colorectal Cancer and Polyposis v2.1
+MSH6	ENSG00000116062	Colorectal Cancer and Polyposis v2.1; Ovarian Cancer v2.0
+MUTYH	ENSG00000132781	Colorectal Cancer and Polyposis v2.1
+NF1	ENSG00000196712	Breast Cancer v2.0
+NTHL1	ENSG00000065057	Colorectal Cancer and Polyposis v2.1
+PALB2	ENSG00000083093	Ovarian Cancer v2.0; Breast Cancer v2.0
+PMS2	ENSG00000122512	Colorectal Cancer and Polyposis v2.1; Ovarian Cancer v2.0
+POLD1	ENSG00000062822	Colorectal Cancer and Polyposis v2.1
+POLE	ENSG00000177084	Colorectal Cancer and Polyposis v2.1
+PTEN	ENSG00000171862	Colorectal Cancer and Polyposis v2.1; Breast Cancer v2.0
+RAD51C	ENSG00000108384	Ovarian Cancer v2.0; Breast Cancer v2.0
+RAD51D	ENSG00000185379	Ovarian Cancer v2.0; Breast Cancer v2.0
+RNF43	ENSG00000108375	Colorectal Cancer and Polyposis v2.1
+SMAD4	ENSG00000141646	Colorectal Cancer and Polyposis v2.1
+STK11	ENSG00000118046	Colorectal Cancer and Polyposis v2.1; Breast Cancer v2.0
+TP53	ENSG00000141510	Colorectal Cancer and Polyposis v2.1; Ovarian Cancer v2.0; Breast Cancer v2.0
