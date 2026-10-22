@@ -4,8 +4,8 @@ Validation and verification of a germline NGS panel pipeline against the GIAB HG
 
 The pipeline itself is ordinary (BWA-MEM, GATK HaplotypeCaller). The point of the project is the evidence around it:
 
-- **Accuracy**: SNV and indel sensitivity and precision against the NIST v4.2.1 benchmark, restricted to the genes of a hereditary cancer panel, with hap.py.
-- **Reproducibility**: the two Garvan HG001 exome libraries (NIST7035 and NIST7086) run through the same pipeline, and each library run twice, to show between-run and within-run agreement.
+- **Accuracy**: SNV and indel sensitivity and precision against the NIST v4.2.1 benchmark, restricted to the genes of a hereditary cancer panel, with RTG vcfeval.
+- **Reproducibility**: the two Garvan HG001 exome libraries (NIST7035 and NIST7086) compared with each other, and NIST7035 run twice end to end, to show between-library and within-run agreement.
 - **Change control**: a pipeline change (tool version or parameter) run against the same data, with a before/after verification report and an accept or reject decision against predefined criteria.
 - **Documentation**: an SOP and report templates in `docs/`.
 
@@ -21,6 +21,18 @@ data/        panel BED files (committed); raw data and references (not committed
 docs/sop/    standard operating procedure
 docs/reports/ validation and verification reports
 ```
+
+## Running
+
+```
+conda env create -f environment.yml          # env path must not contain spaces
+scripts/00_download.sh panel && scripts/00_download.sh reference && scripts/00_download.sh reads
+python3 scripts/01_build_panel.py
+nextflow run workflow/main.nf -profile local
+python scripts/02_report.py --name <report-name>
+```
+
+`config/samplesheet.csv` lists the lanes; `nextflow.config` holds paths and resource limits.
 
 ## Status
 

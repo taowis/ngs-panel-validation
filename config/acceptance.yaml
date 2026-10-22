@@ -12,7 +12,9 @@ regions:
   supporting: capture & high-confidence         # exome-wide, more variants, tighter intervals
 
 accuracy:
-  # hap.py, PASS calls only. Point estimate must meet the threshold in the
+  # RTG vcfeval (the comparison engine hap.py uses; hap.py has no arm64 build),
+  # PASS calls only, SNVs and indels split with bcftools before comparison.
+  # Point estimate must meet the threshold in the
   # primary region; 95% Wilson intervals are reported alongside. The exome-wide
   # figures are also required to pass.
   # Added 2026-10-23, after building the panel and before any pipeline run: the

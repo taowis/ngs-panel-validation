@@ -15,6 +15,7 @@ tmp/
 data/raw/
 data/reference/
 data/truth/
+data/test/
 *.fastq.gz
 *.bam
 *.bai
@@ -23,6 +24,7 @@ data/truth/
 
 # per-run outputs; summary tables are copied into docs/reports/
 results/
+results_test/
 
 # personal
 CLAUDE.md

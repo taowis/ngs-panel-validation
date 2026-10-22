@@ -1,0 +1,16 @@
+name: ngs-panel-validation
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - openjdk=17
+  - bwa=0.7.19
+  - samtools=1.24
+  - bcftools=1.24
+  - htslib=1.24
+  - gatk4=4.6.2.0
+  - mosdepth=0.3.14
+  - rtg-tools=3.13
+  - bedtools=2.31.1
+  - pyyaml=6.0.2
+  - python=3.10
