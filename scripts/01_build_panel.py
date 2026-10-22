@@ -9,6 +9,7 @@ regions; only there can sensitivity and precision be measured.
 Outputs in data/panels/:
   panel_genes.tsv          gene list with source panels
   panel_targets.bed        padded CDS, merged
+  panel_targets_by_gene.bed  same, merged per gene, gene name in column 4
   panel_evaluable.bed      targets & capture & GIAB high-confidence
   panel_summary.tsv        per gene bases and truth variant counts
 """
@@ -141,9 +142,10 @@ def count(iv):
 
 
 all_t, all_e = defaultdict(list), defaultdict(list)
-rows = []
+rows, by_gene = [], []
 for eid, g in sorted(genes.items(), key=lambda x: x[1]["symbol"]):
     t = merge(cds[eid])
+    by_gene += [(c, s, e, g["symbol"]) for c in t for s, e in t[c]]
     ev = intersect(intersect(t, capture), highconf)
     n = count(ev)
     rows.append([g["symbol"], eid, size(t), size(intersect(t, capture)), size(intersect(t, highconf)),
@@ -155,6 +157,9 @@ for eid, g in sorted(genes.items(), key=lambda x: x[1]["symbol"]):
 all_t, all_e = merge(all_t), merge({c: x for c, x in all_e.items() if x})
 write_bed(f"{out}/panel_targets.bed", all_t)
 write_bed(f"{out}/panel_evaluable.bed", all_e)
+with open(f"{out}/panel_targets_by_gene.bed", "w") as fh:
+    for c, s, e, sym in sorted(by_gene, key=lambda x: (int(x[0]) if x[0].isdigit() else 99, x[1])):
+        fh.write(f"{c}\t{s}\t{e}\t{sym}\n")
 n = count(all_e)
 rows.append(["TOTAL", "", size(all_t), size(intersect(all_t, capture)), size(intersect(all_t, highconf)),
              size(all_e), n["snv"], n["indel"]])

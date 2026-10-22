@@ -2,13 +2,17 @@
 # Fetch public inputs. URLs are pinned to fixed releases; checksums are in
 # data/MANIFEST.tsv and checked after download.
 #   scripts/00_download.sh panel   annotation, capture BED, truth set (~200 MB)
-#   scripts/00_download.sh reads   HG001 exome FASTQ (~30 GB, run on HPC)
+#   scripts/00_download.sh reference  hs37d5 FASTA (~900 MB) and indexes
+#   scripts/00_download.sh reads   HG001 exome FASTQ (~30 GB)
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
 giab=https://ftp-trace.ncbi.nlm.nih.gov/ReferenceSamples/giab
 garvan=$giab/data/NA12878/Garvan_NA12878_HG001_HiSeq_Exome
 truth=$giab/release/NA12878_HG001/NISTv4.2.1/GRCh37
+# GIAB's AWS mirror holds the same files (same sizes) and is about 50x faster
+# than ftp-trace from Sydney, so the large FASTQ come from there.
+garvan_s3=https://giab.s3.amazonaws.com/data/NA12878/Garvan_NA12878_HG001_HiSeq_Exome
 
 fetch() {  # url dest_dir
   mkdir -p "$2"
@@ -41,10 +45,28 @@ reads() {
   for lib in NIST7035_TAAGGCGA NIST7086_CGTACTAG; do
     for lane in L001 L002; do
       for r in R1 R2; do
-        fetch $garvan/${lib}_${lane}_${r}_001.fastq.gz data/raw
+        fetch $garvan_s3/${lib}_${lane}_${r}_001.fastq.gz data/raw
       done
     done
   done
+}
+
+reference() {
+  # 1000 Genomes AWS mirror: the original 2011 upload. EBI serves a 2017
+  # recompression (different .gz size) with an identical .fai, and is far slower.
+  local ref=https://1000genomes.s3.amazonaws.com/technical/reference/phase2_reference_assembly_sequence
+  fetch $ref/hs37d5.fa.gz data/reference
+  # derived: rebuilt from the download above
+  # the 2011 file ends in an index block that gzip reports as trailing garbage
+  # (exit 2); accept that only if the output has the size the .fai implies
+  if [ ! -s data/reference/hs37d5.fa ]; then
+    gzip -dc data/reference/hs37d5.fa.gz > data/reference/hs37d5.fa || [ $? -eq 2 ]
+    [ "$(wc -c < data/reference/hs37d5.fa | tr -d ' ')" = 3189750467 ]
+  fi
+  [ -s data/reference/hs37d5.fa.fai ] || samtools faidx data/reference/hs37d5.fa
+  [ -s data/reference/hs37d5.dict ] || gatk CreateSequenceDictionary -R data/reference/hs37d5.fa
+  [ -s data/reference/hs37d5.fa.bwt ] || bwa index data/reference/hs37d5.fa
+  [ -d data/reference/hs37d5.sdf ] || rtg format -o data/reference/hs37d5.sdf data/reference/hs37d5.fa
 }
 
 "${1:-panel}"

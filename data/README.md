@@ -36,7 +36,13 @@ From https://ftp-trace.ncbi.nlm.nih.gov/ReferenceSamples/giab/data/NA12878/Garva
 | `NIST7035_TAAGGCGA_L00{1,2}_R{1,2}_001.fastq.gz` | library 1, two lanes, about 1.8 GB per file | not yet downloaded |
 | `NIST7086_CGTACTAG_L00{1,2}_R{1,2}_001.fastq.gz` | library 2 (separate DNA vial), two lanes | not yet downloaded |
 
-FASTQ rows go into the manifest when they are downloaded.
+The FASTQ are fetched from GIAB's AWS mirror, https://giab.s3.amazonaws.com/data/NA12878/Garvan_NA12878_HG001_HiSeq_Exome/, which serves the same files (identical sizes, checked 2026-10-23) at about 7 MB/s against 0.1-0.2 MB/s from ftp-trace. FASTQ rows go into the manifest when they are downloaded.
+
+## Reference genome: hs37d5 (GRCh37 + decoy)
+
+`data/reference/hs37d5.fa.gz` from the 1000 Genomes AWS mirror, https://1000genomes.s3.amazonaws.com/technical/reference/phase2_reference_assembly_sequence/hs37d5.fa.gz (original 2011 upload, 901,788,727 bytes). EBI's copy at https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/reference/phase2_reference_assembly_sequence/hs37d5.fa.gz is a 2017 recompression (892,326,179 bytes); both serve the same `hs37d5.fa.gz.fai` (md5 bb77e60e9a492fd0172e2b11e6c16afd), so the uncompressed sequence layout is the same.
+
+`scripts/00_download.sh reference` also builds the derived files: `hs37d5.fa`, `.fai`, `.dict` (GATK), BWA index and `hs37d5.sdf` (RTG).
 
 ## Truth set: GIAB HG001 NIST v4.2.1, GRCh37
 
