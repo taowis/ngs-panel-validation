@@ -4,6 +4,9 @@ Reads results/ (vcfeval summaries, panel depth, reproducibility tables) and
 writes tables plus a pass/fail summary to docs/reports/<name>/.
 
     python scripts/02_report.py --name 01-initial-validation
+
+Several results directories (one per genome) can be given to --results; their
+rows go into the same tables.
 """
 import argparse
 import bisect
@@ -21,7 +24,7 @@ import yaml
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 p = argparse.ArgumentParser()
 p.add_argument("--name", required=True)
-p.add_argument("--results", default="results")
+p.add_argument("--results", nargs="+", default=["results"])
 args = p.parse_args()
 os.chdir(ROOT)
 acc = yaml.safe_load(open("config/acceptance.yaml"))
@@ -48,6 +51,10 @@ def vcfeval_none_row(path):
     return dict(tp_base=0, tp_call=0, fp=0, fn=0)  # no variants in region
 
 
+def found(pattern):
+    return sorted(f for d in args.results for f in glob.glob(f"{d}/{pattern}"))
+
+
 def write_tsv(path, header, rows):
     with open(path, "w", newline="") as fh:
         w = csv.writer(fh, delimiter="\t", lineterminator="\n")
@@ -59,7 +66,7 @@ checks = []  # (criterion, sample, observed, threshold, pass)
 
 # accuracy
 acc_rows = []
-for f in sorted(glob.glob(f"{args.results}/vcfeval/*.genotype.summary.txt")):
+for f in found("vcfeval/*.genotype.summary.txt"):
     sample, region, vtype = os.path.basename(f).split(".")[:3]
     g = vcfeval_none_row(f)
     a = vcfeval_none_row(f.replace(".genotype.", ".allele."))
@@ -96,7 +103,7 @@ for c in genes:
 
 min_d = acc["coverage"]["min_depth"]
 cov_rows, low_rows = [], []
-for f in sorted(glob.glob(f"{args.results}/coverage/*.panel_depth.tsv.gz")):
+for f in found("coverage/*.panel_depth.tsv.gz"):
     sample = os.path.basename(f).split(".")[0]
     tot, ok = defaultdict(int), defaultdict(int)
     depths = defaultdict(list)
@@ -135,14 +142,14 @@ write_tsv(f"{out}/coverage_by_gene.tsv", ["sample", "gene", "bases", f"bases_ge_
 write_tsv(f"{out}/low_coverage_regions.tsv", ["sample", "chrom", "start", "end", "gene", "min_depth"], low_rows)
 
 # reproducibility
-for f in glob.glob(f"{args.results}/reproducibility/within_run.*.tsv"):
+for f in found("reproducibility/within_run.*.tsv"):
     r = next(csv.DictReader(open(f), delimiter="\t"))
     same = r["differing_lines"] == "0" and r["md5_a"] == r["md5_b"]
     checks.append(("within-run identical VCF records", f"{r['run_a']} vs {r['run_b']}",
                    f"{r['differing_lines']} differing lines", "0", "PASS" if same else "FAIL"))
     shutil.copy(f, out)
 rep_rows = []
-for f in sorted(glob.glob(f"{args.results}/reproducibility/between_library.*.summary.txt")):
+for f in found("reproducibility/between_library.*.summary.txt"):
     m = re.match(r"between_library\.(.+)_vs_(.+)\.(exome|panel)\.summary\.txt", os.path.basename(f))
     a, b, region = m.groups()
     r = vcfeval_none_row(f)

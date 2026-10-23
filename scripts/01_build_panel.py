@@ -12,6 +12,13 @@ Outputs in data/panels/:
   panel_targets_by_gene.bed  same, merged per gene, gene name in column 4
   panel_evaluable.bed      targets & capture & GIAB high-confidence
   panel_summary.tsv        per gene bases and truth variant counts
+
+With --tag (another genome or capture kit), only the last two are written, as
+panel_evaluable.<tag>.bed and panel_summary.<tag>.tsv; the targets do not change.
+
+    python3 scripts/01_build_panel.py --tag HG002 --capture data/raw/oslo/sureselect_v5_b37.baits.slop50.bed.gz \
+        --truth-bed data/truth/HG002_GRCh37_1_22_v4.2.1_benchmark_noinconsistent.bed \
+        --truth-vcf data/truth/HG002_GRCh37_1_22_v4.2.1_benchmark.vcf.gz
 """
 import argparse
 import glob
@@ -27,9 +34,11 @@ p.add_argument("--gtf", default="data/reference/Homo_sapiens.GRCh37.87.gtf.gz")
 p.add_argument("--capture", default="data/raw/nexterarapidcapture_expandedexome_targetedregions.bed.gz")
 p.add_argument("--truth-bed", default="data/truth/HG001_GRCh37_1_22_v4.2.1_benchmark.bed")
 p.add_argument("--truth-vcf", default="data/truth/HG001_GRCh37_1_22_v4.2.1_benchmark.vcf.gz")
+p.add_argument("--tag", help="suffix for the evaluable BED and summary of another genome or kit")
 args = p.parse_args()
 os.chdir(ROOT)
 out = "data/panels"
+sfx = f".{args.tag}" if args.tag else ""
 
 
 def opener(path):
@@ -155,21 +164,23 @@ for eid, g in sorted(genes.items(), key=lambda x: x[1]["symbol"]):
         all_e[c] += ev.get(c, [])
 
 all_t, all_e = merge(all_t), merge({c: x for c, x in all_e.items() if x})
-write_bed(f"{out}/panel_targets.bed", all_t)
-write_bed(f"{out}/panel_evaluable.bed", all_e)
-with open(f"{out}/panel_targets_by_gene.bed", "w") as fh:
-    for c, s, e, sym in sorted(by_gene, key=lambda x: (int(x[0]) if x[0].isdigit() else 99, x[1])):
-        fh.write(f"{c}\t{s}\t{e}\t{sym}\n")
+write_bed(f"{out}/panel_evaluable{sfx}.bed", all_e)
+if not args.tag:
+    write_bed(f"{out}/panel_targets.bed", all_t)
+    with open(f"{out}/panel_targets_by_gene.bed", "w") as fh:
+        for c, s, e, sym in sorted(by_gene, key=lambda x: (int(x[0]) if x[0].isdigit() else 99, x[1])):
+            fh.write(f"{c}\t{s}\t{e}\t{sym}\n")
 n = count(all_e)
 rows.append(["TOTAL", "", size(all_t), size(intersect(all_t, capture)), size(intersect(all_t, highconf)),
              size(all_e), n["snv"], n["indel"]])
 
-with open(f"{out}/panel_genes.tsv", "w") as fh:
-    fh.write("gene\tensembl_id_grch37\tsource_panels\n")
-    for eid, g in sorted(genes.items(), key=lambda x: x[1]["symbol"]):
-        fh.write(f"{g['symbol']}\t{eid}\t{'; '.join(g['panels'])}\n")
+if not args.tag:
+    with open(f"{out}/panel_genes.tsv", "w") as fh:
+        fh.write("gene\tensembl_id_grch37\tsource_panels\n")
+        for eid, g in sorted(genes.items(), key=lambda x: x[1]["symbol"]):
+            fh.write(f"{g['symbol']}\t{eid}\t{'; '.join(g['panels'])}\n")
 
-with open(f"{out}/panel_summary.tsv", "w") as fh:
+with open(f"{out}/panel_summary{sfx}.tsv", "w") as fh:
     fh.write("gene\tensembl_id\ttarget_bp\tcaptured_bp\thighconf_bp\tevaluable_bp\ttruth_snv\ttruth_indel\n")
     for r in rows:
         fh.write("\t".join(map(str, r)) + "\n")

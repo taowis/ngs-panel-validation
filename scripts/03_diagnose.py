@@ -10,6 +10,8 @@ For each sample, reruns vcfeval in allele mode over the exome evaluable region
 Run inside the conda env (needs rtg, bcftools, bedtools, samtools):
 
     python scripts/03_diagnose.py --name 01-initial-validation
+
+For another genome, also give --truth, --truth-bed and --capture.
 """
 import argparse
 import bisect
@@ -25,19 +27,22 @@ p = argparse.ArgumentParser()
 p.add_argument("--name", required=True)
 p.add_argument("--results", default="results")
 p.add_argument("--samples", nargs="+", default=["NIST7035_run1", "NIST7086_run1"])
+p.add_argument("--truth", default="data/truth/HG001_GRCh37_1_22_v4.2.1_benchmark.vcf.gz")
+p.add_argument("--truth-bed", default="data/truth/HG001_GRCh37_1_22_v4.2.1_benchmark.bed")
+p.add_argument("--capture", default="data/raw/nexterarapidcapture_expandedexome_targetedregions.bed.gz")
+p.add_argument("--tag", help="suffix for the output tables, e.g. the genome")
 args = p.parse_args()
 os.chdir(ROOT)
 cfg = yaml.safe_load(open("config/acceptance.yaml"))
 out = f"docs/reports/{args.name}"
 work = f"{args.results}/diagnose"
+sfx = f".{args.tag}" if args.tag else ""
 os.makedirs(out, exist_ok=True)
 os.makedirs(work, exist_ok=True)
 
 REF = "data/reference/hs37d5.fa"
 SDF = "data/reference/hs37d5.sdf"
-TRUTH = "data/truth/HG001_GRCh37_1_22_v4.2.1_benchmark.vcf.gz"
-TRUTH_BED = "data/truth/HG001_GRCh37_1_22_v4.2.1_benchmark.bed"
-CAPTURE = "data/raw/nexterarapidcapture_expandedexome_targetedregions.bed.gz"
+TRUTH, TRUTH_BED, CAPTURE = args.truth, args.truth_bed, args.capture
 
 # the v1 SNP rules from GATHER_FILTER (workflow/main.nf), before change 02
 SNP_RULES = {"QD": lambda v: v["QD"] < 2, "FS": lambda v: v["FS"] > 60, "MQ": lambda v: v["MQ"] < 40,
@@ -142,11 +147,11 @@ for s in args.samples:
             for (kind, b), n in sorted(bins.items()):
                 fp_rows.append([s, kind, b, n, len(fps)])
 
-write_tsv(f"{out}/diagnosis_false_negatives.tsv",
+write_tsv(f"{out}/diagnosis_false_negatives{sfx}.tsv",
           ["sample", "type", "status", "depth", "n", "total_fn"], fn_rows)
-write_tsv(f"{out}/diagnosis_snv_filter_rules.tsv",
+write_tsv(f"{out}/diagnosis_snv_filter_rules{sfx}.tsv",
           ["sample", "rules_failed", "genotype", "depth", "n"], rule_rows)
-write_tsv(f"{out}/diagnosis_indel_false_positives.tsv",
+write_tsv(f"{out}/diagnosis_indel_false_positives{sfx}.tsv",
           ["sample", "kind", "homopolymer_run", "n", "total_fp"], fp_rows)
 for r in fn_rows:
     print("\t".join(map(str, r)))
