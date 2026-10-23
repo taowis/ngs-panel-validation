@@ -5,6 +5,7 @@
 #   scripts/00_download.sh reference  hs37d5 FASTA (~900 MB) and indexes
 #   scripts/00_download.sh reads   HG001 exome FASTQ (~16 GB)
 #   scripts/00_download.sh oslo    HG002-HG005 exome BAMs (~38 GB), FASTQ, truth sets
+#   scripts/00_download.sh extra   ClinVar, GIAB stratifications, Oslo's own calls (~350 MB)
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
@@ -93,6 +94,26 @@ oslo() {
     mv $d/${g}_R1.part.fastq.gz $d/${g}_R1.fastq.gz
     mv $d/${g}_R2.part.fastq.gz $d/${g}_R2.fastq.gz
   done
+}
+
+extra() {
+  # report 03: ClinVar pathogenic sites, difficult-region strata, and the
+  # sequencing laboratory's own calls on the HG002-HG005 reads
+  local cv=https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh37
+  # dated releases move to archive_2.0/<year>/ after a few weeks
+  curl -sSfI $cv/clinvar_20261019.vcf.gz > /dev/null || cv=$cv/archive_2.0/2026
+  fetch $cv/clinvar_20261019.vcf.gz data/reference
+  fetch $cv/clinvar_20261019.vcf.gz.tbi data/reference
+  local st=$giab/release/genome-stratifications/v3.6/GRCh37@all f
+  for f in Union/GRCh37_alldifficultregions.bed.gz Union/GRCh37_notinalldifficultregions.bed.gz \
+           Union/GRCh37_alllowmapandsegdupregions.bed.gz \
+           LowComplexity/GRCh37_AllHomopolymers_ge7bp_imperfectge11bp_slop5.bed.gz \
+           SegmentalDuplications/GRCh37_segdups.bed.gz GCcontent/GRCh37_gclt25orgt65_slop50.bed.gz; do
+    fetch $st/$f data/reference/stratifications
+  done
+  local a=$giab_s3/data/AshkenazimTrio/analysis/OsloUniversityHospital_Exome_GATK_jointVC_11242015
+  fetch $a/HG002-HG003-HG004.jointVC.filter.vcf data/raw/oslo
+  fetch ${a/AshkenazimTrio/ChineseTrio}/HG005.singleSampleVC.filter.vcf data/raw/oslo
 }
 
 reference() {
