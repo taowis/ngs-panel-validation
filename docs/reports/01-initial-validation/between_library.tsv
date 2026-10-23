@@ -1,0 +1,3 @@
+library_a	library_b	region	matched	b_only	a_only	concordance
+NIST7035_run1	NIST7086_run1	exome	53941	3152	3105	0.8961
+NIST7035_run1	NIST7086_run1	panel	51	2	1	0.9444

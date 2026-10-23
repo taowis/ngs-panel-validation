@@ -1,0 +1,15 @@
+sample	type	status	depth	n	total_fn
+NIST7035_run1	snv	filtered	below_min_depth	1381	7003
+NIST7035_run1	snv	filtered	callable	1973	7003
+NIST7035_run1	snv	not_called	below_min_depth	3426	7003
+NIST7035_run1	snv	not_called	callable	223	7003
+NIST7035_run1	indel	filtered	callable	3	881
+NIST7035_run1	indel	not_called	below_min_depth	811	881
+NIST7035_run1	indel	not_called	callable	67	881
+NIST7086_run1	snv	filtered	below_min_depth	1265	6756
+NIST7086_run1	snv	filtered	callable	2131	6756
+NIST7086_run1	snv	not_called	below_min_depth	3135	6756
+NIST7086_run1	snv	not_called	callable	225	6756
+NIST7086_run1	indel	filtered	callable	3	805
+NIST7086_run1	indel	not_called	below_min_depth	724	805
+NIST7086_run1	indel	not_called	callable	78	805
