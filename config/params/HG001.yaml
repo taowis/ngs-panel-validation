@@ -1,0 +1,9 @@
+# HG001, Garvan exome (Nextera); the nextflow.config defaults, with the v2 output
+# folder. Read by the report 03 scripts; the pipeline runs need no params file.
+genome: HG001
+samplesheet: config/samplesheet.csv
+capture: data/raw/nexterarapidcapture_expandedexome_targetedregions.bed.gz
+evaluable: data/panels/panel_evaluable.bed
+truth_vcf: data/truth/HG001_GRCh37_1_22_v4.2.1_benchmark.vcf.gz
+truth_bed: data/truth/HG001_GRCh37_1_22_v4.2.1_benchmark.bed
+outdir: results_v2

@@ -26,6 +26,7 @@ data/test/
 results/
 results_test/
 results_v2/
+results_*/
 
 # personal
 CLAUDE.md

@@ -3,7 +3,8 @@
 # data/MANIFEST.tsv and checked after download.
 #   scripts/00_download.sh panel   annotation, capture BED, truth set (~200 MB)
 #   scripts/00_download.sh reference  hs37d5 FASTA (~900 MB) and indexes
-#   scripts/00_download.sh reads   HG001 exome FASTQ (~30 GB)
+#   scripts/00_download.sh reads   HG001 exome FASTQ (~16 GB)
+#   scripts/00_download.sh oslo    HG002-HG005 exome BAMs (~38 GB), FASTQ, truth sets
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
@@ -12,7 +13,8 @@ garvan=$giab/data/NA12878/Garvan_NA12878_HG001_HiSeq_Exome
 truth=$giab/release/NA12878_HG001/NISTv4.2.1/GRCh37
 # GIAB's AWS mirror holds the same files (same sizes) and is about 50x faster
 # than ftp-trace from Sydney, so the large FASTQ come from there.
-garvan_s3=https://giab.s3.amazonaws.com/data/NA12878/Garvan_NA12878_HG001_HiSeq_Exome
+giab_s3=https://giab.s3.amazonaws.com
+garvan_s3=$giab_s3/data/NA12878/Garvan_NA12878_HG001_HiSeq_Exome
 
 fetch() {  # url dest_dir
   mkdir -p "$2"
@@ -48,6 +50,48 @@ reads() {
         fetch $garvan_s3/${lib}_${lane}_${r}_001.fastq.gz data/raw
       done
     done
+  done
+}
+
+oslo() {
+  # GIAB HG002-HG005 exomes from Oslo University Hospital: Agilent SureSelect
+  # Human All Exon V5, HiSeq 2500, one lane each. GIAB publishes only the aligned
+  # BAMs, so the reads are taken back to FASTQ and realigned by the pipeline.
+  local d=data/raw/oslo
+  local a=$giab_s3/data/AshkenazimTrio/analysis/OsloUniversityHospital_Exome_GATK_jointVC_11242015
+  fetch $a/wex_Agilent_SureSelect_v05_b37.baits.slop50.merged.list $d
+  # derived: Picard interval list (1-based, closed) to BED
+  if [ ! -s $d/sureselect_v5_b37.baits.slop50.bed.gz ]; then
+    grep -v '^@' $d/wex_Agilent_SureSelect_v05_b37.baits.slop50.merged.list \
+      | awk 'BEGIN { OFS = "\t" } { print $1, $2 - 1, $3 }' | gzip -n > $d/sureselect_v5_b37.baits.slop50.bed.gz
+  fi
+  local s g idx bam
+  for s in AshkenazimTrio/HG002_NA24385_son:AGATGTAC AshkenazimTrio/HG003_NA24149_father:TCTTCACA \
+           AshkenazimTrio/HG004_NA24143_mother:CCGAAGTA ChineseTrio/HG005_NA24631_son:CGCATACA; do
+    g=$(basename ${s%%:*}); g=${g%%_*}; idx=${s##*:}
+    bam=151002_7001448_0359_AC7F6GANXX_Sample_${g}-EEogPU_v02-KIT-Av5_${idx}_L008.posiSrt.markDup.bam
+    fetch $giab_s3/data/${s%%:*}/OsloUniversityHospital_Exome/$bam $d &
+  done
+  wait
+  for s in AshkenazimTrio/HG002_NA24385_son AshkenazimTrio/HG003_NA24149_father \
+           AshkenazimTrio/HG004_NA24143_mother ChineseTrio/HG005_NA24631_son; do
+    g=$(basename $s); g=${g%%_*}
+    local t=$giab_s3/release/$s/NISTv4.2.1/GRCh37/${g}_GRCh37_1_22_v4.2.1_benchmark
+    fetch $t.vcf.gz data/truth
+    fetch $t.vcf.gz.tbi data/truth
+    # HG002-HG004 high-confidence BEDs exclude sites inconsistent within the trio
+    if [ $g = HG005 ]; then fetch $t.bed data/truth; else fetch ${t}_noinconsistent.bed data/truth; fi
+  done
+  # derived: name-collated FASTQ; secondary and supplementary records dropped,
+  # reads without a mate go to a separate file and are not used
+  for bam in $d/*_L008.posiSrt.markDup.bam; do
+    g=$(basename $bam | sed -E 's/.*Sample_(HG00[0-9]).*/\1/')
+    [ -s $d/${g}_R1.fastq.gz ] && continue
+    samtools collate -@ 4 -u -O -T $d/tmp_$g $bam \
+      | samtools fastq -@ 4 -n -F 0x900 -1 $d/${g}_R1.part.fastq.gz -2 $d/${g}_R2.part.fastq.gz \
+          -0 /dev/null -s $d/${g}_singletons.fastq.gz -
+    mv $d/${g}_R1.part.fastq.gz $d/${g}_R1.fastq.gz
+    mv $d/${g}_R2.part.fastq.gz $d/${g}_R2.fastq.gz
   done
 }
 

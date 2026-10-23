@@ -1,0 +1,9 @@
+# HG002, Oslo University Hospital exome (SureSelect V5), report 03
+genome: HG002
+samplesheet: config/samplesheet.HG002.csv
+capture: data/raw/oslo/sureselect_v5_b37.baits.slop50.bed.gz
+evaluable: data/panels/panel_evaluable.HG002.bed
+truth_vcf: data/truth/HG002_GRCh37_1_22_v4.2.1_benchmark.vcf.gz
+truth_bed: data/truth/HG002_GRCh37_1_22_v4.2.1_benchmark_noinconsistent.bed
+outdir: results_v2_HG002
+downsample: "20,30,50,75"

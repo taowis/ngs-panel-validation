@@ -1,0 +1,8 @@
+# HG005, Oslo University Hospital exome (SureSelect V5), report 03
+genome: HG005
+samplesheet: config/samplesheet.HG005.csv
+capture: data/raw/oslo/sureselect_v5_b37.baits.slop50.bed.gz
+evaluable: data/panels/panel_evaluable.HG005.bed
+truth_vcf: data/truth/HG005_GRCh37_1_22_v4.2.1_benchmark.vcf.gz
+truth_bed: data/truth/HG005_GRCh37_1_22_v4.2.1_benchmark.bed
+outdir: results_v2_HG005

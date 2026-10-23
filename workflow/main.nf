@@ -39,7 +39,7 @@ process BWA_MEM {
     // bwa holds about 5.5 GB of index; sort uses 2 x 768 MB on top of that.
     """
     bwa mem -t ${task.cpus} -K 100000000 -Y \\
-        -R '@RG\\tID:${library}.${lane}\\tSM:HG001\\tLB:${library}\\tPL:ILLUMINA\\tPU:${library}.${lane}' \\
+        -R '@RG\\tID:${library}.${lane}\\tSM:${params.genome}\\tLB:${library}\\tPL:ILLUMINA\\tPU:${library}.${lane}' \\
         hs37d5.fa ${r1} ${r2} \\
       | samtools sort -@ 1 -m 768M -o ${sample}.${lane}.bam -
     """
@@ -50,6 +50,8 @@ process MARKDUP {
     cpus 2
     memory '5 GB'
     publishDir "${params.outdir}/bam", mode: 'copy', pattern: '*.txt'
+    // hard links, so the BAMs take no extra space next to the work directory
+    publishDir "${params.outdir}/bam", mode: 'link', pattern: '*.md.bam*'
 
     input:
     tuple val(sample), path(bams)
@@ -64,6 +66,46 @@ process MARKDUP {
     gatk --java-options "-Xmx4g" MarkDuplicates ${inputs} \\
         -O ${sample}.md.bam -M ${sample}.markdup_metrics.txt
     samtools index ${sample}.md.bam
+    """
+}
+
+process MEAN_DEPTH {
+    tag "${sample}"
+    cpus 4
+    memory '4 GB'
+
+    input:
+    tuple val(sample), path(bam), path(bai)
+    path capture
+
+    output:
+    tuple val(sample), path(bam), path(bai), env(MEAN)
+
+    script:
+    // same filters as COVERAGE: MAPQ >= 20, duplicates excluded
+    """
+    mosdepth -t ${task.cpus} -n -Q 20 --by ${capture} full ${bam}
+    MEAN=\$(awk '\$1 == "total_region" { print \$4 }' full.mosdepth.summary.txt)
+    """
+}
+
+process DOWNSAMPLE {
+    tag "${sample}.${depth}x"
+    cpus 2
+    memory '2 GB'
+
+    input:
+    tuple val(sample), path(bam), path(bai), val(mean), val(depth)
+
+    output:
+    tuple val("${sample}_${depth}x"), path("${sample}_${depth}x.bam"), path("${sample}_${depth}x.bam.bai")
+
+    script:
+    // samtools -s takes seed.fraction; read pairs are kept or dropped together
+    def s = '42' + String.format('%.6f', depth / mean.toDouble()).substring(1)
+    """
+    samtools view -@ ${task.cpus} -b -s ${s} ${bam} -o ${sample}_${depth}x.bam
+    samtools index ${sample}_${depth}x.bam
     """
 }
 
@@ -241,6 +283,12 @@ workflow {
 
     lanes = BWA_MEM(reads, ref).groupTuple()
     bams = MARKDUP(lanes).bam
+    if (params.downsample) {
+        // also call at lower mean depths over the capture (report 03)
+        levels = Channel.fromList(params.downsample.toString().tokenize(',')*.toInteger())
+        full = MEAN_DEPTH(bams, regions.capture)
+        bams = bams.mix(DOWNSAMPLE(full.combine(levels).filter { it[4] < it[3].toDouble() }))
+    }
 
     calls = HAPLOTYPECALLER(bams.combine(Channel.fromList(CHROMS)), ref, regions.capture)
         .map { s, c, v -> tuple(s, c, v) }

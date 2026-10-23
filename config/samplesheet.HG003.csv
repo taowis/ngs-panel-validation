@@ -1,0 +1,2 @@
+sample,library,lane,fastq_1,fastq_2
+HG003,OSLO_HG003,L008,data/raw/oslo/HG003_R1.fastq.gz,data/raw/oslo/HG003_R2.fastq.gz
