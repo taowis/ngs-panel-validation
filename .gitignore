@@ -25,6 +25,7 @@ data/test/
 # per-run outputs; summary tables are copied into docs/reports/
 results/
 results_test/
+results_v2/
 
 # personal
 CLAUDE.md

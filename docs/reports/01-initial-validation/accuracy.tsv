@@ -1,0 +1,13 @@
+sample	region	type	tp_baseline	fn	tp_call	fp	sensitivity	sens_ci_low	sens_ci_high	precision	prec_ci_low	prec_ci_high	tp_baseline_allele	genotype_concordance
+NIST7035_run1	exome	indel	3754	1223	3754	1135	0.7543	0.7421	0.7660	0.7678	0.7558	0.7795	4096	0.9165
+NIST7035_run1	exome	snv	39011	7235	39011	690	0.8436	0.8402	0.8468	0.9826	0.9813	0.9839	39243	0.9941
+NIST7035_run1	panel	indel	0	0	0	0	nan	nan	nan	nan	nan	nan	0	nan
+NIST7035_run1	panel	snv	50	3	50	0	0.9434	0.8463	0.9806	1.0000	0.9286	1.0000	50	1.0000
+NIST7035_run2	exome	indel	3754	1223	3754	1135	0.7543	0.7421	0.7660	0.7678	0.7558	0.7795	4096	0.9165
+NIST7035_run2	exome	snv	39011	7235	39011	690	0.8436	0.8402	0.8468	0.9826	0.9813	0.9839	39243	0.9941
+NIST7035_run2	panel	indel	0	0	0	0	nan	nan	nan	nan	nan	nan	0	nan
+NIST7035_run2	panel	snv	50	3	50	0	0.9434	0.8463	0.9806	1.0000	0.9286	1.0000	50	1.0000
+NIST7086_run1	exome	indel	3822	1155	3822	1134	0.7679	0.7560	0.7795	0.7712	0.7593	0.7827	4172	0.9161
+NIST7086_run1	exome	snv	39276	6970	39276	678	0.8493	0.8460	0.8525	0.9830	0.9817	0.9843	39490	0.9946
+NIST7086_run1	panel	indel	0	0	0	0	nan	nan	nan	nan	nan	nan	0	nan
+NIST7086_run1	panel	snv	51	2	51	0	0.9623	0.8725	0.9896	1.0000	0.9300	1.0000	51	1.0000

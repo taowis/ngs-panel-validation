@@ -1,0 +1,2 @@
+run_a	run_b	records_a	records_b	differing_lines	md5_a	md5_b
+NIST7035_run1	NIST7035_run2	102862	102862	0	3bf3a991cfb15ba415bdcef159a53f8d	3bf3a991cfb15ba415bdcef159a53f8d
