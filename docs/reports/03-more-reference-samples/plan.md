@@ -55,3 +55,15 @@ If any of HG002 to HG005 misses criteria, `03_diagnose.py` is run on it, as for 
 - Analysis 3: change 02 is supported if v2's SNV sensitivity is at least v1's in every genome and its SNV precision is no more than 0.005 below (the `max_drop` in `acceptance.yaml`). If precision falls by more than that in any genome, the result is reported as it is and change 02 is reopened as a new change; v2 is not edited quietly.
 
 The outcome is written up in this folder whatever it is.
+
+## Additions, 2026-10-24
+
+Added the same day, while the Oslo BAMs were still downloading and before any of these samples had been run.
+
+4. Known pathogenic sites. ClinVar small variants classed pathogenic or likely pathogenic (not "conflicting") inside the panel targets, from the 2026-10-19 GRCh37 release. For every sample, the fraction of these positions at >= 20x, and a list of the ones that are not captured or fall below 20x, by gene. This is coverage of the reportable range at the positions that matter most, not an accuracy measure: these variants are not present in the reference genomes.
+5. Depth. The HG002 duplicate-marked BAM from the pipeline is downsampled (samtools, fixed seed) to a mean depth over the capture of 20x, 30x, 50x and 75x, keeping only levels below the full depth, and taken through the same calling, filtering and vcfeval steps. Exome-wide and panel SNV and indel sensitivity and precision are reported against depth. This gives evidence for the minimum depth in `acceptance.yaml` and tests the depth part of report 01's explanation directly. The depth that the results support is reported; the criterion in `acceptance.yaml` is not changed in this report.
+6. Difficult regions. Exome-wide SNV and indel sensitivity and precision for each genome, split by GIAB stratification v3.6 (GRCh37): all difficult regions and their complement, homopolymers (>= 7 bp, or imperfect >= 11 bp), segmental duplications, low mappability and segmental duplications combined, and GC below 25% or above 65%. PMS2 is reported separately: the fraction of its coding sequence inside the high-confidence regions and at >= 20x, and the fraction of reads over it with mapping quality below 20, because of its pseudogene PMS2CL.
+7. Sample identity. Each sample's PASS calls are compared with all five truth sets over the region they share. A sample should match its own genome and no other. Sex is checked from the heterozygous fraction of chrX calls outside the pseudo-autosomal regions and from chrY depth (HG001 and HG004 female, the others male). For the trio, the Mendelian inconsistency rate of PASS genotypes at positions at >= 20x in all three.
+8. Comparison with the sequencing laboratory. GIAB publishes Oslo's own calls on the same reads (GATK HaplotypeCaller, VQSR). Both call sets are scored against the truth over the same exome evaluable region, and compared with each other. A large gap in either direction would point at a pipeline difference worth explaining.
+
+Not done here: copy number (exon deletions), for which GIAB has no exome-scale truth, and low allele fraction variants, which a germline panel does not report.
