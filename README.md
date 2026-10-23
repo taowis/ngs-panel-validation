@@ -25,7 +25,7 @@ The pipeline itself is ordinary (BWA-MEM, GATK HaplotypeCaller). The point of th
 - **Accuracy**: SNV and indel sensitivity and precision against the NIST v4.2.1 benchmark, restricted to the genes of a hereditary cancer panel, with RTG vcfeval.
 - **Reproducibility**: the two Garvan HG001 exome libraries (NIST7035 and NIST7086) compared with each other, and NIST7035 run twice end to end, to show between-library and within-run agreement.
 - **Change control**: a pipeline change (tool version or parameter) run against the same data, with a before/after verification report and an accept or reject decision against predefined criteria.
-- **Documentation**: an SOP and report templates in `docs/`.
+- **Documentation**: an SOP (`docs/sop/SOP-01-germline-panel-pipeline.md`) covering running, checks, validation and change control, with templates for plans and reports.
 
 Acceptance criteria are fixed in `config/acceptance.yaml` before any results are generated.
 
@@ -36,7 +36,7 @@ config/      pipeline parameters, panel definition, acceptance criteria
 workflow/    Nextflow pipeline
 scripts/     panel BED construction, benchmarking and report scripts
 data/        panel BED files (committed); raw data and references (not committed, see data/README.md)
-docs/sop/    standard operating procedure
+docs/sop/    standard operating procedure and report templates
 docs/reports/ validation and verification reports
 ```
 
@@ -57,7 +57,7 @@ For a pipeline change: write the plan, choose between candidates with `scripts/0
 
 ## Status
 
-Reports 01 (initial validation) and 02 (SNV filter change) are complete. An SOP is still to be written in `docs/sop/`.
+Reports 01 (initial validation) and 02 (SNV filter change) are complete, and SOP-01 is written. Report 03 (HG002 to HG005 from a second laboratory and capture kit) is in progress; its plan is in `docs/reports/03-more-reference-samples/plan.md`.
 
 ## Reference
 
