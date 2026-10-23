@@ -100,12 +100,13 @@ process GATHER_FILTER {
     tuple val(sample), path("${sample}.vcf.gz"), path("${sample}.vcf.gz.tbi")
 
     script:
-    // concatenate in reference order, then GATK's generic hard filters
+    // concatenate in reference order, then GATK's generic hard filters, except
+    // that SNPs are not filtered on SOR (change 02, docs/reports/02-snv-filter-change)
     def order = CHROMS.collect { c -> "${sample}.${c}.vcf.gz" }.join(' ')
     """
     bcftools concat --no-version ${order} -Oz -o raw.vcf.gz
     bcftools filter --no-version -m+ -s SNP_HARD \\
-        -e 'TYPE="snp" && (INFO/QD<2 || INFO/FS>60 || INFO/MQ<40 || INFO/MQRankSum<-12.5 || INFO/ReadPosRankSum<-8 || INFO/SOR>3)' \\
+        -e 'TYPE="snp" && (INFO/QD<2 || INFO/FS>60 || INFO/MQ<40 || INFO/MQRankSum<-12.5 || INFO/ReadPosRankSum<-8)' \\
         raw.vcf.gz \\
       | bcftools filter --no-version -m+ -s INDEL_HARD \\
         -e 'TYPE!="snp" && (INFO/QD<2 || INFO/FS>200 || INFO/ReadPosRankSum<-20 || INFO/SOR>10)' \\
