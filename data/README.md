@@ -6,6 +6,8 @@ Every downloaded file has a row in `data/MANIFEST.tsv` with its exact URL, versi
 scripts/00_download.sh panel       # annotation, capture BED, truth set (~200 MB)
 scripts/00_download.sh reference   # hs37d5 FASTA (~900 MB), then builds the indexes
 scripts/00_download.sh reads       # HG001 exome FASTQ (~16 GB)
+scripts/00_download.sh oslo        # HG002-HG005 exome BAMs (~38 GB), FASTQ and truth sets
+scripts/00_download.sh extra       # ClinVar, GIAB stratifications, Oslo's own calls
 python3 scripts/check_manifest.py
 ```
 
@@ -54,6 +56,33 @@ From https://ftp-trace.ncbi.nlm.nih.gov/ReferenceSamples/giab/release/NA12878_HG
 
 Stratification BEDs for difficult regions, if needed later: https://ftp-trace.ncbi.nlm.nih.gov/ReferenceSamples/giab/release/genome-stratifications/v3.6/
 
+## Sequencing data: GIAB HG002 to HG005 exomes (Oslo University Hospital)
+
+Used in report 03. Agilent SureSelect Human All Exon V5, HiSeq 2500, one lane per sample, 2 x 126 bp, sequenced in 2015. GIAB publishes only the laboratory's duplicate-marked BAMs (BWA-MEM 0.7.12 against b37 + decoy), from https://giab.s3.amazonaws.com/data/AshkenazimTrio/<sample>/OsloUniversityHospital_Exome/ and https://giab.s3.amazonaws.com/data/ChineseTrio/HG005_NA24631_son/OsloUniversityHospital_Exome/ (the same paths exist on ftp-trace.ncbi.nlm.nih.gov/ReferenceSamples/giab/). `scripts/00_download.sh oslo` downloads them to `data/raw/oslo/`, accessed 2026-10-24, and converts each back to paired FASTQ (`samtools collate | samtools fastq`, secondary and supplementary records dropped). The pipeline realigns the FASTQ. On 2026-10-24 the HG002 and HG005 downloads from S3 slowed to about 0.5 MB/s each; they were stopped and finished as parallel byte-range requests appended to the partial files. All four BAMs match their S3 multipart ETags, and their md5 are in the manifest.
+
+| File | Genome | Size |
+|---|---|---|
+| `151002_7001448_0359_AC7F6GANXX_Sample_HG002-EEogPU_v02-KIT-Av5_AGATGTAC_L008.posiSrt.markDup.bam` | HG002, Ashkenazi son | 10.3 GB |
+| `..._HG003-EEogPU_v02-KIT-Av5_TCTTCACA_L008.posiSrt.markDup.bam` | HG003, Ashkenazi father | 9.0 GB |
+| `..._HG004-EEogPU_v02-KIT-Av5_CCGAAGTA_L008.posiSrt.markDup.bam` | HG004, Ashkenazi mother | 10.2 GB |
+| `..._HG005-EEogPU_v02-KIT-Av5_CGCATACA_L008.posiSrt.markDup.bam` | HG005, Han Chinese son | 8.9 GB |
+
+Capture regions: `wex_Agilent_SureSelect_v05_b37.baits.slop50.merged.list` from https://giab.s3.amazonaws.com/data/AshkenazimTrio/analysis/OsloUniversityHospital_Exome_GATK_jointVC_11242015/, a Picard interval list of the V5 baits with 50 bp added each side, as the laboratory used for calling. The plain target BED is not distributed with the data. The script converts it to `sureselect_v5_b37.baits.slop50.bed.gz`.
+
+The laboratory's own calls on the same reads, from the same folder (and the ChineseTrio equivalent): `HG002-HG003-HG004.jointVC.filter.vcf` (joint HaplotypeCaller calls, VQSR) and `HG005.singleSampleVC.filter.vcf`. Used only for the comparison in report 03.
+
+## Truth sets: GIAB HG002 to HG005 NIST v4.2.1, GRCh37
+
+From https://ftp-trace.ncbi.nlm.nih.gov/ReferenceSamples/giab/release/AshkenazimTrio/<sample>/NISTv4.2.1/GRCh37/ and .../ChineseTrio/HG005_NA24631_son/NISTv4.2.1/GRCh37/, via the GIAB S3 mirror (same paths under https://giab.s3.amazonaws.com/release/), accessed 2026-10-24: `<genome>_GRCh37_1_22_v4.2.1_benchmark.vcf.gz` and `.tbi`, and the high-confidence BED. For HG002, HG003 and HG004 this is `_benchmark_noinconsistent.bed`, which leaves out sites where the three benchmarks are inconsistent with Mendelian inheritance; HG005 has `_benchmark.bed`.
+
+## ClinVar, GRCh37
+
+`data/reference/clinvar_20261019.vcf.gz` and `.tbi` from https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh37/clinvar_20261019.vcf.gz (accessed 2026-10-24). ClinVar moves dated releases to https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh37/archive_2.0/2026/ after a few weeks. Used for the pathogenic site coverage in report 03.
+
+## GIAB genome stratifications v3.6, GRCh37
+
+From https://ftp-trace.ncbi.nlm.nih.gov/ReferenceSamples/giab/release/genome-stratifications/v3.6/GRCh37@all/ (accessed 2026-10-24), to `data/reference/stratifications/`: `Union/GRCh37_alldifficultregions.bed.gz`, `Union/GRCh37_notinalldifficultregions.bed.gz`, `Union/GRCh37_alllowmapandsegdupregions.bed.gz`, `LowComplexity/GRCh37_AllHomopolymers_ge7bp_imperfectge11bp_slop5.bed.gz`, `SegmentalDuplications/GRCh37_segdups.bed.gz`, `GCcontent/GRCh37_gclt25orgt65_slop50.bed.gz`, checked against `GRCh37-genome-stratifications-md5s.txt` from the same folder.
+
 ## Committed files built here
 
-`data/panels/panel_genes.tsv`, `panel_targets.bed`, `panel_evaluable.bed` and `panel_summary.tsv` are built by `scripts/01_build_panel.py` from the files above.
+`data/panels/panel_genes.tsv`, `panel_targets.bed`, `panel_evaluable.bed` and `panel_summary.tsv` are built by `scripts/01_build_panel.py` from the files above. `panel_evaluable.<genome>.bed` and `panel_summary.<genome>.tsv` are the same for HG002 to HG005, with the SureSelect V5 capture and that genome's truth set (`--tag`; commands in the script's docstring).
