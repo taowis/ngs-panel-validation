@@ -35,6 +35,12 @@ for gname in args.genomes:
     work = f"{g['outdir']}/strata"
     os.makedirs(work, exist_ok=True)
     exome = exome_bed(g, f"{work}/exome_evaluable.bed")
+    # cut both files down to the exome once; every stratum is inside it
+    truth, calls = f"{work}/truth.exome.vcf.gz", f"{work}/{s}.exome.vcf.gz"
+    for src, dst in [(g["truth_vcf"], truth), (f"{g['outdir']}/vcf/{s}.vcf.gz", calls)]:
+        if not os.path.exists(dst + ".tbi"):
+            sh(f"bcftools view --no-version -R {exome} {src} | bcftools norm --no-version -d exact "
+               f"-Oz -o {dst} && tabix -f {dst}")
     for name, bed in STRATA.items():
         region = f"{work}/{name}.bed"
         if not os.path.exists(region):
@@ -42,7 +48,7 @@ for gname in args.genomes:
                f"| bedtools intersect -a {exome} -b - | sort -k1,1 -k2,2n | bedtools merge > {region}")
         bp = sum(int(e) - int(b) for _, b, e in (l.split()[:3] for l in open(region)))
         for vtype in ["snv", "indel"]:
-            tpb, tpc, fp, fn = vcfeval(g["truth_vcf"], f"{g['outdir']}/vcf/{s}.vcf.gz", region, g["truth_bed"],
+            tpb, tpc, fp, fn = vcfeval(truth, calls, region, g["truth_bed"],
                                        f"{work}/{s}.{name}.{vtype}", vtype)
             sens, prec = rates(tpb, tpc, fp, fn)
             rows.append([gname, s, name, bp, vtype, tpb, fn, tpc, fp, f"{sens:.4f}", f"{prec:.4f}"])
