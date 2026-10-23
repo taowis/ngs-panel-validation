@@ -1,0 +1,7 @@
+set	label	sample	type	tp_baseline	fn	tp_call	fp	sensitivity	precision	f_measure
+dev	v1	NIST7035_run1	snv	21089	4005	21089	387	0.8404	0.9820	0.9057
+dev	v1	NIST7035_run1	indel	1987	656	1987	597	0.7518	0.7690	0.7603
+dev	A	NIST7035_run1	snv	22482	2612	22482	397	0.8959	0.9826	0.9373
+dev	A	NIST7035_run1	indel	1987	656	1987	597	0.7518	0.7690	0.7603
+dev	B	NIST7035_run1	snv	22596	2498	22596	441	0.9005	0.9809	0.9389
+dev	B	NIST7035_run1	indel	1987	656	1987	597	0.7518	0.7690	0.7603
