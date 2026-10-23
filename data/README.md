@@ -3,8 +3,9 @@
 Every downloaded file has a row in `data/MANIFEST.tsv` with its exact URL, version, access date, md5 and size. To fetch everything again and check it:
 
 ```
-scripts/00_download.sh panel     # annotation, capture BED, truth set (~200 MB)
-scripts/00_download.sh reads     # HG001 exome FASTQ (~30 GB, run on HPC)
+scripts/00_download.sh panel       # annotation, capture BED, truth set (~200 MB)
+scripts/00_download.sh reference   # hs37d5 FASTA (~900 MB), then builds the indexes
+scripts/00_download.sh reads       # HG001 exome FASTQ (~16 GB)
 python3 scripts/check_manifest.py
 ```
 
@@ -33,10 +34,10 @@ From https://ftp-trace.ncbi.nlm.nih.gov/ReferenceSamples/giab/data/NA12878/Garva
 | File | Description | Accessed |
 |---|---|---|
 | `nexterarapidcapture_expandedexome_targetedregions.bed.gz` | capture targets, hg19 (`chr` prefix stripped when read) | 2026-10-23 |
-| `NIST7035_TAAGGCGA_L00{1,2}_R{1,2}_001.fastq.gz` | library 1, two lanes, about 1.8 GB per file | not yet downloaded |
-| `NIST7086_CGTACTAG_L00{1,2}_R{1,2}_001.fastq.gz` | library 2 (separate DNA vial), two lanes | not yet downloaded |
+| `NIST7035_TAAGGCGA_L00{1,2}_R{1,2}_001.fastq.gz` | library 1, two lanes, about 1.8 GB per file | 2026-10-23 |
+| `NIST7086_CGTACTAG_L00{1,2}_R{1,2}_001.fastq.gz` | library 2 (separate DNA vial), two lanes | 2026-10-23 |
 
-The FASTQ are fetched from GIAB's AWS mirror, https://giab.s3.amazonaws.com/data/NA12878/Garvan_NA12878_HG001_HiSeq_Exome/, which serves the same files (identical sizes, checked 2026-10-23) at about 7 MB/s against 0.1-0.2 MB/s from ftp-trace. FASTQ rows go into the manifest when they are downloaded.
+The FASTQ are fetched from GIAB's AWS mirror, https://giab.s3.amazonaws.com/data/NA12878/Garvan_NA12878_HG001_HiSeq_Exome/, which serves the same files (identical sizes, checked 2026-10-23) at about 7 MB/s against 0.1-0.2 MB/s from ftp-trace. The md5 and size of each FASTQ are in the manifest.
 
 ## Reference genome: hs37d5 (GRCh37 + decoy)
 
