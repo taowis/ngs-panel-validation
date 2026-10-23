@@ -1,0 +1,25 @@
+rule	detail	before	after	result
+1 no passing criterion fails	exome snv genotype_concordance (NIST7035_run1)	0.9941	0.9937	PASS
+1 no passing criterion fails	panel snv precision (NIST7035_run1)	1.0000	1.0000	PASS
+1 no passing criterion fails	panel snv genotype_concordance (NIST7035_run1)	1.0000	1.0000	PASS
+1 no passing criterion fails	exome snv genotype_concordance (NIST7035_run2)	0.9941	0.9937	PASS
+1 no passing criterion fails	panel snv precision (NIST7035_run2)	1.0000	1.0000	PASS
+1 no passing criterion fails	panel snv genotype_concordance (NIST7035_run2)	1.0000	1.0000	PASS
+1 no passing criterion fails	exome snv genotype_concordance (NIST7086_run1)	0.9946	0.9942	PASS
+1 no passing criterion fails	panel snv precision (NIST7086_run1)	1.0000	1.0000	PASS
+1 no passing criterion fails	panel snv genotype_concordance (NIST7086_run1)	1.0000	1.0000	PASS
+1 no passing criterion fails	within-run identical VCF records (NIST7035_run1 vs NIST7035_run2)	0 differing lines	0 differing lines	PASS
+2 sensitivity drop <= 0.005 (test set)	NIST7035_run1 indel	0.7571	0.7571	PASS
+2 precision drop <= 0.005 (test set)	NIST7035_run1 indel	0.7666	0.7666	PASS
+2 sensitivity drop <= 0.005 (test set)	NIST7035_run1 snv	0.8471	0.9064	PASS
+2 precision drop <= 0.005 (test set)	NIST7035_run1 snv	0.9833	0.9819	PASS
+2 sensitivity drop <= 0.005 (test set)	NIST7035_run2 indel	0.7571	0.7571	PASS
+2 precision drop <= 0.005 (test set)	NIST7035_run2 indel	0.7666	0.7666	PASS
+2 sensitivity drop <= 0.005 (test set)	NIST7035_run2 snv	0.8471	0.9064	PASS
+2 precision drop <= 0.005 (test set)	NIST7035_run2 snv	0.9833	0.9819	PASS
+2 sensitivity drop <= 0.005 (test set)	NIST7086_run1 indel	0.7738	0.7738	PASS
+2 precision drop <= 0.005 (test set)	NIST7086_run1 indel	0.7705	0.7705	PASS
+2 sensitivity drop <= 0.005 (test set)	NIST7086_run1 snv	0.8515	0.9115	PASS
+2 precision drop <= 0.005 (test set)	NIST7086_run1 snv	0.9838	0.9821	PASS
+4 within-run identical	NIST7035_run1 vs NIST7035_run2	0 differing lines	0 differing lines	PASS
+3 panel discordant calls listed	19 rows in panel_discordant_calls.tsv			review

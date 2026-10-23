@@ -1,0 +1,43 @@
+criterion	sample	observed	threshold	result
+exome indel sensitivity	NIST7035_run1	0.7543	0.95	FAIL
+exome indel precision	NIST7035_run1	0.7678	0.95	FAIL
+exome indel genotype_concordance	NIST7035_run1	0.9165	0.99	FAIL
+exome snv sensitivity	NIST7035_run1	0.9033	0.99	FAIL
+exome snv precision	NIST7035_run1	0.9814	0.99	FAIL
+exome snv genotype_concordance	NIST7035_run1	0.9937	0.99	PASS
+panel indel sensitivity	NIST7035_run1	no truth variants	0.95	not assessable
+panel indel precision	NIST7035_run1	no truth variants	0.95	not assessable
+panel indel genotype_concordance	NIST7035_run1	no allele-matched calls	0.99	not assessable
+panel snv sensitivity	NIST7035_run1	1.0000	0.99	PASS
+panel snv precision	NIST7035_run1	1.0000	0.99	PASS
+panel snv genotype_concordance	NIST7035_run1	1.0000	0.99	PASS
+exome indel sensitivity	NIST7035_run2	0.7543	0.95	FAIL
+exome indel precision	NIST7035_run2	0.7678	0.95	FAIL
+exome indel genotype_concordance	NIST7035_run2	0.9165	0.99	FAIL
+exome snv sensitivity	NIST7035_run2	0.9033	0.99	FAIL
+exome snv precision	NIST7035_run2	0.9814	0.99	FAIL
+exome snv genotype_concordance	NIST7035_run2	0.9937	0.99	PASS
+panel indel sensitivity	NIST7035_run2	no truth variants	0.95	not assessable
+panel indel precision	NIST7035_run2	no truth variants	0.95	not assessable
+panel indel genotype_concordance	NIST7035_run2	no allele-matched calls	0.99	not assessable
+panel snv sensitivity	NIST7035_run2	1.0000	0.99	PASS
+panel snv precision	NIST7035_run2	1.0000	0.99	PASS
+panel snv genotype_concordance	NIST7035_run2	1.0000	0.99	PASS
+exome indel sensitivity	NIST7086_run1	0.7679	0.95	FAIL
+exome indel precision	NIST7086_run1	0.7712	0.95	FAIL
+exome indel genotype_concordance	NIST7086_run1	0.9161	0.99	FAIL
+exome snv sensitivity	NIST7086_run1	0.9096	0.99	FAIL
+exome snv precision	NIST7086_run1	0.9817	0.99	FAIL
+exome snv genotype_concordance	NIST7086_run1	0.9942	0.99	PASS
+panel indel sensitivity	NIST7086_run1	no truth variants	0.95	not assessable
+panel indel precision	NIST7086_run1	no truth variants	0.95	not assessable
+panel indel genotype_concordance	NIST7086_run1	no allele-matched calls	0.99	not assessable
+panel snv sensitivity	NIST7086_run1	1.0000	0.99	PASS
+panel snv precision	NIST7086_run1	1.0000	0.99	PASS
+panel snv genotype_concordance	NIST7086_run1	1.0000	0.99	PASS
+panel bases >= 20x	NIST7035_run1	0.8452	0.98	FAIL
+panel bases >= 20x	NIST7035_run2	0.8452	0.98	FAIL
+panel bases >= 20x	NIST7086_run1	0.8609	0.98	FAIL
+within-run identical VCF records	NIST7035_run1 vs NIST7035_run2	0 differing lines	0	PASS
+between-library concordance (exome)	NIST7035_run1 vs NIST7086_run1	0.9270	0.99	FAIL
+between-library concordance (panel)	NIST7035_run1 vs NIST7086_run1	0.9821	0.99	FAIL
