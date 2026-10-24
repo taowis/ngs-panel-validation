@@ -1,4 +1,4 @@
-# ngs-panel-validation
+# ngs-panel-validation-dev
 
 Validation and verification of a germline NGS panel pipeline against the GIAB HG001 (NA12878) reference sample, set out the way a diagnostic laboratory would document it before a pipeline goes live or after a change.
 
