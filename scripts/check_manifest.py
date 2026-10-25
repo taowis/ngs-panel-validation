@@ -1,7 +1,11 @@
 """Compare md5 and size of downloaded files with data/MANIFEST.tsv.
 
 Files listed in the manifest but not on disk are skipped (not downloaded yet).
-Exits non-zero on any mismatch.
+Exits non-zero on any mismatch. Run it after scripts/00_download.sh, and again
+after re-downloading data that was deleted to free space, before rerunning an
+analysis on it.
+
+    python scripts/check_manifest.py
 """
 import csv
 import hashlib

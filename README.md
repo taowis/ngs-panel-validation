@@ -51,6 +51,40 @@ The pipeline itself is ordinary (BWA-MEM, GATK HaplotypeCaller). The point of th
 
 Acceptance criteria are fixed in `config/acceptance.yaml` before any results are generated.
 
+## Pipeline
+
+Processes in `workflow/main.nf`, then the report scripts. The dashed steps run only when a genome's params file sets `downsample` (HG002 in report 03).
+
+```mermaid
+flowchart TD
+    fq["FASTQ, one pair per lane<br/>(samplesheet)"] --> bwa["BWA_MEM<br/>align and sort, per lane"]
+    bwa --> md["MARKDUP<br/>merge lanes, mark duplicates"]
+    md -.-> mean["MEAN_DEPTH"] -.-> ds["DOWNSAMPLE<br/>20x, 30x, 50x, 75x"]
+    md --> hc["HAPLOTYPECALLER<br/>per chromosome, capture regions"]
+    ds -.-> hc
+    hc --> gf["GATHER_FILTER<br/>concatenate, hard filters"]
+    gf --> ve["VCFEVAL<br/>panel and exome, SNV and indel,<br/>genotype and allele mode"]
+    md --> cov["COVERAGE<br/>panel depth, callable exome"]
+    gf --> wr["WITHIN_RUN<br/>same data run twice"]
+    gf --> bl["BETWEEN_LIBRARY<br/>two libraries, same person"]
+    cov --> bl
+    prep["PREP_REGIONS<br/>capture and evaluable BEDs"] --> hc
+    prep --> ve
+    ve --> rep["02_report.py<br/>checks against acceptance.yaml"]
+    cov --> rep
+    wr --> rep
+    bl --> rep
+    rep --> diag["03_diagnose.py and later analyses"]
+```
+
+## Where to start reading
+
+1. `docs/reports/01-initial-validation/README.md` and `docs/reports/02-snv-filter-change/README.md`: what was tested, what failed and why, and how the change was accepted.
+2. `config/acceptance.yaml`: the criteria the results are judged against.
+3. `workflow/main.nf`: the pipeline, one process per step in the diagram above.
+4. `scripts/02_report.py`, then `03_diagnose.py`, `04_split_eval.py` and `05_change_control.py` for the change-control steps.
+5. `docs/sop/SOP-01-germline-panel-pipeline.md`: how the pipeline is run, checked and changed.
+
 ## Layout
 
 ```

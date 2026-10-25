@@ -101,7 +101,9 @@ process DOWNSAMPLE {
     tuple val("${sample}_${depth}x"), path("${sample}_${depth}x.bam"), path("${sample}_${depth}x.bam.bai")
 
     script:
-    // samtools -s takes seed.fraction; read pairs are kept or dropped together
+    // samtools -s takes seed.fraction; read pairs are kept or dropped together.
+    // The seed is fixed so a rerun keeps the same reads; the fraction is the
+    // target depth over the mean measured by MEAN_DEPTH.
     def s = '42' + String.format('%.6f', depth / mean.toDouble()).substring(1)
     """
     samtools view -@ ${task.cpus} -b -s ${s} ${bam} -o ${sample}_${depth}x.bam
@@ -124,6 +126,9 @@ process HAPLOTYPECALLER {
     tuple val(sample), val(chrom), path("${sample}.${chrom}.vcf.gz")
 
     script:
+    // one chromosome per task; maxForks 3 x 3 GB keeps calling inside the 9 GB
+    // executor limit. -ip 100 lets reads at the edge of a capture interval be
+    // assembled with their neighbours.
     """
     awk -v c=${chrom} '\$1 == c' ${capture} > regions.bed
     gatk --java-options "-Xmx2g" HaplotypeCaller -R hs37d5.fa -I ${bam} \\
@@ -143,7 +148,10 @@ process GATHER_FILTER {
 
     script:
     // concatenate in reference order, then GATK's generic hard filters, except
-    // that SNPs are not filtered on SOR (change 02, docs/reports/02-snv-filter-change)
+    // that SNPs are not filtered on SOR (change 02, docs/reports/02-snv-filter-change).
+    // Thresholds are the values in GATK's "Hard-filtering germline short variants"
+    // article. Hard filters rather than VQSR, which needs more variants than a
+    // single exome gives.
     def order = CHROMS.collect { c -> "${sample}.${c}.vcf.gz" }.join(' ')
     """
     bcftools concat --no-version ${order} -Oz -o raw.vcf.gz

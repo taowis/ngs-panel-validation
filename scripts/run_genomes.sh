@@ -4,6 +4,8 @@
 #   nohup scripts/run_genomes.sh HG002 HG003 HG004 HG005 > results_v2_genomes.log 2>&1 < /dev/null &
 # -resume picks up the most recent Nextflow session, so after an interruption
 # rerun the interrupted genome first, then the ones not yet run.
+# Each genome's inputs and output folder come from config/params/<genome>.yaml.
+# The first line of <outdir>/pipeline_info/run.log is the commit the run used.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
