@@ -2,8 +2,10 @@
 # generated. Changing a value later needs a written reason in docs/reports/.
 #
 # These are laboratory-defined criteria for this exercise, set with reference to
-# AMP/CAP (Roy et al. 2018, PMID 29154853). They are not taken from any
-# accredited laboratory's procedures.
+# AMP/CAP (Roy et al. 2018, PMID 29154853) and the NPAAC Requirements for Human
+# Medical Genome Testing Utilising Massively Parallel Sequencing Technologies
+# (First Edition 2017). They are not taken from any accredited laboratory's
+# procedures.
 
 reference: GRCh37 (hs37d5)
 truth_set: GIAB HG001 NIST v4.2.1

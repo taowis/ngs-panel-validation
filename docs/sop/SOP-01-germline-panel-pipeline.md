@@ -9,7 +9,7 @@
 | Pipeline version covered | v2 (SNP filter without the SOR rule, report 02) |
 | Next review | on any pipeline change, or 12 months |
 
-This procedure was written for this project. It follows the structure a diagnostic laboratory would use, with reference to the AMP/CAP recommendations (Roy et al. 2018), but it is not the procedure of any accredited laboratory.
+This procedure was written for this project. It follows the structure a diagnostic laboratory would use, with reference to the AMP/CAP recommendations (Roy et al. 2018) and the NPAAC requirements for massively parallel sequencing (2017), but it is not the procedure of any accredited laboratory.
 
 ## 1. Purpose
 
@@ -107,3 +107,5 @@ Anything that departs from this SOP or from a plan is recorded in the report con
 ## 12. References
 
 Roy S, et al. Standards and guidelines for validating next-generation sequencing bioinformatics pipelines: a joint recommendation of the Association for Molecular Pathology and the College of American Pathologists. J Mol Diagn. 2018;20(1):4-27. doi:10.1016/j.jmoldx.2017.11.003. PMID: 29154853.
+
+National Pathology Accreditation Advisory Council. Requirements for Human Medical Genome Testing Utilising Massively Parallel Sequencing Technologies (First Edition 2017). Canberra: Commonwealth of Australia; 2017. ISBN 978-1-76007-290-2 (online). https://www.safetyandquality.gov.au/resources/requirements-human-medical-genome-testing-utilising-massively-parallel-sequencing-technologies-first-edition-2017 (accessed 2026-10-25).
