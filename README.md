@@ -62,7 +62,7 @@ What is not, and why:
 - Somatic, mosaic and low allele fraction variants. The pipeline is a germline caller; these need a different caller and samples with known allele fractions, such as GIAB genomes mixed in set proportions.
 - Variant classification and clinical reporting, and the laboratory side (extraction, library preparation, sequencing).
 
-The acceptance criteria and SOP were written for this project with reference to AMP/CAP; they are not the procedures of an accredited laboratory, and the second-person review the SOP asks for was done by the author alone. Reasons for the main choices are in `docs/design-decisions.md`.
+The acceptance criteria and SOP were written for this project with reference to AMP/CAP and to the NPAAC requirements for massively parallel sequencing that Australian laboratories are accredited against. This is not a NATA-accredited laboratory and the criteria and SOP are not the procedures of one; the second-person review the SOP asks for was done by the author alone. `docs/npaac-mapping.md` lists which NPAAC bioinformatics and quality requirements the project covers and which it does not. Reasons for the main choices are in `docs/design-decisions.md`.
 
 ## Pipeline
 
@@ -98,6 +98,7 @@ flowchart TD
 4. `scripts/02_report.py`, then `03_diagnose.py`, `04_split_eval.py` and `05_change_control.py` for the change-control steps.
 5. `docs/sop/SOP-01-germline-panel-pipeline.md`: how the pipeline is run, checked and changed.
 6. `docs/design-decisions.md`: why the main choices were made and what the alternatives were.
+7. `docs/npaac-mapping.md`: the NPAAC requirements this work does and does not cover.
 
 ## Layout
 
@@ -108,6 +109,7 @@ scripts/     panel BED construction, benchmarking and report scripts
 data/        panel BED files (committed); raw data and references (not committed, see data/README.md)
 docs/sop/    standard operating procedure and report templates
 docs/design-decisions.md  reasons for the main design choices
+docs/npaac-mapping.md     NPAAC requirements against this project
 docs/reports/ validation and verification reports
 ```
 
@@ -130,6 +132,8 @@ For a pipeline change: write the plan, choose between candidates with `scripts/0
 
 Reports 01 (initial validation) and 02 (SNV filter change) are complete, and SOP-01 is written. Report 03 (HG002 to HG005 from a second laboratory and capture kit) is in progress; its plan is in `docs/reports/03-more-reference-samples/plan.md`.
 
-## Reference
+## References
 
 Roy S, et al. Standards and guidelines for validating next-generation sequencing bioinformatics pipelines: a joint recommendation of the Association for Molecular Pathology and the College of American Pathologists. J Mol Diagn. 2018;20(1):4-27. doi:10.1016/j.jmoldx.2017.11.003. PMID: 29154853.
+
+National Pathology Accreditation Advisory Council. Requirements for Human Medical Genome Testing Utilising Massively Parallel Sequencing Technologies (First Edition 2017). Canberra: Commonwealth of Australia; 2017. ISBN 978-1-76007-290-2 (online). https://www.safetyandquality.gov.au/resources/requirements-human-medical-genome-testing-utilising-massively-parallel-sequencing-technologies-first-edition-2017 (accessed 2026-10-25).
