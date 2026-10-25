@@ -1,4 +1,4 @@
-# ngs-panel-validation-dev
+# ngs-panel-validation
 
 Before a clinical genetics laboratory reports DNA variants from a sequencing pipeline, it has to show two things: that the pipeline finds the variants that are really there, and that it does not report variants that are not. It has to show this again whenever the pipeline changes, even for a small edit to a filter or a tool version. This project does that work for a small germline pipeline and writes it up the way a diagnostic laboratory would, following the AMP/CAP guidelines for validating NGS bioinformatics pipelines (Roy et al. 2018, reference below).
 
