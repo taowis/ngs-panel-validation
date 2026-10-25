@@ -84,6 +84,7 @@ flowchart TD
 3. `workflow/main.nf`: the pipeline, one process per step in the diagram above.
 4. `scripts/02_report.py`, then `03_diagnose.py`, `04_split_eval.py` and `05_change_control.py` for the change-control steps.
 5. `docs/sop/SOP-01-germline-panel-pipeline.md`: how the pipeline is run, checked and changed.
+6. `docs/design-decisions.md`: why the main choices were made and what the alternatives were.
 
 ## Layout
 
@@ -93,6 +94,7 @@ workflow/    Nextflow pipeline
 scripts/     panel BED construction, benchmarking and report scripts
 data/        panel BED files (committed); raw data and references (not committed, see data/README.md)
 docs/sop/    standard operating procedure and report templates
+docs/design-decisions.md  reasons for the main design choices
 docs/reports/ validation and verification reports
 ```
 
