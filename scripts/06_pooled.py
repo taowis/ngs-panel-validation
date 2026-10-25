@@ -33,7 +33,7 @@ for vtype, sel in [("snv", "snps"), ("indel", "indels")]:
         for k in tot:
             tot[k] += int(r[k])
         per_genome.append([gname, g["main_sample"], vtype, r["tp_baseline"], r["fn"], r["tp_call"], r["fp"]])
-        q = sh(f"bcftools query -v {sel} -R {g['evaluable']} -f '%CHROM:%POS:%REF:%ALT\\n' {g['truth_vcf']}")
+        q = sh(f"bcftools view --no-version -H -v {sel} -R {g['evaluable']} {g['truth_vcf']} | cut -f1,2,4,5 | tr '\\t' :")
         distinct |= set(q.split())
     n_sens, n_prec = tot["tp_baseline"] + tot["fn"], tot["tp_call"] + tot["fp"]
     sens = tot["tp_baseline"] / n_sens if n_sens else float("nan")

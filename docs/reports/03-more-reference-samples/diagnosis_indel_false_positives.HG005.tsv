@@ -1,0 +1,10 @@
+sample	kind	homopolymer_run	n	total_fp
+HG005	del_1bp	1-3	13	183
+HG005	del_1bp	4-7	6	183
+HG005	del_1bp	>=8	79	183
+HG005	ins_1bp	1-3	9	183
+HG005	ins_1bp	4-7	2	183
+HG005	ins_1bp	>=8	2	183
+HG005	other	1-3	65	183
+HG005	other	4-7	1	183
+HG005	other	>=8	6	183

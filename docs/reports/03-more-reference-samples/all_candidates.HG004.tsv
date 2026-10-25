@@ -1,0 +1,9 @@
+set	label	sample	type	tp_baseline	fn	tp_call	fp	sensitivity	precision	f_measure
+exome	v1	HG004	snv	54508	3540	54508	328	0.9390	0.9940	0.9657
+panel	v1	HG004	snv	58	1	58	0	0.9831	1.0000	0.9915
+exome	v1	HG004	indel	5566	618	5565	634	0.9001	0.8977	0.8989
+panel	v1	HG004	indel	2	1	2	2	0.6667	0.5000	0.5714
+exome	B	HG004	snv	56939	1109	56939	358	0.9809	0.9938	0.9873
+panel	B	HG004	snv	59	0	59	0	1.0000	1.0000	1.0000
+exome	B	HG004	indel	5566	618	5565	634	0.9001	0.8977	0.8989
+panel	B	HG004	indel	2	1	2	2	0.6667	0.5000	0.5714
