@@ -51,6 +51,19 @@ The pipeline itself is ordinary (BWA-MEM, GATK HaplotypeCaller). The point of th
 
 Acceptance criteria are fixed in `config/acceptance.yaml` before any results are generated.
 
+## Scope
+
+What is validated: germline SNVs and small indels (up to about 50 bp) in the coding sequence, with 20 bp either side, of 31 hereditary breast, ovarian and colorectal cancer genes, from Illumina short-read exome data aligned to GRCh37. The samples are GIAB reference genomes (HG001 to HG005) sequenced by two laboratories with two capture kits, not patient samples.
+
+What is not, and why:
+
+- Copy number changes and exon-level deletions. These matter for genes such as BRCA1, BRCA2 and the mismatch repair genes, but GIAB has no exome-scale truth set for them, so they could not be validated here.
+- Structural variants, and variants outside the panel targets (deep intronic, promoter).
+- Somatic, mosaic and low allele fraction variants. The pipeline is a germline caller; these need a different caller and samples with known allele fractions, such as GIAB genomes mixed in set proportions.
+- Variant classification and clinical reporting, and the laboratory side (extraction, library preparation, sequencing).
+
+The acceptance criteria and SOP were written for this project with reference to AMP/CAP; they are not the procedures of an accredited laboratory, and the second-person review the SOP asks for was done by the author alone. Reasons for the main choices are in `docs/design-decisions.md`.
+
 ## Pipeline
 
 Processes in `workflow/main.nf`, then the report scripts. The dashed steps run only when a genome's params file sets `downsample` (HG002 in report 03).
