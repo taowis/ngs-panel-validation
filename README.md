@@ -1,8 +1,30 @@
 # ngs-panel-validation-dev
 
-Validation and verification of a germline NGS panel pipeline against the GIAB HG001 (NA12878) reference sample, set out the way a diagnostic laboratory would document it before a pipeline goes live or after a change.
+Before a clinical genetics laboratory reports DNA variants from a sequencing pipeline, it has to show two things: that the pipeline finds the variants that are really there, and that it does not report variants that are not. It has to show this again whenever the pipeline changes, even for a small edit to a filter or a tool version. This project does that work for a small germline pipeline and writes it up the way a diagnostic laboratory would, following the AMP/CAP guidelines for validating NGS bioinformatics pipelines (Roy et al. 2018, reference below).
 
-## Results so far
+## What the project does
+
+The pipeline looks for inherited variants in 31 genes linked to hereditary breast, ovarian and colorectal cancer, including BRCA1, BRCA2, PALB2, the mismatch repair genes MLH1, MSH2, MSH6 and PMS2, APC and TP53. The gene list comes from PanelApp Australia.
+
+To score a pipeline you need samples where the right answer is already known. The Genome in a Bottle consortium (GIAB, run by NIST) has sequenced a few reference cell lines many times with different technologies and published a benchmark set of their variants. This project uses HG001 (NA12878), whose exome was sequenced at the Garvan Institute as two separate libraries.
+
+The steps are:
+
+1. Align the sequencing reads to the human reference genome (BWA-MEM).
+2. Call variants and apply quality filters (GATK HaplotypeCaller and hard filters).
+3. Compare the calls with the GIAB benchmark inside the panel genes (RTG vcfeval). Sensitivity is the share of true variants found; precision is the share of reported variants that are true.
+4. Check coverage, and run the same data twice and two libraries of the same person, to see whether results repeat.
+5. Judge the results against acceptance criteria written in `config/acceptance.yaml` before any results were produced, so the bar cannot be moved after seeing them.
+
+## What was found
+
+The first version failed. Working out why was the most useful part. All three panel variants missed in the first library had been called correctly and then removed by one rule of the standard GATK filter, a strand bias test (SOR) that misbehaves at homozygous sites. That is a fault in the pipeline. The other failures came from the data rather than the pipeline: the exome was sequenced to about 50x, far shallower than a diagnostic panel, the exome kit does not capture 19% of the panel's coding sequence, and most false indels sit next to long single-base repeats, a known error of PCR-amplified libraries.
+
+The fix went through change control. A written plan came first. Candidate filters were compared on the odd-numbered chromosomes, and the chosen one was tested on the even-numbered chromosomes, so the test data played no part in the choice. Removing the SOR rule raised panel SNV sensitivity from 50/53 and 51/53 (the two libraries) to 53/53 in both, with no loss of precision, and the change was accepted. The remaining failures need data sequenced at diagnostic depth, not pipeline changes. HG001 also has only 53 benchmark variants in these genes, too few for even 53/53 to show the 0.99 target on its own. Report 03 is now testing the pipeline on four more GIAB genomes (HG002 to HG005) sequenced by a second laboratory with a different capture kit.
+
+The rest of this README gives the figures, the layout and how to run it.
+
+## Results in figures
 
 GIAB HG001, Garvan Nextera exome (about 50x), 31-gene hereditary cancer panel from PanelApp Australia. Figures are for NIST7035 where only one is given; full figures and reasoning are in `docs/reports/`.
 
