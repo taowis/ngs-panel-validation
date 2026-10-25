@@ -1,0 +1,7 @@
+genome	sample	chrx_snvs	chrx_het	chrx_het_fraction	chry_relative_depth	inferred	expected	result
+HG001	NIST7035_run1	1475	931	0.631	0.018	female	female	match
+HG001	NIST7086_run1	1483	937	0.632	0.019	female	female	match
+HG002	HG002	1113	39	0.035	0.343	male	male	match
+HG003	HG003	1146	46	0.040	0.350	male	male	match
+HG004	HG004	1501	879	0.586	0.001	female	female	match
+HG005	HG005	1101	35	0.032	0.349	male	male	match

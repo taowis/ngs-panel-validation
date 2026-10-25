@@ -1,0 +1,11 @@
+genome	sample	type	tp_baseline	fn	tp_call	fp
+HG001	NIST7035_run1	snv	53	0	53	0
+HG002	HG002	snv	63	0	63	2
+HG003	HG003	snv	72	0	72	2
+HG004	HG004	snv	59	0	59	0
+HG005	HG005	snv	69	0	69	0
+HG001	NIST7035_run1	indel	0	0	0	0
+HG002	HG002	indel	2	2	2	2
+HG003	HG003	indel	2	1	2	2
+HG004	HG004	indel	2	1	2	2
+HG005	HG005	indel	1	0	1	1

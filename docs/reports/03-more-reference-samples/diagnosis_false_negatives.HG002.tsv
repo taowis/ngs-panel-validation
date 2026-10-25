@@ -1,0 +1,9 @@
+sample	type	status	depth	n	total_fn
+HG002	snv	filtered	below_min_depth	105	1005
+HG002	snv	filtered	callable	321	1005
+HG002	snv	not_called	below_min_depth	354	1005
+HG002	snv	not_called	callable	225	1005
+HG002	indel	filtered	below_min_depth	2	409
+HG002	indel	filtered	callable	12	409
+HG002	indel	not_called	below_min_depth	196	409
+HG002	indel	not_called	callable	199	409
