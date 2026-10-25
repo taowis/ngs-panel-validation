@@ -4,7 +4,7 @@ The main choices behind the pipeline and the validation, why each was made, and 
 
 ## Reference genome: GRCh37 (hs37d5)
 
-The GIAB v4.2.1 benchmarks exist for both GRCh37 and GRCh38, but the capture files used here do not: the Nextera BED for HG001 and the SureSelect V5 baits published with the Oslo data are both in GRCh37 coordinates. Staying on GRCh37 avoids lifting capture regions over, which can drop or shift intervals at exactly the target edges where depth is already lowest. The cost is that GRCh37 lacks the GRCh38 fixes to some difficult regions; report 03 measures accuracy in GIAB's difficult-region strata to show where that matters.
+The GIAB v4.2.1 benchmarks exist for both GRCh37 and GRCh38, but the capture files used here do not: the Nextera BED for HG001 and the SureSelect V5 baits published with the Oslo data are both in GRCh37 coordinates. Staying on GRCh37 avoids lifting capture regions over, which can drop or shift intervals at exactly the target edges where depth is already lowest. The cost is that GRCh37 lacks the GRCh38 fixes to some difficult regions. Report 03 measured accuracy in GIAB's difficult-region strata: segmental duplications are where most exome-wide SNVs are lost (sensitivity about 0.75 there, against 0.997 outside difficult regions).
 
 ## Truth sets and samples
 
@@ -47,11 +47,11 @@ Report 01 failed and the diagnosis found one pipeline fault: the SOR rule of the
 - candidates were compared on odd autosomes of one run (development set) and the chosen one tested once on even autosomes of all runs (test set), outside the panel, so the data used to decide was not the data used to judge;
 - acceptance needed no criterion to fail that had passed before, no metric to drop by more than 0.005, every changed call in the panel to be reviewed, and within-run reproducibility to hold.
 
-The panel misses that prompted the change were not used as evidence that it worked, since they were the reason for it. The HG002 to HG005 runs in report 03 played no part in the change and give an independent check of it.
+The panel misses that prompted the change were not used as evidence that it worked, since they were the reason for it. The HG002 to HG005 runs in report 03 played no part in the change and gave an independent check of it: v2 raised exome SNV sensitivity in all four genomes with at most 0.0003 lower precision, and recovered four panel SNVs that the SOR rule would have removed.
 
 ## Depth
 
-The minimum of 20x over 98% of panel bases is a common laboratory figure, not one this project derived. Report 03 tests it by downsampling the HG002 BAM to 20x, 30x, 50x and 75x mean depth (fixed seed, so a rerun keeps the same reads) and running each level through the same calling and evaluation. The depth the results support is reported, but the criterion is not changed inside that report.
+The minimum of 20x over 98% of panel bases is a common laboratory figure, not one this project derived. Report 03 tests it by downsampling the HG002 BAM to 20x, 30x, 50x and 75x mean depth (fixed seed, so a rerun keeps the same reads) and running each level through the same calling and evaluation. The criterion is not changed inside that report. The result: panel SNVs were all found from 30x mean depth, exome SNV sensitivity stopped rising at about 75x, and even at 140x the SureSelect kit left 2.4% of panel bases below 20x, so meeting the 98% figure depends on the kit's evenness as well as on depth.
 
 ## Running on a 16 GB laptop
 

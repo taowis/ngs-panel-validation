@@ -20,7 +20,9 @@ The steps are:
 
 The first version failed. Working out why was the most useful part. All three panel variants missed in the first library had been called correctly and then removed by one rule of the standard GATK filter, a strand bias test (SOR) that misbehaves at homozygous sites. That is a fault in the pipeline. The other failures came from the data rather than the pipeline: the exome was sequenced to about 50x, far shallower than a diagnostic panel, the exome kit does not capture 19% of the panel's coding sequence, and most false indels sit next to long single-base repeats, a known error of PCR-amplified libraries.
 
-The fix went through change control. A written plan came first. Candidate filters were compared on the odd-numbered chromosomes, and the chosen one was tested on the even-numbered chromosomes, so the test data played no part in the choice. Removing the SOR rule raised panel SNV sensitivity from 50/53 and 51/53 (the two libraries) to 53/53 in both, with no loss of precision, and the change was accepted. The remaining failures need data sequenced at diagnostic depth, not pipeline changes. HG001 also has only 53 benchmark variants in these genes, too few for even 53/53 to show the 0.99 target on its own. Report 03 is now testing the pipeline on four more GIAB genomes (HG002 to HG005) sequenced by a second laboratory with a different capture kit.
+The fix went through change control. A written plan came first. Candidate filters were compared on the odd-numbered chromosomes, and the chosen one was tested on the even-numbered chromosomes, so the test data played no part in the choice. Removing the SOR rule raised panel SNV sensitivity from 50/53 and 51/53 (the two libraries) to 53/53 in both, with no loss of precision, and the change was accepted. HG001 also has only 53 benchmark variants in these genes, too few for even 53/53 to show the 0.99 target on its own.
+
+Report 03 ran the pipeline on four more GIAB genomes (HG002 to HG005), sequenced by a second laboratory with a different capture kit at 114x to 140x. Over the five genomes no panel SNV was missed (316/316), and change 02 held up on these genomes, which played no part in choosing it. The deeper data still failed the exome-wide criteria, which showed that report 01's explanation was incomplete: outside GIAB's difficult regions (segmental duplications, low mappability, homopolymers) SNV sensitivity is 0.996 to 0.998, and the failures sit inside them. The laboratory's own calls on the same reads fail the same criteria. The one panel precision failure is a pair of false calls in PMS2, whose pseudogene PMS2CL limits what short reads can show there.
 
 The rest of this README gives the figures, the layout and how to run it.
 
@@ -38,7 +40,19 @@ GIAB HG001, Garvan Nextera exome (about 50x), 31-gene hereditary cancer panel fr
 | Within-run (same data run twice) | identical | identical | identical |
 | Between-library concordance, panel | 0.944 | 0.982 | 0.99 |
 
-v1 failed validation. The diagnosis separated a pipeline fault (the SOR rule of the generic SNP hard filter removed true homozygous calls) from limits of the data (shallow exome, 19% of the panel's coding sequence not captured, homopolymer indel errors). Change 02 removed the SOR rule. The candidate was chosen on odd autosomes and tested on even autosomes against a plan fixed beforehand, and it passed change control. The remaining failures need data at diagnostic depth, not pipeline changes.
+v1 failed validation. The diagnosis separated a pipeline fault (the SOR rule of the generic SNP hard filter removed true homozygous calls) from limits of the data (shallow exome, 19% of the panel's coding sequence not captured, homopolymer indel errors). Change 02 removed the SOR rule. The candidate was chosen on odd autosomes and tested on even autosomes against a plan fixed beforehand, and it passed change control.
+
+HG002 to HG005, Oslo SureSelect V5 exomes (114x to 140x), v2 (report 03). Ranges are over the four genomes.
+
+| | v2 | Criterion |
+|---|---|---|
+| Panel SNV sensitivity | 59/59 to 72/72 per genome; 316/316 over five genomes with HG001 | 0.99 |
+| Panel SNV precision | 0.969 to 1.000 (PMS2 pseudogene calls in two genomes) | 0.99 |
+| Exome SNV sensitivity / precision | 0.979-0.982 / 0.993-0.994 | 0.99 |
+| Exome SNV sensitivity outside difficult regions | 0.996-0.998 | 0.99 |
+| Exome indel sensitivity / precision | 0.89-0.94 / 0.89-0.94 | 0.95 |
+| Panel bases at >= 20x | 0.974-0.976 | 0.98 |
+| Change 02 on these genomes, exome SNV sensitivity v1 → v2 | 0.93-0.94 → 0.98, precision within 0.0003 | |
 
 ## Approach
 
@@ -93,6 +107,7 @@ flowchart TD
 ## Where to start reading
 
 1. `docs/reports/01-initial-validation/README.md` and `docs/reports/02-snv-filter-change/README.md`: what was tested, what failed and why, and how the change was accepted.
+   Then `docs/reports/03-more-reference-samples/README.md`: four more genomes from a second laboratory, and where report 01's explanation was incomplete.
 2. `config/acceptance.yaml`: the criteria the results are judged against.
 3. `workflow/main.nf`: the pipeline, one process per step in the diagram above.
 4. `scripts/02_report.py`, then `03_diagnose.py`, `04_split_eval.py` and `05_change_control.py` for the change-control steps.
@@ -130,7 +145,7 @@ For a pipeline change: write the plan, choose between candidates with `scripts/0
 
 ## Status
 
-Reports 01 (initial validation) and 02 (SNV filter change) are complete, and SOP-01 is written. Report 03 (HG002 to HG005 from a second laboratory and capture kit) is in progress; its plan is in `docs/reports/03-more-reference-samples/plan.md`.
+Reports 01 (initial validation), 02 (SNV filter change) and 03 (HG002 to HG005 from a second laboratory and capture kit) are complete, and SOP-01 is written. Report 03 ends with three possible changes (judging exome-wide accuracy outside difficult regions, handling PMS2, flagging homopolymer indels), none made yet.
 
 ## References
 
