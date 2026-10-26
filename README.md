@@ -6,7 +6,7 @@ Before a clinical genetics laboratory reports DNA variants from a sequencing pip
 
 The pipeline looks for inherited variants in 31 genes linked to hereditary breast, ovarian and colorectal cancer, including BRCA1, BRCA2, PALB2, the mismatch repair genes MLH1, MSH2, MSH6 and PMS2, APC and TP53. The gene list comes from PanelApp Australia.
 
-To score a pipeline you need samples where the right answer is already known. The Genome in a Bottle consortium (GIAB, run by NIST) has sequenced a few reference cell lines many times with different technologies and published a benchmark set of their variants. This project uses HG001 (NA12878), whose exome was sequenced at the Garvan Institute as two separate libraries.
+To score a pipeline you need samples where the right answer is already known. The Genome in a Bottle consortium (GIAB, run by NIST) has sequenced a few reference cell lines many times with different technologies and published a benchmark set of their variants. This project uses five of them. HG001 (NA12878) was sequenced at the Garvan Institute as two separate exome libraries. HG002 to HG005 (an Ashkenazi son and his parents, and an unrelated Han Chinese son) were sequenced at Oslo University Hospital with a different capture kit (Agilent SureSelect V5) and at higher depth.
 
 The steps are:
 
@@ -61,6 +61,7 @@ The pipeline itself is ordinary (BWA-MEM, GATK HaplotypeCaller). The point of th
 - **Accuracy**: SNV and indel sensitivity and precision against the NIST v4.2.1 benchmark, restricted to the genes of a hereditary cancer panel, with RTG vcfeval.
 - **Reproducibility**: the two Garvan HG001 exome libraries (NIST7035 and NIST7086) compared with each other, and NIST7035 run twice end to end, to show between-library and within-run agreement.
 - **Change control**: a pipeline change (tool version or parameter) run against the same data, with a before/after verification report and an accept or reject decision against predefined criteria.
+- **Further checks** (report 03): panel accuracy pooled over the five genomes, an independent check of change 02, coverage of ClinVar pathogenic sites, a depth series made by downsampling HG002, accuracy by GIAB difficult-region stratum with a closer look at PMS2, sample identity, sex and trio consistency, and a comparison with the sequencing laboratory's own calls.
 - **Documentation**: an SOP (`docs/sop/SOP-01-germline-panel-pipeline.md`) covering running, checks, validation and change control, with templates for plans and reports.
 
 Acceptance criteria are fixed in `config/acceptance.yaml` before any results are generated.
