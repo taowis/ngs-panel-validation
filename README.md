@@ -1,5 +1,7 @@
 # ngs-panel-validation
 
+[![test](https://github.com/taowis/ngs-panel-validation/actions/workflows/test.yml/badge.svg)](https://github.com/taowis/ngs-panel-validation/actions/workflows/test.yml)
+
 Before a clinical genetics laboratory reports DNA variants from a sequencing pipeline, it has to show two things: that the pipeline finds the variants that are really there, and that it does not report variants that are not. It has to show this again whenever the pipeline changes, even for a small edit to a filter or a tool version. This project does that work for a small germline pipeline and writes it up the way a diagnostic laboratory would, following the AMP/CAP guidelines for validating NGS bioinformatics pipelines (Roy et al. 2018, reference below).
 
 ## What the project does
@@ -129,6 +131,8 @@ docs/sop/    standard operating procedure and report templates
 docs/design-decisions.md  reasons for the main design choices
 docs/npaac-mapping.md     NPAAC requirements against this project
 docs/reports/ validation and verification reports
+tests/       small test data, expected results, checks run by CI
+containers/  linux-64 lock for the Dockerfile
 ```
 
 ## Running
@@ -142,6 +146,8 @@ python scripts/02_report.py --name <report-name>
 python scripts/03_diagnose.py --name <report-name>    # why calls were missed or false
 scripts/00_download.sh dbsnp && python scripts/11_run_qc.py --genomes HG001   # run QC against config/run_qc.yaml
 ```
+
+With Docker or Apptainer in place of conda, use `-profile docker` or `-profile apptainer` (image in `nextflow.config`, built from the `Dockerfile`). A small test data set runs the whole pipeline in a few minutes: `tests/prepare_ref.sh`, then `nextflow run workflow/main.nf -profile docker,test` and `python3 tests/check_test_run.py`. GitHub Actions runs it under Docker and Apptainer on every pull request (`tests/README.md`).
 
 For a pipeline change: write the plan, choose between candidates with `scripts/04_split_eval.py --set dev`, rerun the pipeline with `--outdir results_v2`, then `04_split_eval.py --set test --dirs results results_v2` and `scripts/05_change_control.py`. Run the Python scripts inside the conda env.
 

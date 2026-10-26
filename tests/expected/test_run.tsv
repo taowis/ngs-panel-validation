@@ -1,0 +1,29 @@
+check	item	value
+vcf_records_md5	NIST7035_run1	a529e2d82b6a31113ef7902c38bc60d1
+vcf_records_md5	NIST7035_run2	a529e2d82b6a31113ef7902c38bc60d1
+vcf_records_md5	NIST7086_run1	01ec4b792fa2b6731091c233b68d73c1
+vcfeval_tp_tp_fp_fn	NIST7035_run1.exome.indel.allele	6,6,3,1
+vcfeval_tp_tp_fp_fn	NIST7035_run1.exome.indel.genotype	6,6,3,1
+vcfeval_tp_tp_fp_fn	NIST7035_run1.exome.snv.allele	73,73,0,3
+vcfeval_tp_tp_fp_fn	NIST7035_run1.exome.snv.genotype	73,73,0,3
+vcfeval_tp_tp_fp_fn	NIST7035_run1.panel.indel.allele	no variants
+vcfeval_tp_tp_fp_fn	NIST7035_run1.panel.indel.genotype	no variants
+vcfeval_tp_tp_fp_fn	NIST7035_run1.panel.snv.allele	30,30,0,0
+vcfeval_tp_tp_fp_fn	NIST7035_run1.panel.snv.genotype	30,30,0,0
+vcfeval_tp_tp_fp_fn	NIST7035_run2.exome.indel.allele	6,6,3,1
+vcfeval_tp_tp_fp_fn	NIST7035_run2.exome.indel.genotype	6,6,3,1
+vcfeval_tp_tp_fp_fn	NIST7035_run2.exome.snv.allele	73,73,0,3
+vcfeval_tp_tp_fp_fn	NIST7035_run2.exome.snv.genotype	73,73,0,3
+vcfeval_tp_tp_fp_fn	NIST7035_run2.panel.indel.allele	no variants
+vcfeval_tp_tp_fp_fn	NIST7035_run2.panel.indel.genotype	no variants
+vcfeval_tp_tp_fp_fn	NIST7035_run2.panel.snv.allele	30,30,0,0
+vcfeval_tp_tp_fp_fn	NIST7035_run2.panel.snv.genotype	30,30,0,0
+vcfeval_tp_tp_fp_fn	NIST7086_run1.exome.indel.allele	6,6,2,1
+vcfeval_tp_tp_fp_fn	NIST7086_run1.exome.indel.genotype	6,6,2,1
+vcfeval_tp_tp_fp_fn	NIST7086_run1.exome.snv.allele	73,73,0,3
+vcfeval_tp_tp_fp_fn	NIST7086_run1.exome.snv.genotype	72,72,1,4
+vcfeval_tp_tp_fp_fn	NIST7086_run1.panel.indel.allele	no variants
+vcfeval_tp_tp_fp_fn	NIST7086_run1.panel.indel.genotype	no variants
+vcfeval_tp_tp_fp_fn	NIST7086_run1.panel.snv.allele	30,30,0,0
+vcfeval_tp_tp_fp_fn	NIST7086_run1.panel.snv.genotype	30,30,0,0
+within_run_differing_lines	NIST7035_run1_vs_NIST7035_run2	0

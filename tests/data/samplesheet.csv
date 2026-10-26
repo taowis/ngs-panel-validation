@@ -1,0 +1,4 @@
+sample,library,lane,fastq_1,fastq_2
+NIST7035_run1,NIST7035,L001,tests/data/NIST7035_R1.fastq.gz,tests/data/NIST7035_R2.fastq.gz
+NIST7035_run2,NIST7035,L001,tests/data/NIST7035_R1.fastq.gz,tests/data/NIST7035_R2.fastq.gz
+NIST7086_run1,NIST7086,L001,tests/data/NIST7086_R1.fastq.gz,tests/data/NIST7086_R2.fastq.gz

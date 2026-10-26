@@ -57,6 +57,12 @@ The minimum of 20x over 98% of panel bases is a common laboratory figure, not on
 
 Nextflow with a pinned conda environment (`environment.yml`, full lock in `environment.lock.yml`) runs the same way on a laptop or a server; only the `local` profile in `nextflow.config` is machine-specific. The executor is limited to 9 GB, leaving room for the operating system, and each process declares memory close to its real peak (BWA-MEM about 7 GB with the index and sort buffers). After a run was lost on 2026-10-24 when several heavy jobs ran together, the report 03 genomes were run one heavy job at a time, with each genome's BAM to FASTQ conversion starting only after the previous genome had finished alignment. Interruptions and restarts are recorded as deviations in the run record.
 
+## Containers and the test data
+
+The validation runs used the conda environment on macOS. The `docker` and `apptainer` profiles run the same tool versions from a linux-64 image, for servers and clusters where conda is not wanted. The image installs from an explicit lock (`containers/linux-64.lock`, every package with its URL and md5), so rebuilding it later gives the same packages rather than whatever the solver picks that day. The profiles only change where the tools come from; `workflow/main.nf` and its commands are unchanged, so this is not a pipeline change under SOP-01 section 9.
+
+A different build of the same versions could still behave differently, so the test data in `tests/` is the check. It is cut from the HG001 data (1.4 Mb of reference, 60,000 read pairs per library) so that GitHub Actions can run the whole pipeline in a few minutes, and its expected results come from the conda environment. CI requires the Docker and Apptainer runs to give the same VCF records and vcfeval counts. The test checks that nothing has changed; it says nothing about accuracy, which rests on the full-size runs in the reports.
+
 ## Out of scope
 
 Copy number and exon-level deletions (GIAB has no exome-scale truth for them), structural variants, low allele fraction and mosaic variants, variant classification and clinical reporting (SOP-01, section 2). A laboratory using this pipeline would need separate validation for each of these.
