@@ -1,0 +1,50 @@
+# Acceptable ranges for run-level QC (NPAAC S6.6, S6.7), checked by
+# scripts/11_run_qc.py. Set on 2026-10-26 from the validation runs in
+# docs/reports/04-run-qc/run_qc.tsv: two HG001 libraries for the Nextera assay,
+# HG002 to HG005 for the SureSelect assay. Unlike the acceptance criteria these
+# are reference ranges, so they come from the data, by these rules:
+#
+#   primary_reads, mean_capture_depth   lower limit 0.8 x lowest observed
+#   pct_mapped                          lower limit lowest - 0.5
+#   pct_properly_paired                 lower limit lowest - 1
+#   pct_duplicates                      upper limit 1.5 x highest observed
+#   pass_snvs                           observed range widened by 10% each side
+#   pass_indels                         observed range widened by 15% each side
+#   snv_titv                            observed range +/- 0.1
+#   snv_het_hom                         observed range +/- 0.2
+#   pct_snvs_in_dbsnp                   lower limit lowest - 1
+#   pct_indels_in_dbsnp                 lower limit lowest - 5
+#
+# Limits are rounded outwards. They rest on two to four samples per assay and
+# should be set again from routine runs once there are 20 per assay.
+# A metric out of range stops the procedure for that sample (SOP-01 section 7).
+
+assays:
+  nexterarapidcapture_expandedexome_targetedregions.bed.gz:
+    name: nextera_garvan
+    ranges:
+      primary_reads: [65000000, null]
+      pct_mapped: [99.3, null]
+      pct_properly_paired: [98.0, null]
+      pct_duplicates: [null, 17.0]
+      mean_capture_depth: [37, null]
+      pass_snvs: [42800, 52800]
+      pass_indels: [6200, 8800]
+      snv_titv: [2.31, 2.52]
+      snv_het_hom: [1.40, 1.81]
+      pct_snvs_in_dbsnp: [97.4, null]
+      pct_indels_in_dbsnp: [73.2, null]
+  sureselect_v5_b37.baits.slop50.bed.gz:
+    name: sureselect_v5_oslo
+    ranges:
+      primary_reads: [97000000, null]
+      pct_mapped: [99.2, null]
+      pct_properly_paired: [97.9, null]
+      pct_duplicates: [null, 8.6]
+      mean_capture_depth: [90, null]
+      pass_snvs: [55900, 69600]
+      pass_indels: [7100, 10200]
+      snv_titv: [2.29, 2.55]
+      snv_het_hom: [1.13, 1.86]
+      pct_snvs_in_dbsnp: [96.9, null]
+      pct_indels_in_dbsnp: [77.7, null]

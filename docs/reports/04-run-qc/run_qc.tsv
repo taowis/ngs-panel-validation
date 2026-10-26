@@ -1,0 +1,7 @@
+genome	sample	assay	primary_reads	pct_mapped	pct_properly_paired	pct_duplicates	mean_capture_depth	pass_snvs	pass_indels	snv_titv	snv_het_hom	pct_snvs_in_dbsnp	pct_indels_in_dbsnp	out_of_range
+HG001	NIST7035_run1	nextera_garvan	81592824	99.88	99.13	11.33	47.38	47637	7387	2.414	1.606	98.48	78.2	none
+HG001	NIST7086_run1	nextera_garvan	86860660	99.87	99.07	11.25	50.63	47944	7576	2.414	1.608	98.45	78.39	none
+HG002	HG002	sureselect_v5_oslo	150386776	99.72	98.98	4.872	140.2	62785	8809	2.42	1.574	98.54	82.71	none
+HG003	HG003	sureselect_v5_oslo	128608638	99.74	99.06	4.215	120.3	62749	8651	2.413	1.557	98.24	82.9	none
+HG004	HG004	sureselect_v5_oslo	146149978	99.75	99.04	4.947	132.2	63213	8739	2.398	1.651	98.38	83.56	none
+HG005	HG005	sureselect_v5_oslo	122003250	99.76	99.11	5.681	113.6	62156	8426	2.441	1.337	97.94	84.16	none
