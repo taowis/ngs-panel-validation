@@ -8,6 +8,7 @@ scripts/00_download.sh reference   # hs37d5 FASTA (~900 MB), then builds the ind
 scripts/00_download.sh reads       # HG001 exome FASTQ (~16 GB)
 scripts/00_download.sh oslo        # HG002-HG005 exome BAMs (~38 GB), FASTQ and truth sets
 scripts/00_download.sh extra       # ClinVar, GIAB stratifications, Oslo's own calls
+scripts/00_download.sh dbsnp       # dbSNP 138, b37 (~1.5 GB)
 python3 scripts/check_manifest.py
 ```
 
@@ -78,6 +79,10 @@ From https://ftp-trace.ncbi.nlm.nih.gov/ReferenceSamples/giab/release/Ashkenazim
 ## ClinVar, GRCh37
 
 `data/reference/clinvar_20261019.vcf.gz` and `.tbi` from https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh37/clinvar_20261019.vcf.gz (accessed 2026-10-24). ClinVar moves dated releases to https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh37/archive_2.0/2026/ after a few weeks. Used for the pathogenic site coverage in report 03.
+
+## dbSNP build 138, b37
+
+`data/reference/dbsnp_138.b37.vcf.gz` and `.tbi` from the GATK resource bundle that the Broad Institute keeps on Google Cloud, https://storage.googleapis.com/gcp-public-data--broad-references/hg19/v0/dbsnp_138.b37.vcf.gz (accessed 2026-10-26). Its contig names match hs37d5. Used only for the known-variant fraction in the run QC (`scripts/11_run_qc.py`, report 04). NCBI's own GRCh37 VCFs (https://ftp.ncbi.nih.gov/snp/archive/b157/VCF/GCF_000001405.25.gz) are 25 GB, use RefSeq contig names and downloaded at under 1 MB/s from here, so they were not used.
 
 ## GIAB genome stratifications v3.6, GRCh37
 

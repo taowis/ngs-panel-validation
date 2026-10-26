@@ -62,6 +62,7 @@ The pipeline itself is ordinary (BWA-MEM, GATK HaplotypeCaller). The point of th
 - **Reproducibility**: the two Garvan HG001 exome libraries (NIST7035 and NIST7086) compared with each other, and NIST7035 run twice end to end, to show between-library and within-run agreement.
 - **Change control**: a pipeline change (tool version or parameter) run against the same data, with a before/after verification report and an accept or reject decision against predefined criteria.
 - **Further checks** (report 03): panel accuracy pooled over the five genomes, an independent check of change 02, coverage of ClinVar pathogenic sites, a depth series made by downsampling HG002, accuracy by GIAB difficult-region stratum with a closer look at PMS2, sample identity, sex and trio consistency, and a comparison with the sequencing laboratory's own calls.
+- **Run QC** (report 04): per-sample metrics (reads, mapping, duplicates, depth, variant counts, Ti/Tv, het/hom, share in dbSNP) checked against ranges set for each assay, as the NPAAC requirements ask.
 - **Documentation**: an SOP (`docs/sop/SOP-01-germline-panel-pipeline.md`) covering running, checks, validation and change control, with templates for plans and reports.
 
 Acceptance criteria are fixed in `config/acceptance.yaml` before any results are generated.
@@ -109,6 +110,7 @@ flowchart TD
 
 1. `docs/reports/01-initial-validation/README.md` and `docs/reports/02-snv-filter-change/README.md`: what was tested, what failed and why, and how the change was accepted.
    Then `docs/reports/03-more-reference-samples/README.md`: four more genomes from a second laboratory, and where report 01's explanation was incomplete.
+   `docs/reports/04-run-qc/README.md`: run QC metrics and their acceptable ranges.
 2. `config/acceptance.yaml`: the criteria the results are judged against.
 3. `workflow/main.nf`: the pipeline, one process per step in the diagram above.
 4. `scripts/02_report.py`, then `03_diagnose.py`, `04_split_eval.py` and `05_change_control.py` for the change-control steps.
@@ -138,6 +140,7 @@ python3 scripts/01_build_panel.py
 nextflow run workflow/main.nf -profile local
 python scripts/02_report.py --name <report-name>
 python scripts/03_diagnose.py --name <report-name>    # why calls were missed or false
+scripts/00_download.sh dbsnp && python scripts/11_run_qc.py --genomes HG001   # run QC against config/run_qc.yaml
 ```
 
 For a pipeline change: write the plan, choose between candidates with `scripts/04_split_eval.py --set dev`, rerun the pipeline with `--outdir results_v2`, then `04_split_eval.py --set test --dirs results results_v2` and `scripts/05_change_control.py`. Run the Python scripts inside the conda env.
@@ -146,7 +149,7 @@ For a pipeline change: write the plan, choose between candidates with `scripts/0
 
 ## Status
 
-Reports 01 (initial validation), 02 (SNV filter change) and 03 (HG002 to HG005 from a second laboratory and capture kit) are complete, and SOP-01 is written. Report 03 ends with three possible changes (judging exome-wide accuracy outside difficult regions, handling PMS2, flagging homopolymer indels), none made yet.
+Reports 01 (initial validation), 02 (SNV filter change) and 03 (HG002 to HG005 from a second laboratory and capture kit) are complete, report 04 sets run QC ranges, and SOP-01 is written (version 1.1). Report 03 ends with three possible changes (judging exome-wide accuracy outside difficult regions, handling PMS2, flagging homopolymer indels), none made yet.
 
 ## References
 

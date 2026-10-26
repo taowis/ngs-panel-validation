@@ -3,8 +3,8 @@
 | | |
 |---|---|
 | Document | SOP-01 |
-| Version | 1.0 |
-| Effective | 2026-10-24 |
+| Version | 1.1 (1.0 2026-10-24; 1.1 adds the run QC ranges to section 7) |
+| Effective | 2026-10-26 |
 | Author | Kaitao Lai |
 | Pipeline version covered | v2 (SNP filter without the SOR rule, report 02) |
 | Next review | on any pipeline change, or 12 months |
@@ -65,7 +65,7 @@ The bioinformatician runs the pipeline, performs the checks in section 7, writes
 For every sample:
 
 1. Sample identity and sex: `scripts/09_identity.py` (calls against the expected genome's truth set, chrX heterozygosity, chrY depth). A mismatch stops the procedure; nothing from that sample is used until it is resolved.
-2. Duplicate rate from `<outdir>/bam/<sample>.markdup_metrics.txt`. Record it; a rate far outside earlier runs on the same assay is investigated before going on.
+2. Run QC metrics: `python scripts/11_run_qc.py --genomes <genome> --out <outdir>/run_qc.tsv` gives reads, % mapped, % properly paired, duplicate rate, mean depth over the capture, PASS SNV and indel counts in the capture, Ti/Tv, het/hom ratio and the share of SNVs and indels in dbSNP, and checks each against the ranges for that assay in `config/run_qc.yaml` (set in report 04). Any metric in the `out_of_range` column stops the procedure for that sample. Look for the cause before going on: a failed or low-yield library (reads, depth, duplicates), the wrong reference or a poor-quality run (mapping, pairing), the wrong capture BED or filter version (variant counts, Ti/Tv), contamination or a sample mix (het/hom ratio, which also needs the identity check repeated). Record the metric, the cause and the decision as a deviation (section 10). Results from the sample are used only if the cause is found and shown not to affect the calls; otherwise the sample is rerun or resequenced. An assay with no ranges yet needs them set from its validation runs first.
 3. Coverage: `scripts/02_report.py` writes `coverage_by_gene.tsv` and `low_coverage_regions.tsv`. Every panel base below 20x is listed. On a patient sample these bases would need another method (for example Sanger sequencing) before a negative result could be reported for them.
 4. Known pathogenic sites below 20x: `scripts/07_clinvar_sites.py` lists ClinVar pathogenic and likely pathogenic positions in the panel that are not covered.
 

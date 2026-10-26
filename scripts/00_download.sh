@@ -6,6 +6,7 @@
 #   scripts/00_download.sh reads   HG001 exome FASTQ (~16 GB)
 #   scripts/00_download.sh oslo    HG002-HG005 exome BAMs (~38 GB), FASTQ, truth sets
 #   scripts/00_download.sh extra   ClinVar, GIAB stratifications, Oslo's own calls (~350 MB)
+#   scripts/00_download.sh dbsnp   dbSNP 138 for the run QC known-variant rate (~1.5 GB)
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
@@ -132,6 +133,14 @@ reference() {
   [ -s data/reference/hs37d5.dict ] || gatk CreateSequenceDictionary -R data/reference/hs37d5.fa
   [ -s data/reference/hs37d5.fa.bwt ] || bwa index data/reference/hs37d5.fa
   [ -d data/reference/hs37d5.sdf ] || rtg format -o data/reference/hs37d5.sdf data/reference/hs37d5.fa
+}
+
+dbsnp() {
+  # GATK b37 resource bundle (contig names as hs37d5). NCBI's own GRCh37 VCFs
+  # are 25 GB with RefSeq contig names and came down at under 1 MB/s.
+  local b=https://storage.googleapis.com/gcp-public-data--broad-references/hg19/v0
+  fetch $b/dbsnp_138.b37.vcf.gz data/reference
+  fetch $b/dbsnp_138.b37.vcf.gz.tbi data/reference
 }
 
 "${1:-panel}"
