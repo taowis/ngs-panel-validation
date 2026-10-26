@@ -32,3 +32,8 @@ results_*/
 CLAUDE.md
 .claude/
 private_notes/
+
+# test reference indexes, built by tests/prepare_ref.sh
+tests/data/ref/*
+!tests/data/ref/hs37d5.fa
+!tests/data/*.fastq.gz

@@ -1,0 +1,77 @@
+# Build the image and run the pipeline on the small test data (tests/README.md)
+# under Docker and under Apptainer; the results must match tests/expected/.
+name: test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+env:
+  NXF_VER: 25.04.6
+  NXF_ANSI_LOG: false
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        engine: [docker, apptainer]
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: docker/setup-buildx-action@v4
+      - name: Build image
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          load: true
+          tags: ngs-panel-validation:ci
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: 17
+      - name: Install Nextflow
+        run: |
+          curl -sSfL -o nextflow https://github.com/nextflow-io/nextflow/releases/download/v${NXF_VER}/nextflow-${NXF_VER}-dist
+          chmod +x nextflow && sudo mv nextflow /usr/local/bin/
+          nextflow -v
+
+      - name: Index the test reference
+        run: >
+          docker run --rm -u $(id -u):$(id -g) -e HOME=/tmp -v "$PWD":"$PWD" -w "$PWD"
+          ngs-panel-validation:ci tests/prepare_ref.sh
+
+      - name: Install Apptainer
+        if: matrix.engine == 'apptainer'
+        uses: eWaterCycle/setup-apptainer@v2
+        with:
+          apptainer-version: 1.5.3
+      - name: Image for Apptainer
+        if: matrix.engine == 'apptainer'
+        run: apptainer build ngs-panel-validation.sif docker-daemon://ngs-panel-validation:ci
+
+      - name: Run the pipeline on the test data
+        run: |
+          image=ngs-panel-validation:ci
+          [ "${{ matrix.engine }}" = apptainer ] && image="$PWD/ngs-panel-validation.sif"
+          nextflow run workflow/main.nf -profile ${{ matrix.engine }},test --container "$image"
+
+      - name: Compare with the expected results
+        run: python3 tests/check_test_run.py results_test_data
+
+      - name: Keep logs
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: logs-${{ matrix.engine }}
+          path: |
+            .nextflow.log
+            results_test_data/pipeline_info/
+            results_test_data/vcf/
+            results_test_data/vcfeval/

@@ -91,3 +91,5 @@ From https://ftp-trace.ncbi.nlm.nih.gov/ReferenceSamples/giab/release/genome-str
 ## Committed files built here
 
 `data/panels/panel_genes.tsv`, `panel_targets.bed`, `panel_evaluable.bed` and `panel_summary.tsv` are built by `scripts/01_build_panel.py` from the files above. `panel_evaluable.<genome>.bed` and `panel_summary.<genome>.tsv` are the same for HG002 to HG005, with the SureSelect V5 capture and that genome's truth set (`--tag`; commands in the script's docstring).
+
+`tests/data/` (about 23 MB) is cut from the HG001 files above and the pipeline v2 BAMs by `tests/make_test_data.py`: a reference of one window per chromosome, the read pairs in those windows, and the capture, panel and truth files shifted to the windows (`tests/README.md`).

@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | Document | SOP-01 |
-| Version | 1.1 (1.0 2026-10-24; 1.1 adds the run QC ranges to section 7) |
+| Version | 1.2 (1.0 2026-10-24; 1.1 adds the run QC ranges to section 7; 1.2 adds the container profiles and the test data run, sections 5 and 6) |
 | Effective | 2026-10-26 |
 | Author | Kaitao Lai |
 | Pipeline version covered | v2 (SNP filter without the SOR rule, report 02) |
@@ -39,16 +39,18 @@ The bioinformatician runs the pipeline, performs the checks in section 7, writes
 ## 5. Software and data
 
 - Software versions are fixed by `environment.yml` and recorded in full in `environment.lock.yml`: BWA-MEM 0.7.19, samtools/bcftools/htslib 1.24, GATK 4.6.2.0, mosdepth 0.3.14, RTG Tools 3.13, bedtools 2.31.1. Nextflow runs the workflow (`workflow/main.nf`, `nextflow.config`).
+- The same tools are available as a linux-64 image (`Dockerfile`, installed from `containers/linux-64.lock`) for the `docker` and `apptainer` profiles. `tests/` holds a small data set and its expected results; GitHub Actions runs it under Docker and Apptainer for every pull request (`tests/README.md`).
 - Every downloaded file has a row in `data/MANIFEST.tsv` with its URL, version, access date, md5 and size. `data/README.md` says how each file was obtained and how derived files are built.
 - Acceptance criteria are in `config/acceptance.yaml`. They are fixed before a validation is run and changed only with a written reason in a report.
 
 ## 6. Running the pipeline
 
 1. Check out the version to be used from `main` and note the commit (`git rev-parse HEAD`). Do not run from a working tree with uncommitted changes.
-2. Create the environment once: `conda env create -f environment.yml`. The environment path must not contain spaces.
-3. Fetch or check the inputs: `scripts/00_download.sh <step>`, then `python3 scripts/check_manifest.py`. Any MISMATCH stops the procedure until it is explained.
-4. Prepare the samplesheet (`sample,library,lane,fastq_1,fastq_2`, one row per lane). For a genome other than HG001, write a parameter file in `config/params/` naming the samplesheet, capture BED, evaluable region, truth set and output folder (see `config/params/HG002.yaml`).
-5. Start the run so that it survives the terminal closing and the commit is the first line of the log:
+2. Create the environment once: `conda env create -f environment.yml`. The environment path must not contain spaces. Or use the image with `-profile docker` or `-profile apptainer` in place of `-profile local`, with resource limits set for the machine.
+3. Before the first run on a new machine or after installing a new environment or image, run the test data (`tests/README.md`) and `python3 tests/check_test_run.py`. A difference stops the procedure until it is explained.
+4. Fetch or check the inputs: `scripts/00_download.sh <step>`, then `python3 scripts/check_manifest.py`. Any MISMATCH stops the procedure until it is explained.
+5. Prepare the samplesheet (`sample,library,lane,fastq_1,fastq_2`, one row per lane). For a genome other than HG001, write a parameter file in `config/params/` naming the samplesheet, capture BED, evaluable region, truth set and output folder (see `config/params/HG002.yaml`).
+6. Start the run so that it survives the terminal closing and the commit is the first line of the log:
 
    ```
    nohup sh -c 'git rev-parse HEAD; caffeinate -i nextflow run workflow/main.nf -profile local -resume \
@@ -57,8 +59,8 @@ The bioinformatician runs the pipeline, performs the checks in section 7, writes
    ```
 
    `caffeinate` applies to macOS; on a server, run under the scheduler instead.
-6. If a run is interrupted, restart it with the same command; `-resume` reuses completed tasks. Record the interruption and restart times in the run record.
-7. The run is complete when the log ends with the Nextflow completion line and `trace.tsv` shows no failed tasks. A run with a failed task is not used; the cause is recorded and the run repeated.
+7. If a run is interrupted, restart it with the same command; `-resume` reuses completed tasks. Record the interruption and restart times in the run record.
+8. The run is complete when the log ends with the Nextflow completion line and `trace.tsv` shows no failed tasks. A run with a failed task is not used; the cause is recorded and the run repeated.
 
 ## 7. Checks before results are used
 
