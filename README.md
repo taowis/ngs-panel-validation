@@ -1,8 +1,10 @@
-# ngs-panel-validation
+# Validating a germline NGS pipeline for a hereditary cancer gene panel
 
 [![test](https://github.com/taowis/ngs-panel-validation/actions/workflows/test.yml/badge.svg)](https://github.com/taowis/ngs-panel-validation/actions/workflows/test.yml)
 
 Before a clinical genetics laboratory reports DNA variants from a sequencing pipeline, it has to show two things: that the pipeline finds the variants that are really there, and that it does not report variants that are not. It has to show this again whenever the pipeline changes, even for a small edit to a filter or a tool version. This project does that work for a small germline pipeline and writes it up the way a diagnostic laboratory would, following the AMP/CAP guidelines for validating NGS bioinformatics pipelines (Roy et al. 2018, reference below).
+
+In Australia, NATA accredits pathology laboratories against ISO 15189:2022 (adopted as AS ISO 15189:2023) together with the NPAAC requirements for massively parallel sequencing. The validation, SOP, run QC and change control here were written with those requirements in mind, and two documents set the project against them clause by clause: [`docs/iso15189-mapping.md`](docs/iso15189-mapping.md) (examination processes, measurement uncertainty, data and records, risk and nonconforming work, with a [risk register](docs/risk-register.md) and a [nonconformity log](docs/nonconformities.md)) and [`docs/npaac-mapping.md`](docs/npaac-mapping.md). Both also list what would need a laboratory: this is not an accredited laboratory, and the SOP is not the procedure of one.
 
 ## What the project does
 
@@ -80,7 +82,7 @@ What is not, and why:
 - Somatic, mosaic and low allele fraction variants. The pipeline is a germline caller; these need a different caller and samples with known allele fractions, such as GIAB genomes mixed in set proportions.
 - Variant classification and clinical reporting, and the laboratory side (extraction, library preparation, sequencing).
 
-The acceptance criteria and SOP were written for this project with reference to AMP/CAP and to the NPAAC requirements for massively parallel sequencing. NATA accredits Australian pathology laboratories against AS ISO 15189 (ISO 15189:2022) together with these NPAAC requirements. This is not a NATA-accredited laboratory and the criteria and SOP are not the procedures of one; the second-person review the SOP asks for was done by the author alone. `docs/npaac-mapping.md` lists which NPAAC bioinformatics and quality requirements the project covers and which it does not. `docs/iso15189-mapping.md` does the same for the ISO 15189 clauses on examination processes, measurement uncertainty, data and records, risk and nonconforming work, and lists those that need a laboratory; the risk register and the nonconformity log it refers to are in `docs/`. Reasons for the main choices are in `docs/design-decisions.md`.
+The acceptance criteria and SOP were written for this project with reference to AMP/CAP, NPAAC and ISO 15189 (see the mappings linked at the top). The second-person review the SOP asks for was done by the author alone. Reasons for the main choices are in `docs/design-decisions.md`.
 
 ## Pipeline
 
