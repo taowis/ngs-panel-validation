@@ -80,7 +80,7 @@ What is not, and why:
 - Somatic, mosaic and low allele fraction variants. The pipeline is a germline caller; these need a different caller and samples with known allele fractions, such as GIAB genomes mixed in set proportions.
 - Variant classification and clinical reporting, and the laboratory side (extraction, library preparation, sequencing).
 
-The acceptance criteria and SOP were written for this project with reference to AMP/CAP and to the NPAAC requirements for massively parallel sequencing that Australian laboratories are accredited against. This is not a NATA-accredited laboratory and the criteria and SOP are not the procedures of one; the second-person review the SOP asks for was done by the author alone. `docs/npaac-mapping.md` lists which NPAAC bioinformatics and quality requirements the project covers and which it does not. Reasons for the main choices are in `docs/design-decisions.md`.
+The acceptance criteria and SOP were written for this project with reference to AMP/CAP and to the NPAAC requirements for massively parallel sequencing. NATA accredits Australian pathology laboratories against AS ISO 15189 (ISO 15189:2022) together with these NPAAC requirements. This is not a NATA-accredited laboratory and the criteria and SOP are not the procedures of one; the second-person review the SOP asks for was done by the author alone. `docs/npaac-mapping.md` lists which NPAAC bioinformatics and quality requirements the project covers and which it does not. `docs/iso15189-mapping.md` does the same for the ISO 15189 clauses on examination processes, measurement uncertainty, data and records, risk and nonconforming work, and lists those that need a laboratory; the risk register and the nonconformity log it refers to are in `docs/`. Reasons for the main choices are in `docs/design-decisions.md`.
 
 ## Pipeline
 
@@ -119,6 +119,7 @@ flowchart TD
 5. `docs/sop/SOP-01-germline-panel-pipeline.md`: how the pipeline is run, checked and changed.
 6. `docs/design-decisions.md`: why the main choices were made and what the alternatives were.
 7. `docs/npaac-mapping.md`: the NPAAC requirements this work does and does not cover.
+8. `docs/iso15189-mapping.md`: the same for ISO 15189, with `docs/risk-register.md` and `docs/nonconformities.md`.
 
 ## Layout
 
@@ -130,6 +131,9 @@ data/        panel BED files (committed); raw data and references (not committed
 docs/sop/    standard operating procedure and report templates
 docs/design-decisions.md  reasons for the main design choices
 docs/npaac-mapping.md     NPAAC requirements against this project
+docs/iso15189-mapping.md  ISO 15189 clauses against this project
+docs/risk-register.md     failure modes of the pipeline, controls and open actions
+docs/nonconformities.md   faults found, their causes and corrective actions
 docs/reports/ validation and verification reports
 tests/       small test data, expected results, checks run by CI
 containers/  linux-64 lock for the Dockerfile
@@ -162,3 +166,5 @@ Reports 01 (initial validation), 02 (SNV filter change) and 03 (HG002 to HG005 f
 Roy S, et al. Standards and guidelines for validating next-generation sequencing bioinformatics pipelines: a joint recommendation of the Association for Molecular Pathology and the College of American Pathologists. J Mol Diagn. 2018;20(1):4-27. doi:10.1016/j.jmoldx.2017.11.003. PMID: 29154853.
 
 National Pathology Accreditation Advisory Council. Requirements for Human Medical Genome Testing Utilising Massively Parallel Sequencing Technologies (First Edition 2017). Canberra: Commonwealth of Australia; 2017. ISBN 978-1-76007-290-2 (online). https://www.safetyandquality.gov.au/resources/requirements-human-medical-genome-testing-utilising-massively-parallel-sequencing-technologies-first-edition-2017 (accessed 2026-10-25).
+
+International Organization for Standardization. ISO 15189:2022 Medical laboratories - Requirements for quality and competence. 4th ed. Geneva: ISO; 2022. Adopted in Australia as AS ISO 15189:2023 (Standards Australia, 2023).
