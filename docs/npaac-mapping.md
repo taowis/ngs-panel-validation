@@ -2,7 +2,7 @@
 
 In Australia, medical pathology laboratories are accredited by NATA against AS ISO 15189 together with the standards of the National Pathology Accreditation Advisory Council (NPAAC). For sequencing-based tests the relevant NPAAC document is *Requirements for Human Medical Genome Testing Utilising Massively Parallel Sequencing Technologies* (First Edition 2017, Tier 4). The Australian Commission on Safety and Quality in Health Care, which now publishes the NPAAC standards, lists it as currently in use; all its pathology standards are under review (page accessed 2026-10-25). The PDF it distributes carries a "DRAFT" watermark.
 
-This project is not an accredited laboratory and cannot comply with these requirements: most of them concern a laboratory's governance, staff, wet laboratory, IT and reporting. The table below takes the bioinformatics and quality standards the project can speak to, and says for each where the work is and whether it is covered, partly covered or not covered. Standard numbers are those of the NPAAC document.
+This project is not an accredited laboratory and cannot comply with these requirements: most of them concern a laboratory's governance, staff, wet laboratory, IT and reporting. The table below takes the bioinformatics and quality standards the project can speak to, and says for each where the work is and whether it is covered, partly covered or not covered. Standard numbers are those of the NPAAC document. The ISO 15189 clauses are taken in turn in `docs/iso15189-mapping.md`.
 
 ## Bioinformatics (section 6)
 

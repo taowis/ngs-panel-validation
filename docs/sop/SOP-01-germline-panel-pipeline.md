@@ -3,13 +3,13 @@
 | | |
 |---|---|
 | Document | SOP-01 |
-| Version | 1.2 (1.0 2026-10-24; 1.1 adds the run QC ranges to section 7; 1.2 adds the container profiles and the test data run, sections 5 and 6) |
-| Effective | 2026-10-26 |
+| Version | 1.3 (1.0 2026-10-24; 1.1 adds the run QC ranges to section 7; 1.2 adds the container profiles and the test data run, sections 5 and 6; 1.3 adds the nonconformity log and the risk register, sections 9 to 11) |
+| Effective | 2026-10-28 |
 | Author | Kaitao Lai |
 | Pipeline version covered | v2 (SNP filter without the SOR rule, report 02) |
 | Next review | on any pipeline change, or 12 months |
 
-This procedure was written for this project. It follows the structure a diagnostic laboratory would use, with reference to the AMP/CAP recommendations (Roy et al. 2018) and the NPAAC requirements for massively parallel sequencing (2017), but it is not the procedure of any accredited laboratory.
+This procedure was written for this project. It follows the structure a diagnostic laboratory would use, with reference to the AMP/CAP recommendations (Roy et al. 2018) and the NPAAC requirements for massively parallel sequencing (2017), and with the ISO 15189:2022 clauses on examination processes, nonconforming work, risk and records in mind (`docs/iso15189-mapping.md`), but it is not the procedure of any accredited laboratory.
 
 ## 1. Purpose
 
@@ -91,10 +91,13 @@ A validation establishes the performance of a pipeline version before it is used
 6. Review each differing panel call against the truth set and the read evidence (depth, allele counts, mapping quality). Record the review in the report.
 7. Write the change report (`templates/change-report.md`) with the decision: accepted or rejected. A rejected change is reverted and the report kept.
 8. Where later data that played no part in the choice becomes available, check the change on it as well (report 03, analysis 3).
+9. Review `docs/risk-register.md` with the change: score again any risk the change affects, and add a risk the change introduces.
 
 ## 10. Deviations
 
 Anything that departs from this SOP or from a plan is recorded in the report concerned, with what happened, why, and what was done: for example an interrupted run, a changed download source, a script fault found after results were produced and the correction made. Results are never quietly regenerated.
+
+Where something is found to be wrong (a fault in a script or in the pipeline, a result that does not meet a requirement, a conclusion later shown to be incomplete, or a failure to follow this SOP), it is also entered in `docs/nonconformities.md` from `templates/nonconformity.md`: what was found, which results it affects, the immediate action, the cause, the corrective action and how its effect was checked. Results it affects are not used until the entry says why they can be. Each entry is checked against the risk register. An entry is closed only once the corrective action has been shown to work.
 
 ## 11. Records
 
@@ -104,6 +107,8 @@ Anything that departs from this SOP or from a plan is recorded in the report con
 | Plans and reports | `docs/reports/<NN-name>/` |
 | Run logs, trace and Nextflow report | `<outdir>/pipeline_info/` (not committed; summary tables are copied into the report folder) |
 | Data sources | `data/MANIFEST.tsv`, `data/README.md` |
+| Nonconformities and corrective actions | `docs/nonconformities.md` |
+| Risks and their controls | `docs/risk-register.md` |
 | Raw data, BAMs, VCFs | not committed; re-creatable from the manifest and the commit |
 
 ## 12. References
@@ -111,3 +116,5 @@ Anything that departs from this SOP or from a plan is recorded in the report con
 Roy S, et al. Standards and guidelines for validating next-generation sequencing bioinformatics pipelines: a joint recommendation of the Association for Molecular Pathology and the College of American Pathologists. J Mol Diagn. 2018;20(1):4-27. doi:10.1016/j.jmoldx.2017.11.003. PMID: 29154853.
 
 National Pathology Accreditation Advisory Council. Requirements for Human Medical Genome Testing Utilising Massively Parallel Sequencing Technologies (First Edition 2017). Canberra: Commonwealth of Australia; 2017. ISBN 978-1-76007-290-2 (online). https://www.safetyandquality.gov.au/resources/requirements-human-medical-genome-testing-utilising-massively-parallel-sequencing-technologies-first-edition-2017 (accessed 2026-10-25).
+
+International Organization for Standardization. ISO 15189:2022 Medical laboratories - Requirements for quality and competence. 4th ed. Geneva: ISO; 2022. Adopted in Australia as AS ISO 15189:2023.
