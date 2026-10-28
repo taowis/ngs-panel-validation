@@ -1,0 +1,28 @@
+#!/bin/bash
+# Report 05 inputs on Gadi: the two DeepVariant images and the hs37d5 reference.
+# Compute nodes have no internet, so this runs in copyq.
+#   qsub scripts/gadi/fetch.pbs     (from $BASE, see scripts/gadi/README.md)
+#PBS -P iz89
+#PBS -q copyq
+#PBS -l ncpus=1,mem=16GB,walltime=04:00:00,jobfs=60GB
+#PBS -l storage=scratch/iz89
+#PBS -l wd
+#PBS -j oe
+#PBS -N dv_fetch
+set -euo pipefail
+module load singularity
+
+mkdir -p images ref logs
+export SINGULARITY_CACHEDIR=$PWD/.singularity_cache SINGULARITY_TMPDIR=$PBS_JOBFS
+for v in 1.9.0 1.10.0; do
+    [ -s images/deepvariant_$v.sif ] || singularity pull images/deepvariant_$v.sif docker://google/deepvariant:$v
+    md5sum images/deepvariant_$v.sif >> logs/images.md5
+done
+
+# same file as data/MANIFEST.tsv; gzip reports trailing data (exit 2), so the
+# decompressed file is checked against the md5 of the local copy instead
+url=https://1000genomes.s3.amazonaws.com/technical/reference/phase2_reference_assembly_sequence/hs37d5.fa.gz
+[ -s ref/hs37d5.fa.gz ] || wget -q -O ref/hs37d5.fa.gz $url
+echo "a07c7647c4f2e78977068e9a4a31af15  ref/hs37d5.fa.gz" | md5sum -c
+gzip -dc ref/hs37d5.fa.gz > ref/hs37d5.fa || [ $? -eq 2 ]
+echo "12a0bed94078e2d9e8c00da793bbc84e  ref/hs37d5.fa" | md5sum -c

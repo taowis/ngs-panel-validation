@@ -1,0 +1,12 @@
+== 1.9.0
+d68b79650fcf5c7e8ab3cb4da43394c6  ./example_info.json
+a0a5aed50e9528733bc0bb9d3f87d5e4  ./fingerprint.pb
+0c51b8a40ce0e15d2f42eb2f2b164cbe  ./saved_model.pb
+d70d5fa9715c71e41fc330b8d06138f3  ./variables/variables.data-00000-of-00001
+cf57f57ec0b1687f77664786966be234  ./variables/variables.index
+== 1.10.0
+99c87494f8740c86935b58cd5dc2acf8  ./fingerprint.pb
+f9a763b4ea4c3ca321fe5b7557bb39cf  ./model.example_info.json
+ecc2fbef6d22cd1e8a5e63b2c8f55325  ./saved_model.pb
+d70d5fa9715c71e41fc330b8d06138f3  ./variables/variables.data-00000-of-00001
+cf57f57ec0b1687f77664786966be234  ./variables/variables.index

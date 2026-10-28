@@ -66,8 +66,9 @@ The pipeline itself is ordinary (BWA-MEM, GATK HaplotypeCaller). The point of th
 - **Reproducibility**: the two Garvan HG001 exome libraries (NIST7035 and NIST7086) compared with each other, and NIST7035 run twice end to end, to show between-library and within-run agreement.
 - **Change control**: a pipeline change (tool version or parameter) run against the same data, with a before/after verification report and an accept or reject decision against predefined criteria.
 - **Further checks** (report 03): panel accuracy pooled over the five genomes, an independent check of change 02, coverage of ClinVar pathogenic sites, a depth series made by downsampling HG002, accuracy by GIAB difficult-region stratum with a closer look at PMS2, sample identity, sex and trio consistency, and a comparison with the sequencing laboratory's own calls.
+- **Supplier update** (report 05): a version change of an outside caller (DeepVariant 1.9.0 to 1.10.0, run on NCI Gadi) verified from its exported VCFs under SOP-02, the way an update to a commercial platform such as SOPHiA DDM or DRAGEN would be.
 - **Run QC** (report 04): per-sample metrics (reads, mapping, duplicates, depth, variant counts, Ti/Tv, het/hom, share in dbSNP) checked against ranges set for each assay, as the NPAAC requirements ask.
-- **Documentation**: an SOP (`docs/sop/SOP-01-germline-panel-pipeline.md`) covering running, checks, validation and change control, with templates for plans and reports.
+- **Documentation**: SOP-01 (`docs/sop/SOP-01-germline-panel-pipeline.md`) covering running, checks, validation and change control, SOP-02 for updates to externally supplied pipelines, with templates for plans and reports.
 
 Acceptance criteria are fixed in `config/acceptance.yaml` before any results are generated.
 
@@ -115,10 +116,11 @@ flowchart TD
 1. `docs/reports/01-initial-validation/README.md` and `docs/reports/02-snv-filter-change/README.md`: what was tested, what failed and why, and how the change was accepted.
    Then `docs/reports/03-more-reference-samples/README.md`: four more genomes from a second laboratory, and where report 01's explanation was incomplete.
    `docs/reports/04-run-qc/README.md`: run QC metrics and their acceptable ranges.
+   `docs/reports/05-deepvariant-update/README.md`: verifying a supplier's update to a black-box caller (SOP-02).
 2. `config/acceptance.yaml`: the criteria the results are judged against.
 3. `workflow/main.nf`: the pipeline, one process per step in the diagram above.
 4. `scripts/02_report.py`, then `03_diagnose.py`, `04_split_eval.py` and `05_change_control.py` for the change-control steps.
-5. `docs/sop/SOP-01-germline-panel-pipeline.md`: how the pipeline is run, checked and changed.
+5. `docs/sop/SOP-01-germline-panel-pipeline.md`: how the pipeline is run, checked and changed; `SOP-02-external-pipeline-update.md` for a supplier's update.
 6. `docs/design-decisions.md`: why the main choices were made and what the alternatives were.
 7. `docs/npaac-mapping.md`: the NPAAC requirements this work does and does not cover.
 8. `docs/iso15189-mapping.md`: the same for ISO 15189, with `docs/risk-register.md` and `docs/nonconformities.md`.
@@ -129,6 +131,7 @@ flowchart TD
 config/      pipeline parameters, panel definition, acceptance criteria
 workflow/    Nextflow pipeline
 scripts/     panel BED construction, benchmarking and report scripts
+scripts/gadi/ jobs run on NCI Gadi for report 05 (DeepVariant is x86-64 only)
 data/        panel BED files (committed); raw data and references (not committed, see data/README.md)
 docs/sop/    standard operating procedure and report templates
 docs/design-decisions.md  reasons for the main design choices
@@ -161,7 +164,7 @@ For a pipeline change: write the plan, choose between candidates with `scripts/0
 
 ## Status
 
-Reports 01 (initial validation), 02 (SNV filter change) and 03 (HG002 to HG005 from a second laboratory and capture kit) are complete, report 04 sets run QC ranges, and SOP-01 is written (version 1.1). Report 03 ends with three possible changes (judging exome-wide accuracy outside difficult regions, handling PMS2, flagging homopolymer indels), none made yet.
+Reports 01 (initial validation), 02 (SNV filter change) and 03 (HG002 to HG005 from a second laboratory and capture kit) are complete, report 04 sets run QC ranges, report 05 verifies an update to an outside caller under SOP-02, and SOP-01 is at version 1.3. Report 03 ends with three possible changes (judging exome-wide accuracy outside difficult regions, handling PMS2, flagging homopolymer indels), none made yet.
 
 ## References
 

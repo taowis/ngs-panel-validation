@@ -88,6 +88,12 @@ From https://ftp-trace.ncbi.nlm.nih.gov/ReferenceSamples/giab/release/Ashkenazim
 
 From https://ftp-trace.ncbi.nlm.nih.gov/ReferenceSamples/giab/release/genome-stratifications/v3.6/GRCh37@all/ (accessed 2026-10-24), to `data/reference/stratifications/`: `Union/GRCh37_alldifficultregions.bed.gz`, `Union/GRCh37_notinalldifficultregions.bed.gz`, `Union/GRCh37_alllowmapandsegdupregions.bed.gz`, `LowComplexity/GRCh37_AllHomopolymers_ge7bp_imperfectge11bp_slop5.bed.gz`, `SegmentalDuplications/GRCh37_segdups.bed.gz`, `GCcontent/GRCh37_gclt25orgt65_slop50.bed.gz`, checked against `GRCh37-genome-stratifications-md5s.txt` from the same folder.
 
+## DeepVariant 1.9.0 and 1.10.0 (report 05, on NCI Gadi)
+
+The two most recent DeepVariant releases at the time, pulled from Docker Hub as `docker://google/deepvariant:1.9.0` (digest `sha256:07e95b34e40cc50074d23273d479934a27e80919ac75bd97bf39a731e3c2d6ad`) and `:1.10.0` (digest `sha256:962e5a83b1d76aae6990625d47102785f791603f2138aa1fa9aa4fb6a2eecbe6`) on 2026-10-28, and converted to Singularity images on Gadi by `scripts/gadi/fetch.pbs`. The same job downloads hs37d5 from the URL above and checks it against the md5s in the manifest. The images are x86-64 only, which is why report 05 ran on Gadi (`scripts/gadi/README.md`). Neither version's WES model was trained on HG003 or on chromosomes 20 to 22 (https://github.com/google/deepvariant/blob/r1.10/docs/deepvariant-details-training-data.md, accessed 2026-10-28).
+
+`work_dv/HG003.capture.bam` (6.0 GB, md5 `eb143f82979327c136c077015d537d96`, not committed) is the pipeline v2 HG003 BAM cut to the merged SureSelect V5 capture (`samtools view -M -L`, command in `scripts/gadi/sync.sh`); it is the input to both versions.
+
 ## Committed files built here
 
 `data/panels/panel_genes.tsv`, `panel_targets.bed`, `panel_evaluable.bed` and `panel_summary.tsv` are built by `scripts/01_build_panel.py` from the files above. `panel_evaluable.<genome>.bed` and `panel_summary.<genome>.tsv` are the same for HG002 to HG005, with the SureSelect V5 capture and that genome's truth set (`--tag`; commands in the script's docstring).
