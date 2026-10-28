@@ -1,0 +1,18 @@
+rule	detail	1.9.0	1.10.0	result
+1 no passing criterion fails	panel snv sensitivity >= 0.99	1.0000	1.0000	PASS
+2 no drop above max_drop	panel snv sensitivity	1.0000	1.0000	PASS
+2 no drop above max_drop	panel snv precision	0.9863	0.9863	PASS
+1 no passing criterion fails	panel indel sensitivity >= 0.95	1.0000	1.0000	PASS
+2 no drop above max_drop	panel indel sensitivity	1.0000	1.0000	PASS
+1 no passing criterion fails	panel indel precision >= 0.95	1.0000	1.0000	PASS
+2 no drop above max_drop	panel indel precision	1.0000	1.0000	PASS
+2 no drop above max_drop	exome snv sensitivity	0.9897	0.9897	PASS
+1 no passing criterion fails	exome snv precision >= 0.99	0.9970	0.9970	PASS
+2 no drop above max_drop	exome snv precision	0.9970	0.9970	PASS
+2 no drop above max_drop	exome indel sensitivity	0.9145	0.9145	PASS
+1 no passing criterion fails	exome indel precision >= 0.95	0.9649	0.9649	PASS
+2 no drop above max_drop	exome indel precision	0.9649	0.9649	PASS
+3 repeat runs identical	1.9.0 run1_vs_run2	63050	63050	PASS
+3 repeat runs identical	1.10.0 run1_vs_run2	63049	63049	PASS
+4 panel calls that differ listed	PASS calls in panel targets	82	82	0 listed
+5 all record differences listed	records in 1.9.0 / 1.10.0	101297	101297	595 differ, see record_differences.tsv

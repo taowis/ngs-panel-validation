@@ -1,0 +1,12 @@
+
+======================================================================================
+                  Resource Usage on 2026-10-28 13:06:57:
+   Job Id:             182421036.gadi-pbs
+   Project:            iz89
+   Exit Status:        0
+   Service Units:      10.57
+   NCPUs Requested:    16                  CPU Time Used: 04:34:13        
+   Memory Requested:   64.0GB                Memory Used: 22.34GB         
+   Walltime Requested: 04:00:00            Walltime Used: 00:19:49        
+   JobFS Requested:    100.0GB                JobFS Used: 1.55GB          
+======================================================================================

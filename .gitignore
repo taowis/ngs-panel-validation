@@ -37,3 +37,4 @@ private_notes/
 tests/data/ref/*
 !tests/data/ref/hs37d5.fa
 !tests/data/*.fastq.gz
+work_dv/

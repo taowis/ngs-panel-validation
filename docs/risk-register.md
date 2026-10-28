@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | Document | RR-01 |
-| Version | 1.0 |
+| Version | 1.1 (1.0 2026-10-28; 1.1 adds R18 after report 05) |
 | Effective | 2026-10-28 |
 | Author | Kaitao Lai |
 | Pipeline version covered | v2 |
@@ -37,6 +37,7 @@ Each failure mode is scored as it stands now, with the controls in place, in the
 | R15 | Run QC ranges wrong | Good samples stopped or bad samples passed | Ranges set from two to four samples per assay | Ranges marked provisional, to be set again after 20 runs per assay | `config/run_qc.yaml` | 3 | 3 | 3 | 27 |
 | R16 | Variant description wrong | Wrong HGVS name on a report | Transcript choice, indel normalisation | None: annotation has not been validated | npaac-mapping, S6.2 | 5 | 3 | 5 | 75 |
 | R17 | Records lost or a result cannot be reproduced | Cannot show how a result was produced | Untracked edits, raw data deleted | git with pull requests; run log starts with the commit; data re-creatable from the manifest | SOP-01 11 | 2 | 2 | 2 | 8 |
+| R18 | A supplier's update changes output without saying so | Calls, filters or QC change unseen | New release, model or database from an outside supplier | SOP-02: same input through both versions, each run twice, every record compared, not only PASS calls | Report 05: DeepVariant 1.10.0 relabelled 595 records, not in the release notes | 4 | 3 | 2 | 24 |
 
 ## Actions
 

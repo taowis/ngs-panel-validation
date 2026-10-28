@@ -1,0 +1,26 @@
+#!/bin/bash
+# One DeepVariant run (WES model) on the HG003 capture BAM.
+#   qsub -v VERSION=1.9.0,RUN=run1,REGIONS=inputs/capture.HG003.bed scripts/gadi/deepvariant.pbs
+#PBS -P iz89
+#PBS -q normal
+#PBS -l ncpus=16,mem=64GB,walltime=04:00:00,jobfs=100GB
+#PBS -l storage=scratch/iz89
+#PBS -l wd
+#PBS -j oe
+#PBS -N dv
+set -euo pipefail
+module load singularity
+
+out=results/deepvariant_${VERSION}_${RUN}
+mkdir -p $out
+echo "version $VERSION run $RUN regions $REGIONS host $(hostname) start $(date -Is)" > $out/run_info.txt
+singularity exec -B $PWD,$PBS_JOBFS images/deepvariant_$VERSION.sif /opt/deepvariant/bin/run_deepvariant \
+    --model_type=WES \
+    --ref=ref/hs37d5.fa \
+    --reads=inputs/HG003.capture.bam \
+    --regions=$REGIONS \
+    --output_vcf=$out/HG003.vcf.gz \
+    --num_shards=$PBS_NCPUS \
+    --intermediate_results_dir=$PBS_JOBFS/dv \
+    > $out/run_deepvariant.log 2>&1
+echo "end $(date -Is)" >> $out/run_info.txt

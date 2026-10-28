@@ -43,14 +43,20 @@ The 2022 edition also asks for sources outside the analytical step, such as biol
 
 | Clause | Requirement, in short | In this project | Status |
 |---|---|---|---|
-| 5.6, 8.5 | Risks to patients identified, acted on in proportion, and the actions checked | `docs/risk-register.md`: 17 failure modes of the bioinformatics part, scored for severity, occurrence and detection, with the controls and the actions still open. Risks in the rest of the laboratory are not covered | partly |
+| 5.6, 8.5 | Risks to patients identified, acted on in proportion, and the actions checked | `docs/risk-register.md`: 18 failure modes of the bioinformatics part, scored for severity, occurrence and detection, with the controls and the actions still open. Risks in the rest of the laboratory are not covered | partly |
 | 7.5 | Nonconforming work identified, its effect assessed, results held back or recalled, and work restarted only once corrected | `docs/nonconformities.md`; SOP-01 section 7 stops a sample on a failed check; section 10 records deviations. No results were ever released, so recall has not arisen | covered |
 | 8.6 | Opportunities for improvement identified and acted on | Change 02 (report 02), run QC (report 04), containers and test data | covered |
 | 8.7 | Nonconformities investigated for cause, corrected, and the correction's effect reviewed | Four entries in `docs/nonconformities.md`, each with cause, corrective action and how its effect was checked; two closed, two open | covered |
 
+## Externally provided products and services (clause 6.8)
+
+| Clause | Requirement, in short | In this project | Status |
+|---|---|---|---|
+| 6.8 | Externally provided products and services that affect results are selected, checked and monitored before and during use | SOP-02 verifies a supplier's update from the exported VCFs before use; report 05 applies it to DeepVariant 1.9.0 to 1.10.0 and finds an undocumented change in filter labels. Supplier selection, agreements and performance review need a laboratory | partly |
+
 ## Clauses that need a laboratory
 
-Clause 4 (impartiality, confidentiality, requirements regarding patients); clause 5 except 5.6 (legal entity, laboratory director, scope of accreditation, objectives and policies, organisation); clause 6 (personnel and competence, facilities, equipment calibration, reagents, service agreements, externally provided services), although reference files are handled much like reagent lots, with version and checksum recorded and a check before use; clause 7.2 (pre-examination), 7.4 (reporting and post-examination) and 7.7 (complaints); clause 8.1, 8.2, 8.8 (internal audits and quality indicators) and 8.9 (management review).
+Clause 4 (impartiality, confidentiality, requirements regarding patients); clause 5 except 5.6 (legal entity, laboratory director, scope of accreditation, objectives and policies, organisation); clause 6 (personnel and competence, facilities, equipment calibration, reagents, service agreements, and the rest of 6.8), although reference files are handled much like reagent lots, with version and checksum recorded and a check before use; clause 7.2 (pre-examination), 7.4 (reporting and post-examination) and 7.7 (complaints); clause 8.1, 8.2, 8.8 (internal audits and quality indicators) and 8.9 (management review).
 
 ## References
 

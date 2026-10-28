@@ -1,0 +1,2 @@
+version 1.10.0 run run1 regions inputs/capture.HG003.bed host gadi-cpu-clx-2587.gadi.nci.org.au start 2026-10-28T12:47:06+11:00
+end 2026-10-28T13:09:06+11:00
