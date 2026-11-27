@@ -2,10 +2,10 @@
 # Report 05 inputs on Gadi: the two DeepVariant images and the hs37d5 reference.
 # Compute nodes have no internet, so this runs in copyq.
 #   qsub scripts/gadi/fetch.pbs     (from $BASE, see scripts/gadi/README.md)
-#PBS -P xx73
+#PBS -P xx12
 #PBS -q copyq
 #PBS -l ncpus=1,mem=16GB,walltime=04:00:00,jobfs=60GB
-#PBS -l storage=scratch/xx73
+#PBS -l storage=scratch/xx12
 #PBS -l wd
 #PBS -j oe
 #PBS -N dv_fetch

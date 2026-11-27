@@ -6,8 +6,8 @@
 #   samtools view -M -L work_dv/capture.HG003.bed -b -o work_dv/HG003.capture.bam results_v2_HG003/bam/HG003.md.bam
 set -euo pipefail
 cd "$(dirname "$0")/../.."
-HOST=yyy590@gadi.nci.org.au
-BASE=/scratch/xx73/yyy590/ngs-panel-validation
+HOST=yyy123@gadi.nci.org.au
+BASE=/scratch/xx12/yyy123/ngs-panel-validation
 
 case $1 in
 push)
