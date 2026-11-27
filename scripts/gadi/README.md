@@ -1,6 +1,8 @@
 # Report 05 on NCI Gadi
 
-DeepVariant has only x86-64 images, so report 05 ran it on NCI Gadi (project iz89) rather than on the arm64 Mac used for everything else. Everything that ran there is in this folder; nothing was written on Gadi by hand. The work folder was `/scratch/iz89/ktl590/ngs-panel-validation` (`$BASE`), which Gadi purges after 100 days without access.
+The NCI project code and user name are masked as `xx73` and `yyy590` in this folder and in the report 05 records. Replace them with your own before running these scripts.
+
+DeepVariant has only x86-64 images, so report 05 ran it on NCI Gadi (project xx73) rather than on the arm64 Mac used for everything else. Everything that ran there is in this folder; nothing was written on Gadi by hand. The work folder was `/scratch/xx73/yyy590/ngs-panel-validation` (`$BASE`), which Gadi purges after 100 days without access.
 
 1. Locally, cut the HG003 BAM to the SureSelect capture and copy it, the capture BED, the reference index and these scripts to `$BASE`: commands in `sync.sh` (`push`).
 2. On Gadi, in `$BASE`: `qsub scripts/gadi/fetch.pbs` (copyq, which has internet). It pulls `docker://google/deepvariant:1.9.0` and `:1.10.0` to Singularity images and downloads hs37d5, checking it against the md5s in `data/MANIFEST.tsv`.

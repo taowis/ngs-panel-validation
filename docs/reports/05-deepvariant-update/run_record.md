@@ -1,6 +1,6 @@
 # Report 05: run record
 
-NCI Gadi, project iz89, work folder `/scratch/iz89/ktl590/ngs-panel-validation`. Scripts in `scripts/gadi/`, copied to Gadi with `scripts/gadi/sync.sh push`; nothing was edited on Gadi.
+NCI Gadi, project xx73, work folder `/scratch/xx73/yyy590/ngs-panel-validation`. Scripts in `scripts/gadi/`, copied to Gadi with `scripts/gadi/sync.sh push`; nothing was edited on Gadi.
 
 ## Inputs
 
@@ -23,7 +23,7 @@ All exited 0. DeepVariant jobs: normal queue, 16 CPUs, 64 GB requested, `run_dee
 | 182421034 | 1.10.0 run1 | gadi-cpu-clx-2587 | 00:22:01 | 22.4 GB | 11.74 |
 | 182421036 | 1.10.0 run2 | gadi-cpu-clx-1122 | 00:19:49 | 22.3 GB | 10.57 |
 
-Total 44.5 SU. The iz89 balance read 3.27 KSU used before the fetch job and 3.38 KSU after the last run (the balance includes other users' jobs).
+Total 44.5 SU. The xx73 balance read 3.27 KSU used before the fetch job and 3.38 KSU after the last run (the balance includes other users' jobs).
 
 ## Outputs
 

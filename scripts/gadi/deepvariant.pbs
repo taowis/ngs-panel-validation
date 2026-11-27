@@ -1,10 +1,10 @@
 #!/bin/bash
 # One DeepVariant run (WES model) on the HG003 capture BAM.
 #   qsub -v VERSION=1.9.0,RUN=run1,REGIONS=inputs/capture.HG003.bed scripts/gadi/deepvariant.pbs
-#PBS -P iz89
+#PBS -P xx73
 #PBS -q normal
 #PBS -l ncpus=16,mem=64GB,walltime=04:00:00,jobfs=100GB
-#PBS -l storage=scratch/iz89
+#PBS -l storage=scratch/xx73
 #PBS -l wd
 #PBS -j oe
 #PBS -N dv
